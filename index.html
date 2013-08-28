@@ -1,0 +1,3111 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link href="bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
+		<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+		<style>
+			@media (min-width: 1200px) {}
+ 
+			/* Portrait tablet to landscape and desktop */
+			@media (min-width: 768px) and (max-width: 979px) {
+				.modal{
+				    width: 640px;
+				    margin-left: -320px;}
+			}
+			 
+			/* Landscape phone to portrait tablet */
+			@media (max-width: 767px) {}
+			 
+			/* Landscape phones and down */
+			@media (max-width: 480px) { 
+				.modal {
+				    width: 360px;
+				    margin-left: -180px;
+				}
+
+				.form-horizontal .controls {
+					margin-left: 90px;
+				}
+
+				.form-horizontal .control-label {
+					width: 0px;
+				}
+			}
+			@media (max-width: 360px) { 
+				.modal {
+				    width: 240px;
+				    margin-left: -120px;
+				}
+
+				.form-horizontal .controls {
+					margin-left: 70px;
+				}
+
+				.form-horizontal .control-label {
+					width: 0px;
+				}
+
+				.form-horizontal .controls input {
+					width: 140px;
+				}
+			}
+			@media (max-width: 240px) { 
+				.modal {
+				    width: 200px;
+				    margin-left: -100px;
+
+				}
+
+				.form-horizontal .controls {
+					margin-left: 50px;
+				}
+
+				.form-horizontal .control-label {
+					width: 0px;
+				}
+
+				.form-horizontal .controls input {
+					width: 120px;
+				}
+			}
+			
+			body {
+				background-color: #3C3C3C;
+			}
+			.container {
+				height: 750px;
+				background-color: #FFFFFF;
+				position: relative;
+			}
+			#logo_div {
+				background-color: #9BC9F3;
+				height: 100px;
+			}
+
+			#logo_img {
+				height: 50px;
+				margin-top: 26px;
+				margin-left: 23px;
+			} 
+
+			#status_div {
+				background-color: #808285;
+				height: 30px;
+				text-align: right;
+			}
+
+			#menu_div {
+			}
+
+			.btn-primary {
+				background-color: #9BC9F3;
+			}
+
+			.btn-primary:hover,
+			.btn-primary:focus {
+				background-color:  #5CA9EF;
+			}
+
+			#footer_div {
+				width:100%;
+				position: absolute;
+				bottom: 0px;
+				text-align: center;
+			}
+
+			.scan_list_tbody {
+				height: 400px;
+				overflow-y: auto; 
+			}
+
+			#content {
+				height: 500px;
+				border-left-style: solid;
+				border-left-color: #808285;
+				border-left-width: 2px;
+
+				border-right-style: solid;
+				border-right-color: #808285;
+				border-right-width: 2px;
+
+				padding-left: 16px;
+				padding-right: 16px;
+			}
+
+			.reboot_reset_btn {
+				width: 105px;
+				background-color: #9BC9F3;
+			}
+
+			.reboot_reset_btn:hover {
+				background-color: #5CA9EF;
+			}
+			/*.nav-list > .active > a > i,
+			.nav-list > .active > a:hover,
+			.nav-list > .active > a:focus {
+			  color: #ffffff;
+			  background-color: #5CA9EF;
+			}*/
+			.nav {
+				background-color: #9BC9F3;
+				margin-top: 10px;
+				padding-top: 18px;
+				padding-bottom: 20px;
+			}
+
+			.nav > li > a {
+				color: #ffffff;
+			}
+
+			.nav > li > a:hover,
+			.nav > li > a:focus {
+			  color: #ffffff;
+			  text-decoration: none;
+			  background-color:  #5CA9EF;
+			}
+
+			.nav > li > a > .menu_arrow {
+				display: none
+			}
+
+			.nav-list > .active > a > .menu_arrow {
+				display: inline;
+				position: absolute;
+				left: 132px;
+				margin-top: 5px;
+			}
+
+			.nav-list > .active > a {
+				background-color: #9BC9F3;
+			}
+
+			.nav-list > .active > a:hover {
+				background-color: #5CA9EF;
+			}
+
+			.table_div {
+				height: 275px;
+				overflow-y: auto;
+			}
+
+			.tab-pane {
+				
+			}
+
+			.refresh_btn_div {
+				text-align:right;
+				width: 100%;
+			}
+
+			.form-horizontal {
+				margin-bottom: 0px;
+			}
+
+			.refresh_btn_input {
+				height: 30px;
+			}
+
+			.signal_img {
+				height: 30px;
+			}
+
+			#repeater_spin_div,
+			#bridge_spin_div {
+				display: table;
+    			margin: 0 auto;
+    			margin-top: 100px;
+			}
+
+			#ap_bridge_spin_div,
+			#ap_router_spin_div,
+			#admin_spin_div {
+				display: table;
+    			margin: 0 auto;
+    			margin-top: 50px;
+    			margin-bottom: 50px
+			}
+
+			.form-horizontal .custom_controls {
+				margin-left: 90px;
+			}
+
+			.form-horizontal .custom_control-label {
+				width: 0px;
+			}
+
+			.form-horizontal .custom_admin_controls {
+				margin-left: 135px;
+			}
+
+			.form-horizontal .custom_admin_control-label {
+				width: 120px;
+			}
+
+			#count_down_bar_div {
+				background: #9BC9F3;
+			}
+
+			#count_down_button:disabled {
+				background-color: #3C3C3C;
+			}
+
+			.ap_router_mode_div,
+			.ap_bridge_mode_div {
+				width: 100%;
+				height: 325px;
+				overflow-y: auto;
+			}
+			.static_control_input {
+				width: 25px;
+			}
+		</style>
+	</head>
+	<body>
+		<!-- alert dialog (modal) -->
+
+		<!-- input admin dialog -->
+		<div id="admin_modal_div" class="modal hide fade" tabindex="-1" data-backdrop="static">
+			<div class="modal-header">
+				<h3>Login</h3>
+			</div>
+			<form class="form-horizontal" id="admin_modal_form" method='post'>
+				<div class="modal-body control-group">
+					<div class="control-group">
+  						<label class="control-label" for="admin_modal_input">Admin's Password</label>
+  						<div class="controls">
+  							<input type="password" id="admin_modal_input" name="admin_modal_input">
+  							<input type="password" id="admin_modal_confirm_input" name="admin_modal_confirm_input" style="display:none;">
+  						</div>
+  					</div>
+				</div>
+				<div class="modal-footer">
+					<button class="btn btn-primary" type="submit">Login</button>
+				</div>
+			</form>
+		</div>
+
+		<!-- confirm reset or reboot dialog -->
+		<div id="confirm_modal_div" class="modal hide fade" role="dialog" aria-labelledby="confirmModalLabel" aria-hidden="false">
+  			<div class="modal-header">
+  				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+    			<h3></h3>
+  			</div>
+	  		<div class="modal-body">
+	    		<h5></h5>
+	  		</div>
+			<div class="modal-footer">
+				<button type="button" class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
+  				<button type="button" class="btn btn-primary" id="confirm_modal_button" data-dismiss="modal" aria-hidden="true">Confirm</button>
+			</div>
+		</div>
+
+		<!-- WDS dialog -->
+		<div id="wds_modal_div" class="modal hide fade" role="dialog" aria-labelledby="" aria-hidden="true">
+  			<div class="modal-header">
+    			<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+    			<h3 style="float:left" id="ssid_modal_h3"></h3>
+    			<div id="signal_madal_div"></div>
+  			</div>
+  			<form id="wds_modal_form" class="form-horizontal" method='post'>
+  				<div class="modal-body">
+  					<!-- signal -->
+  					<div class="control-group">
+  						<label class="control-label" for="signal_modal_input">Signal</label>
+  						<div class="controls">
+  							<input id="signal_modal_input" disabled="disabled" type="text">
+  						</div>
+  					</div>
+  					<!-- security -->
+  					<div class="control-group">
+  						<label class="control-label" for="security_modal_input">Security</label>
+  						<div class="controls">
+  							<input id="security_modal_input" disabled="disabled" type="text">
+  						</div>
+  					</div>
+  					<!-- mac address -->
+  					<div class="control-group">
+  						<label class="control-label" for="mac_modal_input">Mac Address</label>
+  						<div class="controls">
+  							<input id="mac_modal_input" disabled="disabled" type="text">
+  						</div>
+  					</div>
+  					<!-- channel -->
+  					<div class="control-group">
+  						<label class="control-label" for="channel_modal_input">Channel</label>
+  						<div class="controls">
+  							<input id="channel_modal_input" disabled="disabled" type="text">
+  						</div>
+  					</div>
+  					<!-- password -->
+  					<div class="control-group" id="password_modal_div">
+  						<label class="control-label" for="password_modal_input">Password</label>
+  						<div class="controls">
+  							<input type="text" id="password_modal_input" name="password_modal_input">
+  						</div>
+  					</div>
+  					<!-- wep key -->
+  					<div class="control-group" id="wep_modal_div" style="display:none">
+  						<label class="control-label" for="wep_modal_select">Wep Key</label>
+  						<div class="controls">
+  							<select id="wep_modal_select">
+  								<option>1</option>
+  								<option>2</option>
+  								<option>3</option>
+  								<option>4</option>
+							</select>
+  						</div>
+  					</div>
+  				</div>
+
+  				<div class="modal-footer">
+  					<button type="button" class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
+  					<button type="submit" class="btn btn-primary" id="wds_model_connect_button">Connect</button>
+  				</div>
+  			</form>
+		</div>
+
+		<!-- progress dialog -->
+		<div id="count_down_modal_div" class="modal hide fade" role="dialog" aria-labelledby="countModalLabel" aria-hidden="false" data-backdrop="static">
+  			<div class="modal-header">
+    			<h3>Processing...</h3>
+  			</div>
+	  		<div class="modal-body">
+	    		<p></p>
+	    		<div class="progress progress-info progress-striped">
+  					<div class="bar" id="count_down_bar_div" style="width: 0%;"></div>
+				</div>
+	  		</div>
+			<div class="modal-footer">
+	    		<button class="btn btn-primary" id="count_down_button" type="button" disabled="disabled" onclick="close_process_dialog_click()" data-dismiss="modal" aria-hidden="true">Refresh</button>
+			</div>
+		</div>
+
+		<!-- real content -->
+		<div class="container">
+			<div id="logo_div">
+				<img id="logo_img" src="img/gigastone_white.png">
+			</div>
+
+			<div id="status_div">
+				<strong style="color:white">Mode:<span id="status_mode_span" class="label"></span></strong>
+				<strong style="color:white">Mac Address:<span id="status_mac_span" class="label"></span></strong>
+			</div>
+			
+			<div id="content_div">
+					
+				<div class="row-fluid" style="padding-top: 25px;">
+					<div class="span3" id="menu_div">
+						<div class="row-fluid">
+      						<button class="btn btn-primary reboot_reset_btn" type="button" onclick="reboot_reset_click(0)">Reboot</button>
+      						<button class="btn btn-primary reboot_reset_btn" type="button" style="margin-left: 5px;" onclick="reboot_reset_click(1)">Reset</button>
+    					</div>
+
+						<ul class="nav nav-list">
+							<li>
+								<a href="#page1" data-toggle="tab">AP Bridge<img src="img/arrow.png" class="menu_arrow"/></a>
+							</li>
+							<li>
+								<a href="#page2" data-toggle="tab">AP Router<img src="img/arrow.png" class="menu_arrow"/></a>
+							</li>
+							<li>
+								<a href="#page3" data-toggle="tab">WDS Repeater<img src="img/arrow.png" class="menu_arrow"/></a>
+							</li>
+							<li>
+								<a href="#page4" data-toggle="tab">WDS Bridge<img src="img/arrow.png" class="menu_arrow"/></a>
+							</li>
+							<li class="divider"></li>
+							<li>
+								<a href="#page5" data-toggle="tab">Admin<img src="img/arrow.png" class="menu_arrow"/></a>
+							</li>
+							<li>
+								<a href="#page6" data-toggle="tab">Help<img src="img/arrow.png" class="menu_arrow"/></a>
+							</li>
+						</ul>
+						<select id="change_language_select">
+						  	<option value="en"></option>
+						  	<option value="jp"></option>
+						  	<option value="zh-TW"></option>
+						  	<option value="zh-CN"></option>
+						</select>
+					</div>
+					<div class="span8" id="content" style="width:72%;">
+						<div class="tab-content">
+
+							<!-- AP Bridge -->
+							<div class="tab-pane fade in" id="page1">
+								<h4 style="float:left;padding-right: 20px;">AP Bridge Mode</h4>
+								<img src="img/ap-bridge.png" />
+								<hr style="clear:both;">
+								<div id="ap_bridge_spin_div"></div>
+
+								<form id="ap_bridge_form" class="form-horizontal" method='post'>
+									<div class="ap_mode_div ap_bridge_mode_div" style="display:none;width: 100%;">
+										<div class="control-group row-fluid">
+											<div class="radio span3">
+											  	<label>
+											    	<input type="radio" id="ap_bridge_radio_non_security" name="ap_bridge_radio" value="non-security" class="ap_bridge_radio">
+											    	Non-Security
+											  	</label>
+											</div>
+											<div class="radio span3">
+											  	<label>
+											    	<input type="radio" id="ap_bridge_radio_security" name="ap_bridge_radio" value="security" class="ap_bridge_radio">
+											    	Security
+											  	</label>
+											</div>
+										</div>
+										<div class="control-group">
+	  										<label class="control-label custom_control-label" for="ap_bridge_ssid_input">SSID</label>
+	  										<div class="controls custom_controls">
+	  											<input type="text" id="ap_bridge_ssid_input" name="ap_bridge_ssid_input">
+	  										</div>
+	  									</div>
+	  									<div class="control-group" id="ap_bridge_pw_div" style="display:none">
+	  										<label class="control-label custom_control-label" for="ap_bridge_pwd_input">Password</label>
+	  										<div class="controls custom_controls">
+	  											<input type="text" id="ap_bridge_pwd_input" name="ap_bridge_pwd_input">
+	  										</div>
+	  									</div>
+	  									<div class="control-group">
+	  										<label class="control-label custom_control-label" for="ap_bridge_channel_select">Channel</label>
+	  										<div class="controls custom_controls">
+		  										<select id="ap_bridge_channel_select">
+			  										<option value="0">Auto</option>
+			  										<option value="1">1</option>
+			  										<option value="2">2</option>
+			  										<option value="3">3</option>
+			  										<option value="4">4</option>
+			  										<option value="5">5</option>
+			  										<option value="6">6</option>
+			  										<option value="7">7</option>
+			  										<option value="8">8</option>
+			  										<option value="9">9</option>
+			  										<option value="10">10</option>
+			  										<option value="11">11</option>
+												</select>
+	  										</div>
+	  									</div>
+	  									<div class="row-fluid control-group">
+											<div class="radio span3">
+												<label>
+													<input type="radio" id="ap_bridge_radio_ht20" name="ap_bridge_radio_ht" value="0" class="ap_bridge_radio_ht">
+												    HT20
+												</label>
+											</div>
+												<div class="radio span3">
+												 <label>
+												   	<input type="radio" id="ap_bridge_radio_ht40" name="ap_bridge_radio_ht" value="1" class="ap_bridge_radio_ht">
+												    HT40
+												</label>
+											</div>
+										</div>
+										<div class="control-group">
+	  										<label class="control-label custom_control-label" for="ap_bridge_max_input">Maximum</label>
+	  										<div class="controls custom_controls">
+	  											<input type="text" id="ap_bridge_max_input" name="ap_bridge_max_input" placeholder="Default:50 (1~150)">
+	  										</div>
+	  									</div>
+	  									<div class="control-group">
+											<label class="checkbox">
+	  											<input type="checkbox" id="ap_bridge_static_input">
+	  												Static
+											</label>
+										</div>
+										<div class="control-group" id="ap_bridge_ip_div" style="display:none">
+	  										<label class="control-label custom_control-label" for="ap_bridge_ip_0_input">IP</label>
+											<div class="controls controls-row custom_controls">
+	  											<input class="static_control_input" type="text" id="ap_bridge_ip_0_input" name="ap_bridge_ip_0_input">
+	  											<input class="static_control_input" type="text" id="ap_bridge_ip_1_input" name="ap_bridge_ip_1_input">
+	  											<input class="static_control_input" type="text" id="ap_bridge_ip_2_input" name="ap_bridge_ip_2_input">
+	  											<input class="static_control_input" type="text" id="ap_bridge_ip_3_input" name="ap_bridge_ip_3_input">
+											</div>
+										</div>
+										<div class="control-group" id="ap_bridge_subnet_div" style="display:none">
+	  										<label class="control-label custom_control-label" for="ap_bridge_subnet_0_input">Subnet</label>
+											<div class="controls controls-row custom_controls">
+	  											<input class="static_control_input" type="text" id="ap_bridge_subnet_0_input" name="ap_bridge_subnet_0_input">
+	  											<input class="static_control_input" type="text" id="ap_bridge_subnet_1_input" name="ap_bridge_subnet_1_input">
+	  											<input class="static_control_input" type="text" id="ap_bridge_subnet_2_input" name="ap_bridge_subnet_2_input">
+	  											<input class="static_control_input" type="text" id="ap_bridge_subnet_3_input" name="ap_bridge_subnet_3_input">
+											</div>
+										</div>
+										<div class="control-group" id="ap_bridge_gw_div" style="display:none">
+	  										<label class="control-label custom_control-label" for="ap_bridge_gw_0_input">Gateway</label>
+											<div class="controls controls-row custom_controls">
+	  											<input class="static_control_input" type="text" id="ap_bridge_gw_0_input" name="ap_bridge_gw_0_input">
+	  											<input class="static_control_input" type="text" id="ap_bridge_gw_1_input" name="ap_bridge_gw_1_input">
+	  											<input class="static_control_input" type="text" id="ap_bridge_gw_2_input" name="ap_bridge_gw_2_input">
+	  											<input class="static_control_input" type="text" id="ap_bridge_gw_3_input" name="ap_bridge_gw_3_input">
+											</div>
+										</div>
+  									</div>
+									<hr>
+									<div class="row-fluid">
+										<div class="span2">
+											<button type="submit" class="btn">Save</button>
+										</div>
+									</div>
+									<!-- alert -->
+  									<div id="alert_bridge_div" class="alert alert-block alert-error fade in" style="display:none">
+  										<button type="button" class="close" onclick="show_alert(false, 0, 0)">&times;</button>
+  										<h4 id="alert_bridge_head_h4" class="alert-heading"></h4>
+  										<p id="alert_bridge_body_p"></p>
+  									</div>
+								</form>
+							</div>
+
+							<!-- AP Router -->
+							<div class="tab-pane fade in" id="page2">
+								<h4 style="float:left;padding-right: 20px;">AP Router</h4>
+								<img src="img/ap-router.png" />
+								<hr style="clear:both;">
+								<div id="ap_router_spin_div"></div>
+								<form id="ap_router_form" class="form-horizontal" method='post'>
+									<div class="ap_mode_div ap_router_mode_div" style="display:none;">
+										<div class="row-fluid control-group">
+											<div class="radio span3">
+											  	<label>
+											    	<input type="radio" id="ap_router_radio_non_security" name="ap_router_radio" value="non-security" class="ap_router_radio">
+											    		Non-Security
+											  	</label>
+											</div>
+											<div class="radio span3">
+											  	<label>
+											    	<input type="radio" id="ap_router_radio_security" name="ap_router_radio" value="security" class="ap_router_radio">
+											    		Security
+											  	</label>
+											</div>
+										</div>
+										<div class="control-group">
+	  										<label class="control-label custom_control-label" for="ap_router_ssid_input">SSID</label>
+	  										<div class="controls custom_controls">
+	  											<input type="text" id="ap_router_ssid_input" name="ap_router_ssid_input">
+	  										</div>
+	  									</div>
+	  									<div class="control-group" id="ap_router_pw_div" style="display:none">
+	  										<label class="control-label custom_control-label" for="ap_router_pwd_input">Password</label>
+	  										<div class="controls custom_controls">
+	  											<input type="text" id="ap_router_pwd_input" name="ap_router_pwd_input">
+	  										</div>
+	  									</div>
+	  									<div class="control-group">
+	  										<label class="control-label custom_control-label" for="ap_router_channel_select">Channel</label>
+	  										<div class="controls custom_controls">
+		  										<select id="ap_router_channel_select">
+			  										<option value="0">Auto</option>
+			  										<option value="1">1</option>
+			  										<option value="2">2</option>
+			  										<option value="3">3</option>
+			  										<option value="4">4</option>
+			  										<option value="5">5</option>
+			  										<option value="6">6</option>
+			  										<option value="7">7</option>
+			  										<option value="8">8</option>
+			  										<option value="9">9</option>
+			  										<option value="10">10</option>
+			  										<option value="11">11</option>
+												</select>
+	  										</div>
+	  									</div>
+	  									<div class="row-fluid control-group">
+											<div class="radio span3">
+												<label>
+													<input type="radio" id="ap_router_radio_ht20" name="ap_router_radio_ht" value="0" class="ap_router_radio_ht">
+												    HT20
+												</label>
+											</div>
+												<div class="radio span3">
+												 <label>
+												   	<input type="radio" id="ap_router_radio_ht40" name="ap_router_radio_ht" value="1" class="ap_router_radio_ht">
+												    HT40
+												</label>
+											</div>
+										</div>
+										<div class="control-group">
+	  										<label class="control-label custom_control-label" for="ap_router_max_input">Maximum</label>
+	  										<div class="controls custom_controls">
+	  											<input type="text" id="ap_router_max_input" name="ap_router_max_input" placeholder="Default:50 (1~150)">
+	  										</div>
+	  									</div>
+	  									<div class="control-group">
+											<label class="checkbox">
+	  											<input type="checkbox" id="ap_router_static_input">
+	  												Static
+											</label>
+										</div>
+										<div class="control-group" id="ap_router_ip_div" style="display:none">
+	  										<label class="control-label custom_control-label" for="ap_router_ip_0_input">IP</label>
+											<div class="controls controls-row custom_controls">
+	  											<input class="static_control_input" type="text" id="ap_router_ip_0_input" name="ap_router_ip_0_input">
+	  											<input class="static_control_input" type="text" id="ap_router_ip_1_input" name="ap_router_ip_1_input">
+	  											<input class="static_control_input" type="text" id="ap_router_ip_2_input" name="ap_router_ip_2_input">
+	  											<input class="static_control_input" type="text" id="ap_router_ip_3_input" name="ap_router_ip_3_input">
+											</div>
+										</div>
+										<div class="control-group" id="ap_router_subnet_div" style="display:none">
+	  										<label class="control-label custom_control-label" for="ap_router_subnet_0_input">Subnet</label>
+											<div class="controls controls-row custom_controls">
+	  											<input class="static_control_input" type="text" id="ap_router_subnet_0_input" name="ap_router_subnet_0_input">
+	  											<input class="static_control_input" type="text" id="ap_router_subnet_1_input" name="ap_router_subnet_1_input">
+	  											<input class="static_control_input" type="text" id="ap_router_subnet_2_input" name="ap_router_subnet_2_input">
+	  											<input class="static_control_input" type="text" id="ap_router_subnet_3_input" name="ap_router_subnet_3_input">
+											</div>
+										</div>
+										<div class="control-group" id="ap_router_gw_div" style="display:none">
+	  										<label class="control-label custom_control-label" for="ap_router_gw_0_input">Gateway</label>
+											<div class="controls controls-row custom_controls">
+	  											<input class="static_control_input" type="text" id="ap_router_gw_0_input" name="ap_router_gw_0_input">
+	  											<input class="static_control_input" type="text" id="ap_router_gw_1_input" name="ap_router_gw_1_input">
+	  											<input class="static_control_input" type="text" id="ap_router_gw_2_input" name="ap_router_gw_2_input">
+	  											<input class="static_control_input" type="text" id="ap_router_gw_3_input" name="ap_router_gw_3_input">
+											</div>
+										</div>
+	  								</div>
+									<hr>
+									<div class="row-fluid">
+										<div class="span2">
+											<button type="submit" class="btn">Save</button>
+										</div>
+									</div>
+									<!-- alert -->
+  									<div id="alert_router_div" class="alert alert-block alert-error fade in" style="display:none">
+  										<button type="button" class="close" onclick="show_alert(false, 0, 1)">&times;</button>
+  										<h4 id="alert_router_head_h4" class="alert-heading"></h4>
+  										<p id="alert_router_body_p"></p>
+  									</div>
+								</form>
+							</div>
+
+							<!-- WDS Repeater -->
+							<div class="tab-pane fade in" id="page3">
+								<h4 style="float:left;padding-right: 20px;">WDS Repeater</h4>
+								<img src="img/wds-repeater.png" style="float:left"/>
+								<div class="refresh_btn_div">
+									<input class="refresh_btn_input" type="image" img src="img/refresh.png" onclick="wds_mode_refresh_click()">
+								</div>
+								
+								<hr style="clear:both;">
+								<div class="row-fluid">
+									<div class="span12 table_div">
+										<div id="repeater_spin_div"></div>
+
+										<table class="table table-hover" style="display:none;">
+											<thead class="scan_list_thead">
+												<tr>
+													<th class="table_title_th" id="scan_list_ssid_th"    data-prop="ssid">SSID</th>
+													<th class="table_title_th" id="scan_list_sec_th"     data-prop="Security">Security</th>
+													<th class="table_title_th" id="scan_list_mac_th"     data-prop="mac">Mac Address</th>
+													<th class="table_title_th" id="scan_list_channel_th" data-prop="channel">Channel</th>
+													<th class="table_title_th" id="scan_list_signal_th"  data-prop="signal">Signal</th>
+												</tr>
+											</thead>
+											<tbody class="scan_list_repeater_tbody">
+											</tbody>
+										</table>
+									</div>
+								</div>
+								<hr>
+								<!-- <div class="row-fluid">
+									<div class="span2">
+										<button type="button" class="btn">Save</button>
+									</div>
+								</div> -->
+							</div>
+			
+							<!-- WDS Bridge -->
+							<div class="tab-pane fade in" id="page4">
+								<h4 style="float:left;padding-right: 20px;">WDS Bridge</h4>
+								<img src="img/wds-bridge.png" style="float:left;"/>
+								<div class="refresh_btn_div">
+									<input class="refresh_btn_input" type="image" img src="img/refresh.png" onclick="wds_mode_refresh_click()">
+								</div>
+								
+								<hr style="clear:both;">
+								<div class="row-fluid">
+									
+									<div class="span12 table_div">
+										<div id="bridge_spin_div"></div>
+										<table class="table table-hover" style="display:none; clear:both;">
+											<thead class="scan_list_thead">
+												<tr>
+													<th class="table_title_th" id="scan_list_ssid_th"    data-prop="ssid">SSID</th>
+													<th class="table_title_th" id="scan_list_sec_th"     data-prop="Security">Security</th>
+													<th class="table_title_th" id="scan_list_mac_th"     data-prop="mac">Mac Address</th>
+													<th class="table_title_th" id="scan_list_channel_th" data-prop="channel">Channel</th>
+													<th class="table_title_th" id="scan_list_signal_th"  data-prop="signal">Signal</th>
+												</tr>
+											</thead>
+											<tbody class="scan_list_bridge_tbody">
+											</tbody>
+										</table>
+									</div>
+								</div>
+								<hr>
+								<!-- <div class="row-fluid">
+									<div class="span2">
+										<button type="button" class="btn">Save</button>
+									</div>
+								</div> -->
+							</div>
+
+							<!-- Admin -->
+							<div class="tab-pane fade in" id="page5">
+								<h4 style="float:left">Admin</h4>
+								<hr style="clear:both;">
+								<div id="admin_spin_div"></div>
+								<form id="admin_change_form" class="form-horizontal" method='post'>
+									<div class="admin_change_div" style="display:none;">
+	  									<div class="control-group">
+	  										<label class="control-label custom_admin_control-label" for="admin_change_input">Admin's Password</label>
+	  										<div class="controls custom_admin_controls">
+	  											<input type="text" id="admin_change_input" name="admin_change_input">
+	  										</div>
+	  									</div>
+	  								</div>
+									<hr>
+									<div class="row-fluid">
+										<div class="span2">
+											<button type="submit" class="btn">Save</button>
+										</div>
+									</div>
+								</form>
+							</div>
+
+							<!-- Help -->
+							<div class="tab-pane fade in" id="page6">
+								<h4 style="float:left">Help</h4>
+								<hr style="clear:both;">
+								<div class="row-fluid">
+									<div class="span2">
+										<!-- <button type="button" class="btn" onclick="show_process_dialog(5)">Help</button> -->
+										<a href="#wds_modal_div" role="button" class="btn" data-toggle="modal">Help</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			<div id="footer_div">
+				<h5>Copyright 2013 Gigastone Corporation. All Right Reserved. </h5>
+			</div>
+
+		</div>
+
+		<script src="js/jquery-1.9.0.min.js"></script>
+		<script src="js/jquery.validate.min.js"></script>
+		<script src="js/jquery.cookie.js"></script>
+		<script src="bootstrap/js/bootstrap.min.js"></script>
+		<script src="js/spin.min.js"></script>
+		<script src="js/jquery.localisation.min.js"></script>
+		<script src="js/lang/greeting.js"></script>
+		<script type="text/javascript">
+			var opts = {
+				lines: 13, // The number of lines to draw
+				length: 4, // The length of each line
+				width: 4, // The line thickness
+				radius: 12, // The radius of the inner circle
+				corners: 0, // Corner roundness (0..1)
+				rotate: 0, // The rotation offset
+				direction: 1, // 1: clockwise, -1: counterclockwise
+				color: '#000', // #rgb or #rrggbb
+				speed: 1, // Rounds per second
+				trail: 60, // Afterglow percentage
+				shadow: false, // Whether to render a shadow
+				hwaccel: false, // Whether to use hardware acceleration
+				className: 'spinner', // The CSS class to assign to the spinner
+				zIndex: 2e9, // The z-index (defaults to 2000000000)
+				top: 'auto', // Top position relative to parent in px
+				left: 'auto' // Left position relative to parent in px
+			};
+
+			var progress_short_time  = 10; // 10s
+			var progress_normal_time = 30; // 30s
+			var progress_long_time   = 50; // 50s
+
+			var reboot_click_index = 0;
+			var reset_click_index = 1;
+
+			var ip_changed = "0.0.0.0";
+
+			var signal_strength      = [90, 80, 70];
+			var signal_strength_msg  = ["Excellent", "Good", "Fair", "Poor"];
+			var info_ssid_index      = "AP_SSID";
+			var info_pwd_index       = "PSK_KEY";
+			var info_mode_index      = "TR_TYPE";
+			var info_ht40_index      = "TR_HT40";
+			var info_stamac_index    = "STA_MAC";
+			var info_stacypher_index = "STA_CYRHER";
+			var info_mac_index       = "TR1_MAC";
+			var info_admin_index	 = "TR1_ADMIN";
+			var info_channel_index   = "AP_PRIMRY_CH";
+			var info_dhcp_index      = "TR1_DHCP";
+			var info_ip_index        = "TR_IP";
+			var info_subnet_index    = "TR_SUBNET";
+			var info_gw_index        = "TR_GW"; 
+			var info_key_index       = "TR_CGI_KEY";
+
+			var mode_ap_bridge    = "ap-bridge";
+			var mode_ap_router    = "ap-router";
+			var mode_wds_repeater = "wds-repeater";
+			var mode_wds_bridge   = "wds-bridge";
+
+			var default_ip     = ['10', '5', '1', '1'];
+			var default_subnet = ['255', '255', '255', '0'];
+			var default_gw     = ['0', '0', '0', '0'];
+
+			var information = [];
+			var scan_list = [];
+			var json_scan_list;
+
+			// add new rule for validation
+			$.validator.addMethod('nonBlank', function(value, element) {
+				return this.optional(element) || value.indexOf(" ") <= 0;
+			}, "There is an invalid character!");
+
+			// change the string for the different language
+			function change_language() {
+				$("#change_language_select option").each(function(i) {
+					$(this).text(eval("lang_option_"+(i+1)));
+				});
+			}
+
+			$(document).ready(function() {
+				// show progress spin
+				var spinner_repeater = new Spinner(opts).spin(document.getElementById('repeater_spin_div')); 
+				var spinner_bridge = new Spinner(opts).spin(document.getElementById('bridge_spin_div'));
+				var spinner_ap_bridge = new Spinner(opts).spin(document.getElementById('ap_bridge_spin_div'));
+				var spinner_ap_router = new Spinner(opts).spin(document.getElementById('ap_router_spin_div'));
+				var spinner_admin = new Spinner(opts).spin(document.getElementById('admin_spin_div'));
+
+				// set the language
+				console.log('default language', $.localise.defaultLanguage);
+				$.localise('greeting', {loadBase: true, path: 'js/lang/'});
+				$("#change_language_select").change(function() {
+					console.log($(this).val());
+					$.localise('js/lang/greeting', {loadBase: true, language: $(this).val()});
+					change_language();
+				});
+				change_language();
+
+				// information
+				information = [];
+				$.get("../cgi-bin/tr1.cgi?cgi=6", function(data) {
+					var json_info = jQuery.parseJSON(data);
+					var info_html = "";
+
+	  				$.each(json_info, function(index, value) {
+	  					information[index] = value;
+	  					console.log(index, value);
+					});
+
+					var array_admin = hexToStr(base64Decode(information[info_admin_index], UTF8), UTF8).split('@');
+					information[info_admin_index] = array_admin[1];
+					information[info_key_index] = array_admin[0];
+
+					// console.log("ADMIN", hexToStr(base64Decode(information[info_admin_index], UTF8), UTF8));
+
+					// set admin password
+					$('#admin_modal_confirm_input').val(information[info_admin_index]);
+
+					// show admin dialog
+					if ($.cookie(info_admin_index) == information[info_admin_index])
+						$("#admin_modal_div").modal('hide');
+					else
+						$("#admin_modal_div").modal('show');
+
+					// set channel
+					$('#ap_bridge_channel_select').val(information[info_channel_index]);
+					$('#ap_router_channel_select').val(information[info_channel_index]);
+
+					// set the maximum
+					$('#ap_router_max_input').val(information[info_dhcp_index]);
+					$('#ap_bridge_max_input').val(information[info_dhcp_index]);
+
+					if (information[info_ip_index] != "") {
+						ip_changed = information[info_ip_index];
+					}
+
+					if (information[info_ip_index] == "" || information[info_subnet_index] == "" || information[info_gw_index] == "") {
+						// set the ip when static 
+						$('#ap_router_ip_0_input').val(default_ip[0]);
+						$('#ap_router_ip_1_input').val(default_ip[1]);
+						// $('#ap_router_ip_2_input').val(default_ip[2]);
+						// $('#ap_router_ip_3_input').val(default_ip[3]);
+
+						$('#ap_bridge_ip_0_input').val(default_ip[0]);
+						$('#ap_bridge_ip_1_input').val(default_ip[1]);
+						// $('#ap_bridge_ip_2_input').val(default_ip[2]);
+						// $('#ap_bridge_ip_3_input').val(default_ip[3]);
+
+						// set the subnet when static 
+						// $('#ap_router_subnet_0_input').val(default_subnet[0]);
+						// $('#ap_router_subnet_1_input').val(default_subnet[1]);
+						// $('#ap_router_subnet_2_input').val(default_subnet[2]);
+						// $('#ap_router_subnet_3_input').val(default_subnet[3]);
+
+						// $('#ap_bridge_subnet_0_input').val(default_subnet[0]);
+						// $('#ap_bridge_subnet_1_input').val(default_subnet[1]);
+						// $('#ap_bridge_subnet_2_input').val(default_subnet[2]);
+						// $('#ap_bridge_subnet_3_input').val(default_subnet[3]);
+
+						// set the gateway when static
+						// $('#ap_router_gw_0_input').val(default_gw[0]);
+						// $('#ap_router_gw_1_input').val(default_gw[1]);
+						// $('#ap_router_gw_2_input').val(default_gw[2]);
+						// $('#ap_router_gw_3_input').val(default_gw[3]);
+
+						// $('#ap_bridge_gw_0_input').val(default_gw[0]);
+						// $('#ap_bridge_gw_1_input').val(default_gw[1]);
+						// $('#ap_bridge_gw_2_input').val(default_gw[2]);
+						// $('#ap_bridge_gw_3_input').val(default_gw[3]);
+
+						$("#ap_router_static_input").prop("checked", false);
+						$('#ap_router_ip_div').css('display', 'none');
+				     	$('#ap_router_subnet_div').css('display', 'none');
+				     	$('#ap_router_gw_div').css('display', 'none');
+
+				     	$("#ap_bridge_static_input").prop("checked", false);
+						$('#ap_bridge_ip_div').css('display', 'none');
+				     	$('#ap_bridge_subnet_div').css('display', 'none');
+				     	$('#ap_bridge_gw_div').css('display', 'none');
+					} else {
+						var array_ip = information[info_ip_index].split('.');
+
+						// set the ip when static 
+						$('#ap_router_ip_0_input').val(array_ip[0]);
+						$('#ap_router_ip_1_input').val(array_ip[1]);
+						$('#ap_router_ip_2_input').val(array_ip[2]);
+						$('#ap_router_ip_3_input').val(array_ip[3]);
+
+						$('#ap_bridge_ip_0_input').val(array_ip[0]);
+						$('#ap_bridge_ip_1_input').val(array_ip[1]);
+						$('#ap_bridge_ip_2_input').val(array_ip[2]);
+						$('#ap_bridge_ip_3_input').val(array_ip[3]);
+
+						var array_subnet = information[info_subnet_index].split('.');
+
+						// set the subnet when static 
+						$('#ap_router_subnet_0_input').val(array_subnet[0]);
+						$('#ap_router_subnet_1_input').val(array_subnet[1]);
+						$('#ap_router_subnet_2_input').val(array_subnet[2]);
+						$('#ap_router_subnet_3_input').val(array_subnet[3]);
+
+						$('#ap_bridge_subnet_0_input').val(array_subnet[0]);
+						$('#ap_bridge_subnet_1_input').val(array_subnet[1]);
+						$('#ap_bridge_subnet_2_input').val(array_subnet[2]);
+						$('#ap_bridge_subnet_3_input').val(array_subnet[3]);
+
+						var array_gw = information[info_gw_index].split('.');
+
+						// set the gateway when static
+						$('#ap_router_gw_0_input').val(array_gw[0]);
+						$('#ap_router_gw_1_input').val(array_gw[1]);
+						$('#ap_router_gw_2_input').val(array_gw[2]);
+						$('#ap_router_gw_3_input').val(array_gw[3]);
+
+						$('#ap_bridge_gw_0_input').val(array_gw[0]);
+						$('#ap_bridge_gw_1_input').val(array_gw[1]);
+						$('#ap_bridge_gw_2_input').val(array_gw[2]);
+						$('#ap_bridge_gw_3_input').val(array_gw[3]);
+
+						$("#ap_router_static_input").prop("checked", true);
+						$('#ap_router_ip_div').css('display', 'inline');
+					    $('#ap_router_subnet_div').css('display', 'inline');
+					    $('#ap_router_gw_div').css('display', 'inline-block');
+
+					    $("#ap_bridge_static_input").prop("checked", true);
+						$('#ap_bridge_ip_div').css('display', 'inline');
+					    $('#ap_bridge_subnet_div').css('display', 'inline');
+					    $('#ap_bridge_gw_div').css('display', 'inline-block');
+					}
+
+	  				// switch to current mode
+	  				if (information[info_mode_index] == mode_ap_bridge) {
+	  					$(".nav-list").children('li').eq(0).addClass("active");
+	  					$("#page1").addClass("active");
+	  				} else if (information[info_mode_index] == mode_ap_router) {
+	  					$(".nav-list").children('li').eq(1).addClass("active");
+	  					$("#page2").addClass("active");
+	  				} else if (information[info_mode_index] == mode_wds_repeater) {
+	  					$(".nav-list").children('li').eq(2).addClass("active");
+	  					$("#page3").addClass("active");
+	  				} else if (information[info_mode_index] == mode_wds_bridge) {
+	  					$(".nav-list").children('li').eq(3).addClass("active");
+	  					$("#page4").addClass("active");
+	  				} else {
+	  					$(".nav-list").children('li').eq(0).addClass("active");
+	  					$("#page1").addClass("active");
+	  				}
+
+	  				$('#status_mode_span').html(information[info_mode_index].toUpperCase());
+	  				$('#status_mac_span').html(information[info_mac_index].toUpperCase());
+	  		// 		info_html += "Mode:"+information[info_mode_index]+"  ";
+	  		// 		info_html += "Mac Address:"+information[info_mac_index]+" ";
+					// $('#status_div').html(info_html);
+
+					$('#ap_bridge_ssid_input').val(information[info_ssid_index]);
+					$('#ap_router_ssid_input').val(information[info_ssid_index]);
+
+					$('#ap_bridge_pwd_input').val(information[info_pwd_index]);
+					$('#ap_router_pwd_input').val(information[info_pwd_index]);
+
+					if (information[info_pwd_index] == "") {
+						$('#ap_bridge_radio_non_security').attr('checked', '');
+						$('#ap_bridge_radio_security').removeAttr('checked');
+						
+						$('#ap_router_radio_non_security').attr('checked', '');
+						$('#ap_router_radio_security').removeAttr('checked');
+
+						$("#ap_bridge_pw_div").css("display" , "none");
+						$("#ap_router_pw_div").css("display" , "none");
+					} else {
+						$('#ap_bridge_radio_security').attr('checked', '');
+						$('#ap_bridge_radio_non_security').removeAttr('checked');
+						
+						$('#ap_router_radio_security').attr('checked', '');
+						$('#ap_router_radio_non_security').removeAttr('checked');
+
+						$("#ap_bridge_pw_div").css("display" , "inline-block");
+						$("#ap_router_pw_div").css("display" , "inline-block");
+					}
+
+					if (information[info_ht40_index] == "1") {
+						$('#ap_bridge_radio_ht40').attr('checked', '');
+						$('#ap_bridge_radio_ht20').removeAttr('checked');
+
+						$('#ap_router_radio_ht40').attr('checked', '');
+						$('#ap_router_radio_ht20').removeAttr('checked');
+					} else {
+						$('#ap_bridge_radio_ht20').attr('checked', '');
+						$('#ap_bridge_radio_ht40').removeAttr('checked');
+
+						$('#ap_router_radio_ht20').attr('checked', '');
+						$('#ap_router_radio_ht40').removeAttr('checked');
+					}
+
+					$('.ap_mode_div').css('display', 'inline-block');
+					$('#ap_bridge_spin_div').css('display', 'none');
+					$('#ap_router_spin_div').css('display', 'none');
+					$('.admin_change_div').css('display', 'inline');
+					$('#admin_change_input').val(information[info_admin_index]);
+					$('#admin_spin_div').css('display', 'none');
+				});
+
+				// scan ap list
+  				$.get("../cgi-bin/tr1.cgi?cgi=3", function(data) {
+					json_scan_list = jQuery.parseJSON(data);
+					console.log(data);
+					console.log(json_scan_list.length);
+
+					$(".scan_list_repeater_tbody").html('');
+					$(".scan_list_bridge_tbody").html('');
+	  				$.each(json_scan_list, function(index, value) {
+	  					if (index == 0)
+	  						return;
+
+	  					scan_list[index] = value;
+
+	  					if (index == json_scan_list.length-1) {
+	  						sort_scan_list("signal", false);
+	  					}
+					});
+				});
+
+				$('.table_title_th').click(function() {
+					console.log("test sort");
+			        var _prop = $(this).attr('data-prop');
+			        console.log("prop : "+_prop);
+			       	var asc = (!$(this).attr('asc')); // switch the order, true if not set
+			        
+			        // set asc="asc" when sorted in ascending order
+			        $('.scan_list_thead th').each(function() {
+			            $(this).removeAttr('asc');
+			        });
+			        if (asc) $(this).attr('asc', 'asc');
+			        	sort_scan_list(_prop, asc);
+			    	});
+
+				$('.ap_bridge_radio').change(
+			    	function(){
+				        if($(this).is(':checked')){
+				        	var _mode = $(this).val();
+				        	console.log("radio : "+$(this).val());
+				        	if( _mode == "non-security") {
+				        		$("#ap_bridge_pw_div").css("display" , "none");
+				        	} else if( _mode="security") {
+				        		$("#ap_bridge_pw_div").css("display" , "inline-block");
+				        	}
+				        }
+				    }
+				);
+
+				$('.ap_router_radio').change(
+				    function(){
+				        if($(this).is(':checked')){
+				        	var _mode = $(this).val();
+				        	console.log("radio : "+$(this).val());
+				        	if( _mode == "non-security") {
+				        		$("#ap_router_pw_div").css("display" , "none");
+				        	} else if( _mode="security") {
+				        		$("#ap_router_pw_div").css("display" , "inline-block");
+				        	}
+				        }
+				    }
+				); 
+
+				// static checkbox
+				$("#ap_router_static_input").click(function() {
+
+   					if($(this).is(":checked")) {
+					    $('#ap_router_ip_div').css('display', 'inline');
+					    $('#ap_router_subnet_div').css('display', 'inline');
+					    $('#ap_router_gw_div').css('display', 'inline-block');
+					    $('.ap_router_mode_div').animate({ scrollTop: $('.ap_router_mode_div')[0].scrollHeight}, 800);
+			   		} else {
+				     	$('#ap_router_ip_div').css('display', 'none');
+				     	$('#ap_router_subnet_div').css('display', 'none');
+				     	$('#ap_router_gw_div').css('display', 'none');
+			   		}
+				});
+
+				$("#ap_bridge_static_input").click(function() {
+
+   					if($(this).is(":checked")) {
+					    $('#ap_bridge_ip_div').css('display', 'inline');
+					    $('#ap_bridge_subnet_div').css('display', 'inline');
+					    $('#ap_bridge_gw_div').css('display', 'inline-block');
+					    $('.ap_bridge_mode_div').animate({ scrollTop: $('.ap_bridge_mode_div')[0].scrollHeight}, 800);
+			   		} else {
+				     	$('#ap_bridge_ip_div').css('display', 'none');
+				     	$('#ap_bridge_subnet_div').css('display', 'none');
+				     	$('#ap_bridge_gw_div').css('display', 'none');
+			   		}
+				});
+
+				/* set the events of ip, subnet and gateway */
+				// bridge
+				$('#ap_bridge_ip_0_input').keyup(function() {
+					if (parseInt($(this).val()) >= 100 && parseInt($(this).val()) <= 255) {
+						$('#ap_bridge_ip_1_input').select();
+					}
+				});
+
+				$('#ap_bridge_ip_1_input').keyup(function() {
+					if (parseInt($(this).val()) >= 100 && parseInt($(this).val()) <= 255) {
+						$('#ap_bridge_ip_2_input').select();
+					}
+				});
+
+				$('#ap_bridge_ip_2_input').keyup(function() {
+					if (parseInt($(this).val()) >= 100 && parseInt($(this).val()) <= 255) {
+						$('#ap_bridge_ip_3_input').select();
+					}
+				});
+
+				$('#ap_bridge_ip_3_input').keyup(function() {
+					if (parseInt($(this).val()) >= 100 && parseInt($(this).val()) <= 255) {
+						$('#ap_bridge_subnet_0_input').select();
+					}
+				});
+
+				$('#ap_bridge_ip_3_input').focus(function() {
+					// auto fill gateway
+					if ($('#ap_bridge_ip_0_input').val() != '' && $('#ap_bridge_ip_1_input').val() != '' && $('#ap_bridge_ip_2_input').val() != '') {
+						$('#ap_bridge_gw_0_input').val($('#ap_bridge_ip_0_input').val());
+						$('#ap_bridge_gw_1_input').val($('#ap_bridge_ip_1_input').val());
+						$('#ap_bridge_gw_2_input').val($('#ap_bridge_ip_2_input').val());
+						$('#ap_bridge_gw_3_input').val('1');
+					}
+				});
+
+				$('#ap_bridge_subnet_0_input').keyup(function() {
+					if (parseInt($(this).val()) >= 100 && parseInt($(this).val()) <= 255) {
+						$('#ap_bridge_subnet_1_input').select();
+					}
+				});
+
+				$('#ap_bridge_subnet_0_input').focus(function() {
+					var ip_value = $('#ap_bridge_ip_0_input').val();
+
+					if ($('#ap_bridge_subnet_0_input').val() == '' || $('#ap_bridge_subnet_1_input').val() == '' || $('#ap_bridge_subnet_2_input').val() == '' || $('#ap_bridge_subnet_3_input').val() == '') {
+						if (ip_value == '') {
+
+						} else if (parseInt(ip_value) >= 1 && parseInt(ip_value) <= 126) {
+							$('#ap_bridge_subnet_0_input').val('255');
+							$('#ap_bridge_subnet_1_input').val('0');
+							$('#ap_bridge_subnet_2_input').val('0');
+							$('#ap_bridge_subnet_3_input').val('0');
+
+							$('#ap_bridge_subnet_0_input').removeAttr('error');
+							$('#ap_bridge_subnet_1_input').removeAttr('error');
+							$('#ap_bridge_subnet_2_input').removeAttr('error');
+							$('#ap_bridge_subnet_3_input').removeAttr('error');
+							$('#ap_bridge_subnet_0_input').parents('.control-group').removeClass('error');
+						} else if (parseInt(ip_value) >= 128 && parseInt(ip_value) <= 191) {
+							$('#ap_bridge_subnet_0_input').val('255');
+							$('#ap_bridge_subnet_1_input').val('255');
+							$('#ap_bridge_subnet_2_input').val('0');
+							$('#ap_bridge_subnet_3_input').val('0');
+
+							$('#ap_bridge_subnet_0_input').removeAttr('error');
+							$('#ap_bridge_subnet_1_input').removeAttr('error');
+							$('#ap_bridge_subnet_2_input').removeAttr('error');
+							$('#ap_bridge_subnet_3_input').removeAttr('error');
+							$('#ap_bridge_subnet_0_input').parents('.control-group').removeClass('error');
+						} else if (parseInt(ip_value) >= 192 && parseInt(ip_value) <= 254) {
+							$('#ap_bridge_subnet_0_input').val('255');
+							$('#ap_bridge_subnet_1_input').val('255');
+							$('#ap_bridge_subnet_2_input').val('255');
+							$('#ap_bridge_subnet_3_input').val('0');
+
+							$('#ap_bridge_subnet_0_input').removeAttr('error');
+							$('#ap_bridge_subnet_1_input').removeAttr('error');
+							$('#ap_bridge_subnet_2_input').removeAttr('error');
+							$('#ap_bridge_subnet_3_input').removeAttr('error');
+							$('#ap_bridge_subnet_0_input').parents('.control-group').removeClass('error');
+						} else {
+
+						}
+					}
+				});
+
+				$('#ap_bridge_subnet_1_input').focus(function() {
+					var ip_value = $('#ap_bridge_ip_0_input').val();
+
+					if ($('#ap_bridge_subnet_0_input').val() == '' || $('#ap_bridge_subnet_1_input').val() == '' || $('#ap_bridge_subnet_2_input').val() == '' || $('#ap_bridge_subnet_3_input').val() == '') {
+						if (ip_value == '') {
+
+						} else if (parseInt(ip_value) >= 1 && parseInt(ip_value) <= 126) {
+							$('#ap_bridge_subnet_0_input').val('255');
+							$('#ap_bridge_subnet_1_input').val('0');
+							$('#ap_bridge_subnet_2_input').val('0');
+							$('#ap_bridge_subnet_3_input').val('0');
+
+							$('#ap_bridge_subnet_0_input').removeAttr('error');
+							$('#ap_bridge_subnet_1_input').removeAttr('error');
+							$('#ap_bridge_subnet_2_input').removeAttr('error');
+							$('#ap_bridge_subnet_3_input').removeAttr('error');
+							$('#ap_bridge_subnet_0_input').parents('.control-group').removeClass('error');
+						} else if (parseInt(ip_value) >= 128 && parseInt(ip_value) <= 191) {
+							$('#ap_bridge_subnet_0_input').val('255');
+							$('#ap_bridge_subnet_1_input').val('255');
+							$('#ap_bridge_subnet_2_input').val('0');
+							$('#ap_bridge_subnet_3_input').val('0');
+
+							$('#ap_bridge_subnet_0_input').removeAttr('error');
+							$('#ap_bridge_subnet_1_input').removeAttr('error');
+							$('#ap_bridge_subnet_2_input').removeAttr('error');
+							$('#ap_bridge_subnet_3_input').removeAttr('error');
+							$('#ap_bridge_subnet_0_input').parents('.control-group').removeClass('error');
+						} else if (parseInt(ip_value) >= 192 && parseInt(ip_value) <= 254) {
+							$('#ap_bridge_subnet_0_input').val('255');
+							$('#ap_bridge_subnet_1_input').val('255');
+							$('#ap_bridge_subnet_2_input').val('255');
+							$('#ap_bridge_subnet_3_input').val('0');
+
+							$('#ap_bridge_subnet_0_input').removeAttr('error');
+							$('#ap_bridge_subnet_1_input').removeAttr('error');
+							$('#ap_bridge_subnet_2_input').removeAttr('error');
+							$('#ap_bridge_subnet_3_input').removeAttr('error');
+							$('#ap_bridge_subnet_0_input').parents('.control-group').removeClass('error');
+						} else {
+
+						}
+					}
+				});
+
+				$('#ap_bridge_subnet_2_input').focus(function() {
+					var ip_value = $('#ap_bridge_ip_0_input').val();
+
+					if ($('#ap_bridge_subnet_0_input').val() == '' || $('#ap_bridge_subnet_1_input').val() == '' || $('#ap_bridge_subnet_2_input').val() == '' || $('#ap_bridge_subnet_3_input').val() == '') {
+						if (ip_value == '') {
+
+						} else if (parseInt(ip_value) >= 1 && parseInt(ip_value) <= 126) {
+							$('#ap_bridge_subnet_0_input').val('255');
+							$('#ap_bridge_subnet_1_input').val('0');
+							$('#ap_bridge_subnet_2_input').val('0');
+							$('#ap_bridge_subnet_3_input').val('0');
+
+							$('#ap_bridge_subnet_0_input').removeAttr('error');
+							$('#ap_bridge_subnet_1_input').removeAttr('error');
+							$('#ap_bridge_subnet_2_input').removeAttr('error');
+							$('#ap_bridge_subnet_3_input').removeAttr('error');
+							$('#ap_bridge_subnet_0_input').parents('.control-group').removeClass('error');
+						} else if (parseInt(ip_value) >= 128 && parseInt(ip_value) <= 191) {
+							$('#ap_bridge_subnet_0_input').val('255');
+							$('#ap_bridge_subnet_1_input').val('255');
+							$('#ap_bridge_subnet_2_input').val('0');
+							$('#ap_bridge_subnet_3_input').val('0');
+
+							$('#ap_bridge_subnet_0_input').removeAttr('error');
+							$('#ap_bridge_subnet_1_input').removeAttr('error');
+							$('#ap_bridge_subnet_2_input').removeAttr('error');
+							$('#ap_bridge_subnet_3_input').removeAttr('error');
+							$('#ap_bridge_subnet_0_input').parents('.control-group').removeClass('error');
+						} else if (parseInt(ip_value) >= 192 && parseInt(ip_value) <= 254) {
+							$('#ap_bridge_subnet_0_input').val('255');
+							$('#ap_bridge_subnet_1_input').val('255');
+							$('#ap_bridge_subnet_2_input').val('255');
+							$('#ap_bridge_subnet_3_input').val('0');
+
+							$('#ap_bridge_subnet_0_input').removeAttr('error');
+							$('#ap_bridge_subnet_1_input').removeAttr('error');
+							$('#ap_bridge_subnet_2_input').removeAttr('error');
+							$('#ap_bridge_subnet_3_input').removeAttr('error');
+							$('#ap_bridge_subnet_0_input').parents('.control-group').removeClass('error');
+						} else {
+
+						}
+					}
+				});
+
+				$('#ap_bridge_subnet_3_input').focus(function() {
+					var ip_value = $('#ap_bridge_ip_0_input').val();
+
+					if ($('#ap_bridge_subnet_0_input').val() == '' || $('#ap_bridge_subnet_1_input').val() == '' || $('#ap_bridge_subnet_2_input').val() == '' || $('#ap_bridge_subnet_3_input').val() == '') {
+						if (ip_value == '') {
+
+						} else if (parseInt(ip_value) >= 1 && parseInt(ip_value) <= 126) {
+							$('#ap_bridge_subnet_0_input').val('255');
+							$('#ap_bridge_subnet_1_input').val('0');
+							$('#ap_bridge_subnet_2_input').val('0');
+							$('#ap_bridge_subnet_3_input').val('0');
+
+							$('#ap_bridge_subnet_0_input').removeAttr('error');
+							$('#ap_bridge_subnet_1_input').removeAttr('error');
+							$('#ap_bridge_subnet_2_input').removeAttr('error');
+							$('#ap_bridge_subnet_3_input').removeAttr('error');
+							$('#ap_bridge_subnet_0_input').parents('.control-group').removeClass('error');
+						} else if (parseInt(ip_value) >= 128 && parseInt(ip_value) <= 191) {
+							$('#ap_bridge_subnet_0_input').val('255');
+							$('#ap_bridge_subnet_1_input').val('255');
+							$('#ap_bridge_subnet_2_input').val('0');
+							$('#ap_bridge_subnet_3_input').val('0');
+
+							$('#ap_bridge_subnet_0_input').removeAttr('error');
+							$('#ap_bridge_subnet_1_input').removeAttr('error');
+							$('#ap_bridge_subnet_2_input').removeAttr('error');
+							$('#ap_bridge_subnet_3_input').removeAttr('error');
+							$('#ap_bridge_subnet_0_input').parents('.control-group').removeClass('error');
+						} else if (parseInt(ip_value) >= 192 && parseInt(ip_value) <= 254) {
+							$('#ap_bridge_subnet_0_input').val('255');
+							$('#ap_bridge_subnet_1_input').val('255');
+							$('#ap_bridge_subnet_2_input').val('255');
+							$('#ap_bridge_subnet_3_input').val('0');
+
+							$('#ap_bridge_subnet_0_input').removeAttr('error');
+							$('#ap_bridge_subnet_1_input').removeAttr('error');
+							$('#ap_bridge_subnet_2_input').removeAttr('error');
+							$('#ap_bridge_subnet_3_input').removeAttr('error');
+							$('#ap_bridge_subnet_0_input').parents('.control-group').removeClass('error');
+						} else {
+
+						}
+					}
+				});
+
+				$('#ap_bridge_subnet_1_input').keyup(function() {
+					if (parseInt($(this).val()) >= 100 && parseInt($(this).val()) <= 255) {
+						$('#ap_bridge_subnet_2_input').select();
+					}
+				});
+
+				$('#ap_bridge_subnet_2_input').keyup(function() {
+					if (parseInt($(this).val()) >= 100 && parseInt($(this).val()) <= 255) {
+						$('#ap_bridge_subnet_3_input').select();
+					}
+				});
+
+				$('#ap_bridge_subnet_3_input').keyup(function() {
+					if (parseInt($(this).val()) >= 100 && parseInt($(this).val()) <= 255) {
+						$('#ap_bridge_gw_0_input').select();
+					}
+				});
+
+				$('#ap_bridge_gw_0_input').keyup(function() {
+					if (parseInt($(this).val()) >= 100 && parseInt($(this).val()) <= 255) {
+						$('#ap_bridge_gw_1_input').select();
+					}
+				});
+
+				$('#ap_bridge_gw_1_input').keyup(function() {
+					if (parseInt($(this).val()) >= 100 && parseInt($(this).val()) <= 255) {
+						$('#ap_bridge_gw_2_input').select();
+					}
+				});
+
+				$('#ap_bridge_gw_2_input').keyup(function() {
+					if (parseInt($(this).val()) >= 100 && parseInt($(this).val()) <= 255) {
+						$('#ap_bridge_gw_3_input').select();
+					}
+				});
+
+				$('#ap_bridge_gw_0_input').focus(function() {
+
+					if ($('#ap_bridge_gw_0_input').val() == '' || $('#ap_bridge_gw_1_input').val() == '' || $('#ap_bridge_gw_2_input').val() == '' || $('#ap_bridge_gw_3_input').val() == '') {
+
+						if ($('#ap_bridge_ip_0_input').val() != '' && $('#ap_bridge_ip_1_input').val() != '' && $('#ap_bridge_ip_2_input').val() != '') {
+							$('#ap_bridge_gw_0_input').val($('#ap_bridge_ip_0_input').val());
+							$('#ap_bridge_gw_1_input').val($('#ap_bridge_ip_1_input').val());
+							$('#ap_bridge_gw_2_input').val($('#ap_bridge_ip_2_input').val());
+							$('#ap_bridge_gw_3_input').val('1');
+						}
+					}
+				});
+
+				$('#ap_bridge_gw_1_input').focus(function() {
+
+					if ($('#ap_bridge_gw_0_input').val() == '' || $('#ap_bridge_gw_1_input').val() == '' || $('#ap_bridge_gw_2_input').val() == '' || $('#ap_bridge_gw_3_input').val() == '') {
+
+						if ($('#ap_bridge_ip_0_input').val() != '' && $('#ap_bridge_ip_1_input').val() != '' && $('#ap_bridge_ip_2_input').val() != '') {
+							$('#ap_bridge_gw_0_input').val($('#ap_bridge_ip_0_input').val());
+							$('#ap_bridge_gw_1_input').val($('#ap_bridge_ip_1_input').val());
+							$('#ap_bridge_gw_2_input').val($('#ap_bridge_ip_2_input').val());
+							$('#ap_bridge_gw_3_input').val('1');
+						}
+					}
+				});
+
+				$('#ap_bridge_gw_2_input').focus(function() {
+
+					if ($('#ap_bridge_gw_0_input').val() == '' || $('#ap_bridge_gw_1_input').val() == '' || $('#ap_bridge_gw_2_input').val() == '' || $('#ap_bridge_gw_3_input').val() == '') {
+
+						if ($('#ap_bridge_ip_0_input').val() != '' && $('#ap_bridge_ip_1_input').val() != '' && $('#ap_bridge_ip_2_input').val() != '') {
+							$('#ap_bridge_gw_0_input').val($('#ap_bridge_ip_0_input').val());
+							$('#ap_bridge_gw_1_input').val($('#ap_bridge_ip_1_input').val());
+							$('#ap_bridge_gw_2_input').val($('#ap_bridge_ip_2_input').val());
+							$('#ap_bridge_gw_3_input').val('1');
+						}
+					}
+				});
+
+				$('#ap_bridge_gw_3_input').focus(function() {
+
+					if ($('#ap_bridge_gw_0_input').val() == '' || $('#ap_bridge_gw_1_input').val() == '' || $('#ap_bridge_gw_2_input').val() == '' || $('#ap_bridge_gw_3_input').val() == '') {
+
+						if ($('#ap_bridge_ip_0_input').val() != '' && $('#ap_bridge_ip_1_input').val() != '' && $('#ap_bridge_ip_2_input').val() != '') {
+							$('#ap_bridge_gw_0_input').val($('#ap_bridge_ip_0_input').val());
+							$('#ap_bridge_gw_1_input').val($('#ap_bridge_ip_1_input').val());
+							$('#ap_bridge_gw_2_input').val($('#ap_bridge_ip_2_input').val());
+							$('#ap_bridge_gw_3_input').val('1');
+						}
+					}
+				});
+
+
+
+				// router
+				$('#ap_router_ip_0_input').keyup(function() {
+					if (parseInt($(this).val()) >= 100 && parseInt($(this).val()) <= 255) {
+						$('#ap_router_ip_1_input').select();
+					}
+				});
+
+				$('#ap_router_ip_1_input').keyup(function() {
+					if (parseInt($(this).val()) >= 100 && parseInt($(this).val()) <= 255) {
+						$('#ap_router_ip_2_input').select();
+					}
+				});
+
+				$('#ap_router_ip_2_input').keyup(function() {
+					if (parseInt($(this).val()) >= 100 && parseInt($(this).val()) <= 255) {
+						$('#ap_router_ip_3_input').select();
+					}
+				});
+
+				$('#ap_router_ip_3_input').keyup(function() {
+					if (parseInt($(this).val()) >= 100 && parseInt($(this).val()) <= 255) {
+						$('#ap_router_subnet_0_input').select();
+					}
+				});
+
+				$('#ap_router_ip_3_input').focus(function() {
+					// auto fill gateway
+					if ($('#ap_router_ip_0_input').val() != '' && $('#ap_router_ip_1_input').val() != '' && $('#ap_router_ip_2_input').val() != '') {
+						$('#ap_router_gw_0_input').val($('#ap_router_ip_0_input').val());
+						$('#ap_router_gw_1_input').val($('#ap_router_ip_1_input').val());
+						$('#ap_router_gw_2_input').val($('#ap_router_ip_2_input').val());
+						$('#ap_router_gw_3_input').val('1');
+					}
+				});
+
+				$('#ap_router_subnet_0_input').keyup(function() {
+					if (parseInt($(this).val()) >= 100 && parseInt($(this).val()) <= 255) {
+						$('#ap_router_subnet_1_input').select();
+					}
+				});
+
+				$('#ap_router_subnet_0_input').focus(function() {
+					var ip_value = $('#ap_router_ip_0_input').val();
+
+					if ($('#ap_router_subnet_0_input').val() == '' || $('#ap_router_subnet_1_input').val() == '' || $('#ap_router_subnet_2_input').val() == '' || $('#ap_router_subnet_3_input').val() == '') {
+						if (ip_value == '') {
+
+						} else if (parseInt(ip_value) >= 1 && parseInt(ip_value) <= 126) {
+							$('#ap_router_subnet_0_input').val('255');
+							$('#ap_router_subnet_1_input').val('0');
+							$('#ap_router_subnet_2_input').val('0');
+							$('#ap_router_subnet_3_input').val('0');
+
+							$('#ap_router_subnet_0_input').removeAttr('error');
+							$('#ap_router_subnet_1_input').removeAttr('error');
+							$('#ap_router_subnet_2_input').removeAttr('error');
+							$('#ap_router_subnet_3_input').removeAttr('error');
+							$('#ap_router_subnet_0_input').parents('.control-group').removeClass('error');
+						} else if (parseInt(ip_value) >= 128 && parseInt(ip_value) <= 191) {
+							$('#ap_router_subnet_0_input').val('255');
+							$('#ap_router_subnet_1_input').val('255');
+							$('#ap_router_subnet_2_input').val('0');
+							$('#ap_router_subnet_3_input').val('0');
+
+							$('#ap_router_subnet_0_input').removeAttr('error');
+							$('#ap_router_subnet_1_input').removeAttr('error');
+							$('#ap_router_subnet_2_input').removeAttr('error');
+							$('#ap_router_subnet_3_input').removeAttr('error');
+							$('#ap_router_subnet_0_input').parents('.control-group').removeClass('error');
+						} else if (parseInt(ip_value) >= 192 && parseInt(ip_value) <= 254) {
+							$('#ap_router_subnet_0_input').val('255');
+							$('#ap_router_subnet_1_input').val('255');
+							$('#ap_router_subnet_2_input').val('255');
+							$('#ap_router_subnet_3_input').val('0');
+
+							$('#ap_router_subnet_0_input').removeAttr('error');
+							$('#ap_router_subnet_1_input').removeAttr('error');
+							$('#ap_router_subnet_2_input').removeAttr('error');
+							$('#ap_router_subnet_3_input').removeAttr('error');
+							$('#ap_router_subnet_0_input').parents('.control-group').removeClass('error');
+						} else {
+
+						}
+					}
+				});
+
+				$('#ap_router_subnet_1_input').focus(function() {
+					var ip_value = $('#ap_router_ip_0_input').val();
+
+					if ($('#ap_router_subnet_0_input').val() == '' || $('#ap_router_subnet_1_input').val() == '' || $('#ap_router_subnet_2_input').val() == '' || $('#ap_router_subnet_3_input').val() == '') {
+						if (ip_value == '') {
+
+						} else if (parseInt(ip_value) >= 1 && parseInt(ip_value) <= 126) {
+							$('#ap_router_subnet_0_input').val('255');
+							$('#ap_router_subnet_1_input').val('0');
+							$('#ap_router_subnet_2_input').val('0');
+							$('#ap_router_subnet_3_input').val('0');
+
+							$('#ap_router_subnet_0_input').removeAttr('error');
+							$('#ap_router_subnet_1_input').removeAttr('error');
+							$('#ap_router_subnet_2_input').removeAttr('error');
+							$('#ap_router_subnet_3_input').removeAttr('error');
+							$('#ap_router_subnet_0_input').parents('.control-group').removeClass('error');
+						} else if (parseInt(ip_value) >= 128 && parseInt(ip_value) <= 191) {
+							$('#ap_router_subnet_0_input').val('255');
+							$('#ap_router_subnet_1_input').val('255');
+							$('#ap_router_subnet_2_input').val('0');
+							$('#ap_router_subnet_3_input').val('0');
+
+							$('#ap_router_subnet_0_input').removeAttr('error');
+							$('#ap_router_subnet_1_input').removeAttr('error');
+							$('#ap_router_subnet_2_input').removeAttr('error');
+							$('#ap_router_subnet_3_input').removeAttr('error');
+							$('#ap_router_subnet_0_input').parents('.control-group').removeClass('error');
+						} else if (parseInt(ip_value) >= 192 && parseInt(ip_value) <= 254) {
+							$('#ap_router_subnet_0_input').val('255');
+							$('#ap_router_subnet_1_input').val('255');
+							$('#ap_router_subnet_2_input').val('255');
+							$('#ap_router_subnet_3_input').val('0');
+
+							$('#ap_router_subnet_0_input').removeAttr('error');
+							$('#ap_router_subnet_1_input').removeAttr('error');
+							$('#ap_router_subnet_2_input').removeAttr('error');
+							$('#ap_router_subnet_3_input').removeAttr('error');
+							$('#ap_router_subnet_0_input').parents('.control-group').removeClass('error');
+						} else {
+
+						}
+					}
+				});
+
+				$('#ap_router_subnet_2_input').focus(function() {
+					var ip_value = $('#ap_router_ip_0_input').val();
+
+					if ($('#ap_router_subnet_0_input').val() == '' || $('#ap_router_subnet_1_input').val() == '' || $('#ap_router_subnet_2_input').val() == '' || $('#ap_router_subnet_3_input').val() == '') {
+						if (ip_value == '') {
+
+						} else if (parseInt(ip_value) >= 1 && parseInt(ip_value) <= 126) {
+							$('#ap_router_subnet_0_input').val('255');
+							$('#ap_router_subnet_1_input').val('0');
+							$('#ap_router_subnet_2_input').val('0');
+							$('#ap_router_subnet_3_input').val('0');
+
+							$('#ap_router_subnet_0_input').removeAttr('error');
+							$('#ap_router_subnet_1_input').removeAttr('error');
+							$('#ap_router_subnet_2_input').removeAttr('error');
+							$('#ap_router_subnet_3_input').removeAttr('error');
+							$('#ap_router_subnet_0_input').parents('.control-group').removeClass('error');
+						} else if (parseInt(ip_value) >= 128 && parseInt(ip_value) <= 191) {
+							$('#ap_router_subnet_0_input').val('255');
+							$('#ap_router_subnet_1_input').val('255');
+							$('#ap_router_subnet_2_input').val('0');
+							$('#ap_router_subnet_3_input').val('0');
+
+							$('#ap_router_subnet_0_input').removeAttr('error');
+							$('#ap_router_subnet_1_input').removeAttr('error');
+							$('#ap_router_subnet_2_input').removeAttr('error');
+							$('#ap_router_subnet_3_input').removeAttr('error');
+							$('#ap_router_subnet_0_input').parents('.control-group').removeClass('error');
+						} else if (parseInt(ip_value) >= 192 && parseInt(ip_value) <= 254) {
+							$('#ap_router_subnet_0_input').val('255');
+							$('#ap_router_subnet_1_input').val('255');
+							$('#ap_router_subnet_2_input').val('255');
+							$('#ap_router_subnet_3_input').val('0');
+
+							$('#ap_router_subnet_0_input').removeAttr('error');
+							$('#ap_router_subnet_1_input').removeAttr('error');
+							$('#ap_router_subnet_2_input').removeAttr('error');
+							$('#ap_router_subnet_3_input').removeAttr('error');
+							$('#ap_router_subnet_0_input').parents('.control-group').removeClass('error');
+						} else {
+
+						}
+					}
+				});
+
+				$('#ap_router_subnet_3_input').focus(function() {
+					var ip_value = $('#ap_router_ip_0_input').val();
+
+					if ($('#ap_router_subnet_0_input').val() == '' || $('#ap_router_subnet_1_input').val() == '' || $('#ap_router_subnet_2_input').val() == '' || $('#ap_router_subnet_3_input').val() == '') {
+						if (ip_value == '') {
+
+						} else if (parseInt(ip_value) >= 1 && parseInt(ip_value) <= 126) {
+							$('#ap_router_subnet_0_input').val('255');
+							$('#ap_router_subnet_1_input').val('0');
+							$('#ap_router_subnet_2_input').val('0');
+							$('#ap_router_subnet_3_input').val('0');
+
+							$('#ap_router_subnet_0_input').removeAttr('error');
+							$('#ap_router_subnet_1_input').removeAttr('error');
+							$('#ap_router_subnet_2_input').removeAttr('error');
+							$('#ap_router_subnet_3_input').removeAttr('error');
+							$('#ap_router_subnet_0_input').parents('.control-group').removeClass('error');
+						} else if (parseInt(ip_value) >= 128 && parseInt(ip_value) <= 191) {
+							$('#ap_router_subnet_0_input').val('255');
+							$('#ap_router_subnet_1_input').val('255');
+							$('#ap_router_subnet_2_input').val('0');
+							$('#ap_router_subnet_3_input').val('0');
+
+							$('#ap_router_subnet_0_input').removeAttr('error');
+							$('#ap_router_subnet_1_input').removeAttr('error');
+							$('#ap_router_subnet_2_input').removeAttr('error');
+							$('#ap_router_subnet_3_input').removeAttr('error');
+							$('#ap_router_subnet_0_input').parents('.control-group').removeClass('error');
+						} else if (parseInt(ip_value) >= 192 && parseInt(ip_value) <= 254) {
+							$('#ap_router_subnet_0_input').val('255');
+							$('#ap_router_subnet_1_input').val('255');
+							$('#ap_router_subnet_2_input').val('255');
+							$('#ap_router_subnet_3_input').val('0');
+
+							$('#ap_router_subnet_0_input').removeAttr('error');
+							$('#ap_router_subnet_1_input').removeAttr('error');
+							$('#ap_router_subnet_2_input').removeAttr('error');
+							$('#ap_router_subnet_3_input').removeAttr('error');
+							$('#ap_router_subnet_0_input').parents('.control-group').removeClass('error');
+						} else {
+
+						}
+					}
+				});
+
+				$('#ap_router_subnet_1_input').keyup(function() {
+					if (parseInt($(this).val()) >= 100 && parseInt($(this).val()) <= 255) {
+						$('#ap_router_subnet_2_input').select();
+					}
+				});
+
+				$('#ap_router_subnet_2_input').keyup(function() {
+					if (parseInt($(this).val()) >= 100 && parseInt($(this).val()) <= 255) {
+						$('#ap_router_subnet_3_input').select();
+					}
+				});
+
+				$('#ap_router_subnet_3_input').keyup(function() {
+					if (parseInt($(this).val()) >= 100 && parseInt($(this).val()) <= 255) {
+						$('#ap_router_gw_0_input').select();
+					}
+				});
+
+				$('#ap_router_gw_0_input').keyup(function() {
+					if (parseInt($(this).val()) >= 100 && parseInt($(this).val()) <= 255) {
+						$('#ap_router_gw_1_input').select();
+					}
+				});
+
+				$('#ap_router_gw_1_input').keyup(function() {
+					if (parseInt($(this).val()) >= 100 && parseInt($(this).val()) <= 255) {
+						$('#ap_router_gw_2_input').select();
+					}
+				});
+
+				$('#ap_router_gw_2_input').keyup(function() {
+					if (parseInt($(this).val()) >= 100 && parseInt($(this).val()) <= 255) {
+						$('#ap_router_gw_3_input').select();
+					}
+				});
+
+				$('#ap_router_gw_0_input').focus(function() {
+
+					if ($('#ap_router_gw_0_input').val() == '' || $('#ap_router_gw_1_input').val() == '' || $('#ap_router_gw_2_input').val() == '' || $('#ap_router_gw_3_input').val() == '') {
+
+						if ($('#ap_router_ip_0_input').val() != '' && $('#ap_router_ip_1_input').val() != '' && $('#ap_router_ip_2_input').val() != '') {
+							$('#ap_router_gw_0_input').val($('#ap_router_ip_0_input').val());
+							$('#ap_router_gw_1_input').val($('#ap_router_ip_1_input').val());
+							$('#ap_router_gw_2_input').val($('#ap_router_ip_2_input').val());
+							$('#ap_router_gw_3_input').val('1');
+						}
+					}
+				});
+
+				$('#ap_router_gw_1_input').focus(function() {
+
+					if ($('#ap_router_gw_0_input').val() == '' || $('#ap_router_gw_1_input').val() == '' || $('#ap_router_gw_2_input').val() == '' || $('#ap_router_gw_3_input').val() == '') {
+
+						if ($('#ap_router_ip_0_input').val() != '' && $('#ap_router_ip_1_input').val() != '' && $('#ap_router_ip_2_input').val() != '') {
+							$('#ap_router_gw_0_input').val($('#ap_router_ip_0_input').val());
+							$('#ap_router_gw_1_input').val($('#ap_router_ip_1_input').val());
+							$('#ap_router_gw_2_input').val($('#ap_router_ip_2_input').val());
+							$('#ap_router_gw_3_input').val('1');
+						}
+					}
+				});
+
+				$('#ap_router_gw_2_input').focus(function() {
+
+					if ($('#ap_router_gw_0_input').val() == '' || $('#ap_router_gw_1_input').val() == '' || $('#ap_router_gw_2_input').val() == '' || $('#ap_router_gw_3_input').val() == '') {
+
+						if ($('#ap_router_ip_0_input').val() != '' && $('#ap_router_ip_1_input').val() != '' && $('#ap_router_ip_2_input').val() != '') {
+							$('#ap_router_gw_0_input').val($('#ap_router_ip_0_input').val());
+							$('#ap_router_gw_1_input').val($('#ap_router_ip_1_input').val());
+							$('#ap_router_gw_2_input').val($('#ap_router_ip_2_input').val());
+							$('#ap_router_gw_3_input').val('1');
+						}
+					}
+				});
+
+				$('#ap_router_gw_3_input').focus(function() {
+
+					if ($('#ap_router_gw_0_input').val() == '' || $('#ap_router_gw_1_input').val() == '' || $('#ap_router_gw_2_input').val() == '' || $('#ap_router_gw_3_input').val() == '') {
+
+						if ($('#ap_router_ip_0_input').val() != '' && $('#ap_router_ip_1_input').val() != '' && $('#ap_router_ip_2_input').val() != '') {
+							$('#ap_router_gw_0_input').val($('#ap_router_ip_0_input').val());
+							$('#ap_router_gw_1_input').val($('#ap_router_ip_1_input').val());
+							$('#ap_router_gw_2_input').val($('#ap_router_ip_2_input').val());
+							$('#ap_router_gw_3_input').val('1');
+						}
+					}
+				});
+
+
+				// admin login validation
+				$("#admin_modal_form").validate({
+		          	rules:{
+		            	admin_modal_input:{
+		              		equalTo: '#admin_modal_confirm_input',
+		              		nonBlank: true
+		            	},
+		        	},
+		        	messages:{
+		          		admin_modal_input:{
+		            		equalTo : "Password is not correct."
+		          		},
+		        	},
+			        errorClass: "help-inline",
+			        errorElement: "span",
+			        highlight:function(element, errorClass, validClass) {
+			          	// $(element).parents('.control-group').removeClass('success');
+			          	$(element).parents('.control-group').addClass('error');
+			        },
+			        unhighlight: function(element, errorClass, validClass) {
+			          	$(element).parents('.control-group').removeClass('error');
+			          	// $(element).parents('.control-group').addClass('success');
+			        },
+			        submitHandler: function(form) {
+			        	$("#admin_modal_div").modal('hide');
+			        	$.cookie(info_admin_index, $("#admin_modal_input").val(), { expires: 7 });
+			        }
+		      	});
+
+				// AP Bridge validation
+				$("#ap_bridge_form").validate({
+		          	rules:{
+		            	ap_bridge_ssid_input:{
+		              		required: true,
+		              		minlength: 1,
+		              		nonBlank: true
+		            	},
+		            	ap_bridge_pwd_input:{
+		              		required: true,
+		              		minlength: 8,
+		              		nonBlank: true
+		            	},
+		            	ap_bridge_max_input:{
+		            		required: true,
+		            		range: [1, 150],
+		            		nonBlank: true
+		            	},
+		            	ap_bridge_ip_0_input:{
+		            		required: true,
+		            		range: [0, 255],
+		            		nonBlank:true
+		            	},
+		            	ap_bridge_ip_1_input:{
+		            		required: true,
+		            		range: [0, 255],
+		            		nonBlank:true
+		            	},
+		            	ap_bridge_ip_2_input:{
+		            		required: true,
+		            		range: [0, 255],
+		            		nonBlank:true
+		            	},
+		            	ap_bridge_ip_3_input:{
+		            		required: true,
+		            		range: [1, 254],
+		            		nonBlank:true
+		            	},
+		            	ap_bridge_subnet_0_input:{
+		            		required: true,
+		            		range: [0, 255],
+		            		nonBlank:true
+		            	},
+		            	ap_bridge_subnet_1_input:{
+		            		required: true,
+		            		range: [0, 255],
+		            		nonBlank:true
+		            	},
+		            	ap_bridge_subnet_2_input:{
+		            		required: true,
+		            		range: [0, 255],
+		            		nonBlank:true
+		            	},
+		            	ap_bridge_subnet_3_input:{
+		            		required: true,
+		            		range: [0, 255],
+		            		nonBlank:true
+		            	},
+		            	ap_bridge_gw_0_input:{
+		            		required: true,
+		            		range: [0, 255],
+		            		nonBlank:true
+		            	},
+		            	ap_bridge_gw_1_input:{
+		            		required: true,
+		            		range: [0, 255],
+		            		nonBlank:true
+		            	},
+		            	ap_bridge_gw_2_input:{
+		            		required: true,
+		            		range: [0, 255],
+		            		nonBlank:true
+		            	},
+		            	ap_bridge_gw_3_input:{
+		            		required: true,
+		            		range: [0, 255],
+		            		nonBlank:true
+		            	}
+		        	},
+		        	messages:{
+		          		ap_bridge_ssid_input:{
+		            		required: "Please enter the SSID."
+		          		},
+		          		ap_bridge_pwd_input:{
+		            		required: "Please enter the password.",
+		            		minlength: "Required eight characters at least."
+		          		},
+		          		ap_bridge_max_input:{
+		          			required: "Please enter the maximum.",
+		            		range: "The range of the maximum is 1~150.",
+		          		}
+		        	},
+			        errorClass: "help-inline",
+			        errorElement: "span",
+			        errorPlacement:function(error, element) {
+			        	console.log(element.attr('class'));
+			        	if ($(element).attr('class') == 'static_control_input') {
+
+			        	} else 
+			        		error.insertAfter($(element));
+			        },
+			        highlight:function(element, errorClass, validClass) {
+			          	// $(element).parents('.control-group').removeClass('success');
+			          	if ($(element).attr('class') == 'static_control_input') {
+			          		$(element).parents('.control-group').addClass('error');
+			          		$(element).attr('error', '');
+			          	} else
+			          		$(element).parents('.control-group').addClass('error');
+
+			          	console.log(element);
+			        },
+			        unhighlight: function(element, errorClass, validClass) {
+			        	if ($(element).attr('class') == 'static_control_input') {
+			          		$(element).removeAttr('error');
+
+			          		if ($(element).attr('id').indexOf('ap_bridge_ip') >= 0) {
+				          		if ($('#ap_bridge_ip_0_input').attr('error') == undefined && $('#ap_bridge_ip_1_input').attr('error') == undefined && $('#ap_bridge_ip_2_input').attr('error') == undefined && $('#ap_bridge_ip_3_input').attr('error') == undefined) {
+				          			$(element).parents('.control-group').removeClass('error');
+				          		}
+				          	} else if ($(element).attr('id').indexOf('ap_bridge_subnet') >= 0) {
+				          		if ($('#ap_bridge_subnet_0_input').attr('error') == undefined && $('#ap_bridge_subnet_1_input').attr('error') == undefined && $('#ap_bridge_subnet_2_input').attr('error') == undefined && $('#ap_bridge_subnet_3_input').attr('error') == undefined) {
+				          			$(element).parents('.control-group').removeClass('error');
+				          		}
+				          	} else if ($(element).attr('id').indexOf('ap_bridge_gw') >= 0) {
+				          		if ($('#ap_bridge_gw_0_input').attr('error') == undefined && $('#ap_bridge_gw_1_input').attr('error') == undefined && $('#ap_bridge_gw_2_input').attr('error') == undefined && $('#ap_bridge_gw_3_input').attr('error') == undefined) {
+				          			$(element).parents('.control-group').removeClass('error');
+				          		}
+				          	}
+			          	} else
+			          		$(element).parents('.control-group').removeClass('error');
+			          	
+			          	// $(element).parents('.control-group').addClass('success');
+			          	// console.log(element);
+			        },
+			        submitHandler: function(form) {
+			        	var ip     = $('#ap_bridge_ip_0_input').val()+'.'+$('#ap_bridge_ip_1_input').val()+'.'+$('#ap_bridge_ip_2_input').val()+'.'+$('#ap_bridge_ip_3_input').val();
+						var subnet = $('#ap_bridge_subnet_0_input').val()+'.'+$('#ap_bridge_subnet_1_input').val()+'.'+$('#ap_bridge_subnet_2_input').val()+'.'+$('#ap_bridge_subnet_3_input').val();
+			        	// console.log('ip', ip);
+
+			        	if ($('#ap_bridge_static_input').is(":checked")) {
+				        	if (checkIP(ip)) {
+				        		show_alert(true, 0, 0);
+				        	} else if (validateNetMask(subnet)) {
+				        		show_alert(true, 2, 0);
+				        	} else if (ip.indexOf("10.5.1") >= 0) {
+				        		show_alert(true, 1, 0);
+				        	} else {
+				        		ap_bridge_mode_save_onclick();
+				        	}
+				        } else {
+				        	ap_bridge_mode_save_onclick();
+				        }
+			        }
+		      	});
+				
+
+				// AP Router validation
+				$("#ap_router_form").validate({
+		          	rules:{
+		            	ap_router_ssid_input:{
+		              		required: true,
+		              		minlength: 1,
+		              		nonBlank: true
+		            	},
+		            	ap_router_pwd_input:{
+		              		required: true,
+		              		minlength: 8,
+		              		nonBlank: true
+		            	},
+		            	ap_router_max_input:{
+		            		required: true,
+		            		range: [1, 150],
+		            		nonBlank: true
+		            	},
+		            	ap_router_ip_0_input:{
+		            		required: true,
+		            		range: [0, 255],
+		            		nonBlank:true
+		            	},
+		            	ap_router_ip_1_input:{
+		            		required: true,
+		            		range: [0, 255],
+		            		nonBlank:true
+		            	},
+		            	ap_router_ip_2_input:{
+		            		required: true,
+		            		range: [0, 255],
+		            		nonBlank:true
+		            	},
+		            	ap_router_ip_3_input:{
+		            		required: true,
+		            		range: [1, 254],
+		            		nonBlank:true
+		            	},
+		            	ap_router_subnet_0_input:{
+		            		required: true,
+		            		range: [0, 255],
+		            		nonBlank:true
+		            	},
+		            	ap_router_subnet_1_input:{
+		            		required: true,
+		            		range: [0, 255],
+		            		nonBlank:true
+		            	},
+		            	ap_router_subnet_2_input:{
+		            		required: true,
+		            		range: [0, 255],
+		            		nonBlank:true
+		            	},
+		            	ap_router_subnet_3_input:{
+		            		required: true,
+		            		range: [0, 255],
+		            		nonBlank:true
+		            	},
+		            	ap_router_gw_0_input:{
+		            		required: true,
+		            		range: [0, 255],
+		            		nonBlank:true
+		            	},
+		            	ap_router_gw_1_input:{
+		            		required: true,
+		            		range: [0, 255],
+		            		nonBlank:true
+		            	},
+		            	ap_router_gw_2_input:{
+		            		required: true,
+		            		range: [0, 255],
+		            		nonBlank:true
+		            	},
+		            	ap_router_gw_3_input:{
+		            		required: true,
+		            		range: [0, 255],
+		            		nonBlank:true
+		            	}
+		        	},
+		        	messages:{
+		          		ap_router_ssid_input:{
+		            		required: "Please enter the SSID."
+		          		},
+		          		ap_router_pwd_input:{
+		            		required: "Please enter the password.",
+		            		minlength: "Required eight characters at least."
+		          		},
+		          		ap_router_max_input:{
+		          			required: "Please enter the maximum.",
+		            		range: "The range of the maximum is 1~150.",
+		          		}
+		        	},
+		        	focusCleanup: false,
+			        errorClass: "help-inline",
+			        errorElement: "span",
+			        errorPlacement:function(error, element) {
+			        	console.log(element.attr('class'));
+			        	if (element.attr('class') == 'static_control_input') {
+
+			        	} else 
+			        		error.insertAfter($(element));
+			        },
+			        highlight:function(element, errorClass, validClass) {
+			          	// $(element).parents('.control-group').removeClass('success');
+			          	if ($(element).attr('class') == 'static_control_input') {
+			          		$(element).parents('.control-group').addClass('error');
+			          		$(element).attr('error', '');
+			          	} else
+			          		$(element).parents('.control-group').addClass('error');
+
+			          	console.log(element);
+			        },
+			        unhighlight: function(element, errorClass, validClass) {
+			        	if ($(element).attr('class') == 'static_control_input') {
+			          		$(element).removeAttr('error');
+
+			          		if ($(element).attr('id').indexOf('ap_router_ip') >= 0) {
+				          		if ($('#ap_router_ip_0_input').attr('error') == undefined && $('#ap_router_ip_1_input').attr('error') == undefined && $('#ap_router_ip_2_input').attr('error') == undefined && $('#ap_router_ip_3_input').attr('error') == undefined) {
+				          			$(element).parents('.control-group').removeClass('error');
+				          		}
+				          	} else if ($(element).attr('id').indexOf('ap_router_subnet') >= 0) {
+				          		if ($('#ap_router_subnet_0_input').attr('error') == undefined && $('#ap_router_subnet_1_input').attr('error') == undefined && $('#ap_router_subnet_2_input').attr('error') == undefined && $('#ap_router_subnet_3_input').attr('error') == undefined) {
+				          			$(element).parents('.control-group').removeClass('error');
+				          		}
+				          	} else if ($(element).attr('id').indexOf('ap_router_gw') >= 0) {
+				          		if ($('#ap_router_gw_0_input').attr('error') == undefined && $('#ap_router_gw_1_input').attr('error') == undefined && $('#ap_router_gw_2_input').attr('error') == undefined && $('#ap_bridge_gw_3_input').attr('error') == undefined) {
+				          			$(element).parents('.control-group').removeClass('error');
+				          		}
+				          	}
+			          	} else
+			          		$(element).parents('.control-group').removeClass('error');
+			          	
+			          	// $(element).parents('.control-group').addClass('success');
+			          	// console.log(element);
+			        },
+			        submitHandler: function(form) {
+			        	var ip     = $('#ap_router_ip_0_input').val()+'.'+$('#ap_router_ip_1_input').val()+'.'+$('#ap_router_ip_2_input').val()+'.'+$('#ap_router_ip_3_input').val();
+						var subnet = $('#ap_router_subnet_0_input').val()+'.'+$('#ap_router_subnet_1_input').val()+'.'+$('#ap_router_subnet_2_input').val()+'.'+$('#ap_router_subnet_3_input').val();
+			        	// console.log('ip', ip);
+			        	if ($('#ap_router_static_input').is(":checked")) {
+				        	if (checkIP(ip)) {
+				        		show_alert(true, 0, 1);
+				        	} else if (validateNetMask(subnet)) {
+				        		show_alert(true, 2, 1);
+				        	} else if (ip.indexOf("10.5.1") >= 0) {
+				        		show_alert(true, 1, 1);
+				        	} else {
+				        		ap_router_mode_save_onclick();
+				        	}
+				        } else {
+				        	ap_router_mode_save_onclick();
+				        }
+			        }
+		      	});
+
+				// wds modal validation
+				$("#wds_modal_form").validate({
+		          	rules:{
+		            	password_modal_input:{
+		              		required: true,
+		              		minlength: 8,
+		              		nonBlank: true
+		            	}
+		        	},
+		        	messages:{
+		          		password_modal_input:{
+		            		required: "Please enter the password.",
+		            		minlength: "Required eight characters at least."
+		          		}
+		        	},
+			        errorClass: "help-inline",
+			        errorElement: "span",
+			        highlight:function(element, errorClass, validClass) {
+			          	// $(element).parents('.control-group').removeClass('success');
+			          	$(element).parents('.control-group').addClass('error');
+			        },
+			        unhighlight: function(element, errorClass, validClass) {
+			          	$(element).parents('.control-group').removeClass('error');
+			          	// $(element).parents('.control-group').addClass('success');
+			        },
+			        submitHandler: function(form) {
+			        	wds_modal_click();
+			        	$('#wds_modal_div').modal('hide');
+			        }
+		      	});
+
+				// admin change validation
+				$("#admin_change_form").validate({
+		          	rules:{
+		            	admin_change_input:{
+		              		nonBlank: true
+		            	},
+		        	},
+			        errorClass: "help-inline",
+			        errorElement: "span",
+			        highlight:function(element, errorClass, validClass) {
+			          	// $(element).parents('.control-group').removeClass('success');
+			          	$(element).parents('.control-group').addClass('error');
+			        },
+			        unhighlight: function(element, errorClass, validClass) {
+			          	$(element).parents('.control-group').removeClass('error');
+			          	// $(element).parents('.control-group').addClass('success');
+			        },
+			        submitHandler: function(form) {
+			        	change_admin_click();
+			        }
+		      	});
+			});
+
+			function ap_bridge_mode_save_onclick() {
+				var ssid    = $("#ap_bridge_ssid_input").val();
+				var pw      = $("#ap_bridge_pwd_input").val();
+				var ht      = $('input[name=ap_bridge_radio_ht]:checked').val();
+				var channel = $('#ap_bridge_channel_select').val();
+				var dhcp    = $('#ap_bridge_max_input').val();
+				var ip      = $('#ap_bridge_ip_0_input').val()+'.'+$('#ap_bridge_ip_1_input').val()+'.'+$('#ap_bridge_ip_2_input').val()+'.'+$('#ap_bridge_ip_3_input').val();
+				var subnet  = $('#ap_bridge_subnet_0_input').val()+'.'+$('#ap_bridge_subnet_1_input').val()+'.'+$('#ap_bridge_subnet_2_input').val()+'.'+$('#ap_bridge_subnet_3_input').val();
+				var gw      = $('#ap_bridge_gw_0_input').val()+'.'+$('#ap_bridge_gw_1_input').val()+'.'+$('#ap_bridge_gw_2_input').val()+'.'+$('#ap_bridge_gw_3_input').val();
+				// console.log("ssid : " + ssid);
+				// console.log("display : "+$("#ap_bridge_pw_div").css("display") );
+				if($("#ap_bridge_pw_div").css("display") == "none") {
+					show_process_dialog(progress_normal_time, 0);
+
+					if ($('#ap_bridge_static_input').is(":checked")) {
+						console.log("Request", '../cgi-bin/tr1.cgi?cgi=2&mode=0&ssid='+ssid+
+							'&ht='+ht+
+							'&channel='+channel+
+							'&dhcp='+dhcp+'&static=1&ip='+ip+
+							'&subnet='+subnet+
+							'&gw='+gw+
+							'&pwd=');
+
+						$.get('../cgi-bin/tr1.cgi?cgi=2&mode=0&ssid='+ssid+
+							'&ht='+ht+
+							'&channel='+channel+
+							'&dhcp='+dhcp+'&static=1&ip='+ip+
+							'&subnet='+subnet+
+							'&gw='+gw+
+							'&pwd=', 
+							function(data) {
+								ip_changed = ip;
+						  		console.log("ap bridge mode req_non_security: "+data);
+						  	}
+						);
+
+					} else {
+						console.log("Request", '../cgi-bin/tr1.cgi?cgi=2&mode=0&ssid='+ssid+
+						'&ht='+ht+
+						'&channel='+channel+
+						'&dhcp=50&static=0&ip=0.0.0.0&subnet=0.0.0.0&gw=0.0.0.0&pwd=');
+
+						$.get('../cgi-bin/tr1.cgi?cgi=2&mode=0&ssid='+ssid+
+							'&ht='+ht+
+							'&channel='+channel+
+							'&dhcp=50&static=0&ip=0.0.0.0&subnet=0.0.0.0&gw=0.0.0.0&pwd=', 
+							function(data) {
+						  		console.log("ap bridge mode req_non_security: "+data);
+						  	}
+						);
+					}
+				} else {
+					show_process_dialog(progress_normal_time, 0);
+
+					if ($('#ap_bridge_static_input').is(":checked")) {
+						console.log('Request', '../cgi-bin/tr1.cgi?cgi=2&mode=0&ssid='+ssid+
+							'&ht='+ht+
+							'&channel='+channel+
+							'&dhcp='+dhcp+'&static=1&ip='+ip+
+							'&subnet='+subnet+
+							'&gw='+gw+
+							'&pwd="'+pw+'"');
+
+						$.get('../cgi-bin/tr1.cgi?cgi=2&mode=0&ssid='+ssid+
+							'&ht='+ht+
+							'&channel='+channel+
+							'&dhcp='+dhcp+'&static=1&ip='+ip+
+							'&subnet='+subnet+
+							'&gw='+gw+
+							'&pwd="'+pw+'"', 
+							function(data) {
+								ip_changed = ip;
+						  		console.log("ap bridge mode req_security: "+data);  		
+							}
+						);
+					} else {
+						console.log('Request', '../cgi-bin/tr1.cgi?cgi=2&mode=0&ssid='+ssid+
+						'&ht='+ht+
+						'&channel='+channel+
+						'&dhcp=50&static=0&ip=0.0.0.0&subnet=0.0.0.0&gw=0.0.0.0&pwd="'+pw+'"');
+
+						$.get('../cgi-bin/tr1.cgi?cgi=2&mode=0&ssid='+ssid+
+							'&ht='+ht+
+							'&channel='+channel+
+							'&dhcp=50&static=0&ip=0.0.0.0&subnet=0.0.0.0&gw=0.0.0.0&pwd="'+pw+'"', 
+							function(data) {
+						  		console.log("ap bridge mode req_security: "+data);  		
+							}
+						);
+					}
+				}
+			}
+
+			function ap_router_mode_save_onclick() {
+				var ssid    = $("#ap_router_ssid_input").val();
+				var pw      = $("#ap_router_pwd_input").val();
+				var ht      = $('input[name=ap_router_radio_ht]:checked').val();
+				var channel = $('#ap_router_channel_select').val();
+				var dhcp    = $('#ap_router_max_input').val();
+				var ip      = $('#ap_router_ip_0_input').val()+'.'+$('#ap_router_ip_1_input').val()+'.'+$('#ap_router_ip_2_input').val()+'.'+$('#ap_router_ip_3_input').val();
+				var subnet  = $('#ap_router_subnet_0_input').val()+'.'+$('#ap_router_subnet_1_input').val()+'.'+$('#ap_router_subnet_2_input').val()+'.'+$('#ap_router_subnet_3_input').val();
+				var gw      = $('#ap_router_gw_0_input').val()+'.'+$('#ap_router_gw_1_input').val()+'.'+$('#ap_router_gw_2_input').val()+'.'+$('#ap_router_gw_3_input').val();
+				// console.log("ssid : " + ssid);
+				// console.log("display : " + $("#ap_bridge_pw_div").css("display"));
+				if($("#ap_router_pw_div").css("display") == "none") {
+					show_process_dialog(progress_normal_time, 0); 
+
+					if ($('#ap_router_static_input').is(":checked")) {
+
+						console.log('Request', '../cgi-bin/tr1.cgi?cgi=2&mode=1&ssid='+ssid+
+					  		'&ht='+ht+
+					  		'&channel='+channel+
+					  		'&dhcp='+dhcp+'&static=1&ip='+ip+
+					  		'&subnet='+subnet+
+					  		'&gw='+gw+
+					  		'&pwd=');
+						
+					  	$.get('../cgi-bin/tr1.cgi?cgi=2&mode=1&ssid='+ssid+
+					  		'&ht='+ht+
+					  		'&channel='+channel+
+					  		'&dhcp='+dhcp+'&static=1&ip='+ip+
+					  		'&subnet='+subnet+
+					  		'&gw='+gw+
+					  		'&pwd=', 
+
+					  		function(data) {
+					  			ip_changed = ip;
+					  			console.log("ap router mode req_non_security: "+data);
+					  		}
+					  	);
+					} else {
+
+						console.log('Request', '../cgi-bin/tr1.cgi?cgi=2&mode=1&ssid='+ssid+
+							'&ht='+ht+
+							'&channel='+channel+
+							'&dhcp='+dhcp+
+							'&static=0&ip=0.0.0.0&subnet=0.0.0.0&gw=0.0.0.0&pwd=');
+
+						$.get('../cgi-bin/tr1.cgi?cgi=2&mode=1&ssid='+ssid+
+							'&ht='+ht+
+							'&channel='+channel+
+							'&dhcp='+dhcp+
+							'&static=0&ip=0.0.0.0&subnet=0.0.0.0&gw=0.0.0.0&pwd=', 
+							function(data) {
+					  			console.log("ap router mode req_non_security: "+data);
+					  		}
+					  	);
+					}
+				} else {
+					show_process_dialog(progress_normal_time, 0);
+
+					if ($('#ap_router_static_input').is(":checked")) {
+
+						console.log('Request', '../cgi-bin/tr1.cgi?cgi=2&mode=1&ssid='+ssid+
+							'&ht='+ht+
+							'&channel='+channel+
+							'&dhcp='+dhcp+'&static=1&ip='+ip+
+							'&subnet='+subnet+
+							'&gw='+gw+
+							'&pwd="'+pw+'"');
+
+						$.get('../cgi-bin/tr1.cgi?cgi=2&mode=1&ssid='+ssid+
+							'&ht='+ht+
+							'&channel='+channel+
+							'&dhcp='+dhcp+'&static=1&ip='+ip+
+							'&subnet='+subnet+
+							'&gw='+gw+
+							'&pwd="'+pw+'"', 
+							function(data) {
+								ip_changed = ip;
+					  			console.log("ap router mode req_security: "+data);
+					  		}
+					  	);
+					} else {
+
+						console.log('Request', '../cgi-bin/tr1.cgi?cgi=2&mode=1&ssid='+ssid+
+							'&ht='+ht+
+							'&channel='+channel+
+							'&dhcp='+dhcp+
+							'&static=0&ip=0.0.0.0&subnet=0.0.0.0&gw=0.0.0.0&pwd="'+pw+'"');
+
+						$.get('../cgi-bin/tr1.cgi?cgi=2&mode=1&ssid='+ssid+
+							'&ht='+ht+
+							'&channel='+channel+
+							'&dhcp='+dhcp+
+							'&static=0&ip=0.0.0.0&subnet=0.0.0.0&gw=0.0.0.0&pwd="'+pw+'"', 
+							function(data) {
+					  			console.log("ap router mode req_security: "+data);
+					  		}
+					  	);
+					}
+				}
+			}
+
+			function wds_mode_refresh_click() {
+				if ($('#repeater_spin_div').css('display') != 'table' || $('#bridge_spin_div').css('display') != 'table') {
+					$('.table-hover').css('display', 'none');
+				    $('#repeater_spin_div').css('display', 'table');
+				    $('#bridge_spin_div').css('display', 'table');
+
+					scan_list = [];
+					$(".scan_list_repeater_tbody").html('');
+					$(".scan_list_bridge_tbody").html('');
+					$.get("../cgi-bin/tr1.cgi?cgi=3", function(data) {
+						console.log(data);
+						json_scan_list = jQuery.parseJSON(data);
+
+		  				$.each(json_scan_list, function(index, value) {
+		  					if (index == 0)
+		  						return;
+
+		  					scan_list[index] = value;
+
+		  					if (index == json_scan_list.length-1)
+		  						sort_scan_list("signal", false);
+						});
+					});
+				}
+			}
+
+			function sort_scan_list(prop, asc) {
+			    scan_list = scan_list.sort(function(a, b) {
+			    	if (prop == 'signal' || prop == "channel") {
+			    		if (parseInt(a[prop]) < parseInt(b[prop])) {
+					        if (asc) {
+							     return -1;
+							} else {
+							    return 1;
+							}
+						} else {
+							if (asc) {
+							    return 1;
+							} else {
+							    return -1;
+							}
+						}
+			    	} else {
+					    if (a[prop] < b[prop]) {
+					        if (asc) {
+							    return -1;
+							} else {
+							    return 1;
+							}
+						} else {
+							if (asc) {
+							    return 1;
+							} else {
+							    return -1;
+							}
+						}
+					}
+					return 0;
+			    });
+			    show_scan_list();
+			}
+
+			function show_scan_list() {
+				var html='';
+				var html_hightlight='';
+			    $('.scan_list_repeater_tbody').html(html);
+			    $('.scan_list_bridge_tbody').html(html);
+			    // connected ssid
+			    if (information[info_mode_index] == mode_wds_bridge || information[info_mode_index] == mode_wds_repeater) {
+			    	for (var i in scan_list) {
+			    		// console.log(scan_list[i].mac, information[info_mac_index]);
+			    		if (scan_list[i].mac == information[info_stamac_index]) {
+			    			var int_signal = parseInt(scan_list[i].signal);
+
+					    	var img_name;
+					    	if (scan_list[i].Security == 'OPEN') {
+					    		// non-security
+						    	if (int_signal >= signal_strength[0]) {
+						    		img_name = 'img/strength_3.png';
+						    	} else if (int_signal >= signal_strength[1]) {
+						    		img_name = 'img/strength_2.png';
+						    	} else if (int_signal >= signal_strength[2]) {
+						    		img_name = 'img/strength_1.png';
+						    	} else {
+						    		img_name = 'img/strength_0.png';
+						    	}
+						    } else {
+						    	// security
+						    	if (int_signal >= signal_strength[0]) {
+						    		img_name = 'img/strength_locked_3.png';
+						    	} else if (int_signal >= signal_strength[1]) {
+						    		img_name = 'img/strength_locked_2.png';
+						    	} else if (int_signal >= signal_strength[2]) {
+						    		img_name = 'img/strength_locked_1.png';
+						    	} else {
+						    		img_name = 'img/strength_locked_0.png';
+						    	}
+						    }
+
+						    // highlight selected ap
+						    html_hightlight += "<tr style='background-color:#9BC9F3'>";
+					        html_hightlight += 
+					            	'<td>'+scan_list[i].ssid+'</td>'+
+					            	'<td>'+scan_list[i].Security+'</td>'+
+					            	'<td>'+scan_list[i].mac+'</td>'+
+					            	'<td>'+scan_list[i].channel+'</td>'+
+					            	'<td strength="'+scan_list[i].signal+'"><img class="signal_img" src="'+img_name+'"></td>'+
+					        	'</tr>';
+					    }
+			    	}
+			    }
+			    for (var i in scan_list) {
+			    	var int_signal = parseInt(scan_list[i].signal);
+
+			    	var img_name;
+			    	if (scan_list[i].Security == 'OPEN') {
+			    		// non-security
+				    	if (int_signal >= signal_strength[0]) {
+				    		img_name = 'img/strength_3.png';
+				    	} else if (int_signal >= signal_strength[1]) {
+				    		img_name = 'img/strength_2.png';
+				    	} else if (int_signal >= signal_strength[2]) {
+				    		img_name = 'img/strength_1.png';
+				    	} else {
+				    		img_name = 'img/strength_0.png';
+				    	}
+				    } else {
+				    	// security
+				    	if (int_signal >= signal_strength[0]) {
+				    		img_name = 'img/strength_locked_3.png';
+				    	} else if (int_signal >= signal_strength[1]) {
+				    		img_name = 'img/strength_locked_2.png';
+				    	} else if (int_signal >= signal_strength[2]) {
+				    		img_name = 'img/strength_locked_1.png';
+				    	} else {
+				    		img_name = 'img/strength_locked_0.png';
+				    	}
+				    }
+
+				    html += 
+			        	'<tr>'+
+			            	'<td>'+scan_list[i].ssid+'</td>'+
+			            	'<td>'+scan_list[i].Security+'</td>'+
+			            	'<td>'+scan_list[i].mac+'</td>'+
+			            	'<td>'+scan_list[i].channel+'</td>'+
+			            	'<td strength="'+scan_list[i].signal+'"><img class="signal_img" src="'+img_name+'"></td>'+
+			        	'</tr>';
+
+				    if (information[info_mode_index] == mode_wds_bridge || information[info_mode_index] == mode_wds_repeater) {
+			    		if (scan_list[i].mac == information[info_stamac_index]) {
+			    			continue;
+			    		}
+			    	}
+
+			        html_hightlight += 
+			        	'<tr>'+
+			            	'<td>'+scan_list[i].ssid+'</td>'+
+			            	'<td>'+scan_list[i].Security+'</td>'+
+			            	'<td>'+scan_list[i].mac+'</td>'+
+			            	'<td>'+scan_list[i].channel+'</td>'+
+			            	'<td strength="'+scan_list[i].signal+'"><img class="signal_img" src="'+img_name+'"></td>'+
+			        	'</tr>';
+			    }
+			    // register ap list table onclick event
+                $('.scan_list_repeater_tbody').delegate('tr', 'click', function() {
+                	var int_signal = parseInt($(this).children('td').eq(4).attr('strength'));
+
+                	var signal_msg;
+                	if (int_signal >= signal_strength[0]) {
+				    	signal_msg = signal_strength_msg[0];
+				    } else if (int_signal >= signal_strength[1]) {
+				    	signal_msg = signal_strength_msg[1];
+				    } else if (int_signal >= signal_strength[2]) {
+				    	signal_msg = signal_strength_msg[2];
+				    } else {
+				    	signal_msg = signal_strength_msg[3];
+				    }
+
+                	$("#ssid_modal_h3").html($(this).children('td').eq(0).html());
+                	$('#signal_madal_div').html($(this).children('td').eq(4).html());
+                	$("#signal_modal_input").val(signal_msg);
+                	$("#security_modal_input").val($(this).children('td').eq(1).html());
+                	$("#mac_modal_input").val($(this).children('td').eq(2).html());
+                	$("#channel_modal_input").val($(this).children('td').eq(3).html());
+
+                	// console.log('PreSSID', $.cookie($(this).children('td').eq(0).html()));
+                	if ($.cookie($(this).children('td').eq(0).html()) != null) {
+                		$('#password_modal_input').val($.cookie($(this).children('td').eq(0).html()));
+                	} else {
+                		if ((information[info_mode_index] == mode_wds_repeater || information[info_mode_index] == mode_wds_bridge) && $(this).children('td').eq(0).html() == information[info_ssid_index]) {
+                			$('#password_modal_input').val(information[info_pwd_index]);
+                		} else
+                			$('#password_modal_input').val('');
+                	}
+
+                	if ($(this).children('td').eq(1).html() == 'OPEN') {
+                		$('#password_modal_div').css('display', 'none');
+                	} else {
+                		$('#password_modal_div').css('display', 'inline-block');
+                	}
+
+                	if ($(this).children('td').eq(1).html() == 'WEP') {
+                		$('#wep_modal_div').css('display', 'inline-block');
+                	} else {
+                		$('#wep_modal_div').css('display', 'none');
+                	}
+
+                	// connected ssid
+                	if (information[info_mode_index] == mode_wds_repeater) {
+                		if ($(this).children('td').eq(2).html() == information[info_stamac_index]) {
+                			// $('#password_modal_input').attr('disabled', 'disabled');
+                			$('#wep_modal_select').attr('disabled', 'disabled');
+                			// $('#wds_model_connect_button').css('display', 'none');
+                			$('#wds_model_connect_button').html('Reconnect');
+                		} else {
+                			// $('#password_modal_input').removeAttr('disabled');
+                			$('#wep_modal_select').removeAttr('disabled');
+                			// $('#wds_model_connect_button').css('display', 'inline');
+                			$('#wds_model_connect_button').html('Connect');
+                		}
+                	} else {
+                		// $('#password_modal_input').removeAttr('disabled');
+                		$('#wep_modal_select').removeAttr('disabled');
+                		// $('#wds_model_connect_button').css('display', 'inline');
+                		$('#wds_model_connect_button').html('Connect');
+                	}
+
+                	$("#wds_modal_div").attr('aria-labelledby', 'wds_repeater_modal');
+                	$("#wds_modal_div").modal('show');
+                });
+
+				$('.scan_list_bridge_tbody').delegate('tr', 'click', function() {
+					var int_signal = parseInt($(this).children('td').eq(4).attr('strength'));
+
+                	var signal_msg;
+                	if (int_signal >= signal_strength[0]) {
+				    	signal_msg = signal_strength_msg[0];
+				    } else if (int_signal >= signal_strength[1]) {
+				    	signal_msg = signal_strength_msg[1];
+				    } else if (int_signal >= signal_strength[2]) {
+				    	signal_msg = signal_strength_msg[2];
+				    } else {
+				    	signal_msg = signal_strength_msg[3];
+				    }
+
+                	$("#ssid_modal_h3").html($(this).children('td').eq(0).html());
+                	$('#signal_madal_div').html($(this).children('td').eq(4).html());
+                	$("#signal_modal_input").val(signal_msg);
+                	$("#security_modal_input").val($(this).children('td').eq(1).html());
+                	$("#mac_modal_input").val($(this).children('td').eq(2).html());
+                	$("#channel_modal_input").val($(this).children('td').eq(3).html());
+
+                	// console.log('PreSSID', $.cookie($(this).children('td').eq(0).html()));
+                	if ($.cookie($(this).children('td').eq(0).html()) != null) {
+                		$('#password_modal_input').val($.cookie($(this).children('td').eq(0).html()));
+                	} else {
+                		if ((information[info_mode_index] == mode_wds_repeater || information[info_mode_index] == mode_wds_bridge) && $(this).children('td').eq(0).html() == information[info_ssid_index]) {
+                			$('#password_modal_input').val(information[info_pwd_index]);
+                		} else
+                			$('#password_modal_input').val('');
+                	}
+
+                	if ($(this).children('td').eq(1).html() == 'OPEN') {
+                		$('#password_modal_div').css('display', 'none');
+                	} else {
+                		$('#password_modal_div').css('display', 'inline');
+                	}
+
+                	if ($(this).children('td').eq(1).html() == 'WEP') {
+                		$('#wep_modal_div').css('display', 'inline');
+                	} else {
+                		$('#wep_modal_div').css('display', 'none');
+                	}
+
+                	// connected ssid
+                	if (information[info_mode_index] == mode_wds_bridge) {
+                		if ($(this).children('td').eq(2).html() == information[info_stamac_index]) {
+                			// $('#password_modal_input').attr('disabled', 'disabled');
+                			$('#wep_modal_select').attr('disabled', 'disabled');
+                			// $('#wds_model_connect_button').css('display', 'none');
+                			$('#wds_model_connect_button').html('Reconnect');
+                		} else {
+                			// $('#password_modal_input').removeAttr('disabled');
+                			$('#wep_modal_select').removeAttr('disabled');
+                			// $('#wds_model_connect_button').css('display', 'inline');
+                			$('#wds_model_connect_button').html('Connect');
+                		}
+                	} else {
+                		// $('#password_modal_input').removeAttr('disabled');
+                		$('#wep_modal_select').removeAttr('disabled');
+                		// $('#wds_model_connect_button').css('display', 'inline');
+                		$('#wds_model_connect_button').html('Connect');
+                	}
+
+                	$("#wds_modal_div").attr('aria-labelledby', 'wds_bridge_modal');
+                	$("#wds_modal_div").modal('show');
+                });
+
+				if (information[info_mode_index] == mode_wds_bridge) {
+					$('.scan_list_repeater_tbody').html(html);
+			    	$('.scan_list_bridge_tbody').html(html_hightlight);
+			    } else {
+			    	$('.scan_list_repeater_tbody').html(html_hightlight);
+			    	$('.scan_list_bridge_tbody').html(html);
+			    }
+
+			    $('.table-hover').css('display', '');
+			    $('#repeater_spin_div').css('display', 'none');
+			    $('#bridge_spin_div').css('display', 'none');
+			}
+
+			function wds_modal_click() {
+				if ($("#wds_modal_div").attr('aria-labelledby') == 'wds_repeater_modal') {
+					// wds - repeater
+					// console.log('MODE', 'Repeater');
+					// console.log('SSID', $("#ssid_modal_h3").html());
+					// console.log('MAC', $("#mac_modal_input").val());
+					// console.log('PWD', $("#password_modal_input").val());
+
+					wds_repeater_connect_ap($("#ssid_modal_h3").html(), $("#mac_modal_input").val(), $("#password_modal_input").val());
+				} else {
+					// wds - bridge
+					// console.log('MODE', 'Bridge');
+					// console.log('SSID', $("#ssid_modal_h3").html());
+					// console.log('MAC', $("#mac_modal_input").val());
+					// console.log('PWD', $("#password_modal_input").val());
+
+					wds_bridge_connect_ap($("#ssid_modal_h3").html(), $("#mac_modal_input").val(), $("#password_modal_input").val());
+				}
+			}
+
+			function wds_bridge_connect_ap(ssid , mac , pw) {
+				show_process_dialog(progress_long_time, 1); 
+
+				// save in cookie
+				console.log(ssid, pw);
+				$.cookie(ssid, pw, {expires: 7});
+
+				$.get('../cgi-bin/tr1.cgi?cgi=1&mode=1&ssid='+ssid+'&mac='+mac+'&pwd='+pw, 
+					function(data) {
+					  	console.log("wds_bridge_connect_ap [callback] : " + data);
+				});
+			}
+
+			function wds_repeater_connect_ap(ssid , mac , pw) {
+				show_process_dialog(progress_long_time, 1); 
+
+				// save in cookie
+				console.log(ssid, pw);
+				$.cookie(ssid, pw, {expires: 7});
+
+				$.get('../cgi-bin/tr1.cgi?cgi=1&mode=0&ssid='+ssid+'&mac='+mac+'&pwd='+pw, 
+					function(data) {
+					  	console.log("wds_bridge_connect_ap [callback] : " + data);
+					});
+			}
+
+			function reboot_reset_click(index) {
+				if (index == reboot_click_index) {
+					// reboot
+					$('#confirm_modal_div').attr('aria-labelledby', 'rebootModalLabel');
+					$('#confirm_modal_div').find('h3').html('Reboot');
+					$('#confirm_modal_div').find('h5').html('Do you want to reboot TR1?');
+					$('#confirm_modal_button').attr('onclick', 'reboot_click()');
+				} else {
+					// reset
+					$('#confirm_modal_div').attr('aria-labelledby', 'resetModalLabel');
+					$('#confirm_modal_div').find('h3').html('Reset');
+					$('#confirm_modal_div').find('h5').html('Do you want to reset TR1?');
+					$('#confirm_modal_button').attr('onclick', 'reset_click()');
+				}
+
+				$('#confirm_modal_div').modal('show');
+			}
+
+			function reset_click() {
+				show_process_dialog(progress_normal_time, 1); 
+				$.get('../cgi-bin/tr1.cgi?cgi=4', 
+					function(data) {
+					  	console.log("reset [callback] : " + data);
+					});
+			}
+
+			function reboot_click() {
+				show_process_dialog(progress_normal_time, 1); 
+				$.get('../cgi-bin/tr1.cgi?cgi=5', 
+					function(data) {
+					  	console.log("reboot [callback] : " + data);
+					});
+			}
+
+			function change_admin_click() {
+				show_process_dialog(progress_short_time, 2); 
+				$.get('../cgi-bin/tr1.cgi?cgi=8&key="'+$('#admin_change_input').val()+'"', 
+					function(data) {
+					  	console.log("reset [callback] : " + data);
+					});
+			}
+
+			function show_process_dialog(total_time, mode) {
+				var refresh_mode = 0;
+				var wds_mode     = 1;
+				var admin_mode   = 2;
+				$('#count_down_modal_div').modal('show');
+				$('#count_down_modal_div').find('p').html('Please wait '+total_time+' seconds, and then try to refresh the page.');
+				setTimeout(function() {
+					var counter_time = 0;
+					var interval = setInterval(function(){
+						if (counter_time >= total_time) {
+							clearInterval(interval);
+							$('#count_down_button').removeAttr('disabled');
+						} else {
+							counter_time++;
+							var current_percent = counter_time/total_time*100;
+							$('#count_down_bar_div').css('width', (current_percent)+'%');
+
+							if (counter_time >= 10) {
+								switch(mode) {
+									case refresh_mode:
+									$.get("../cgi-bin/tr1.cgi?cgi=6", function(data) {
+										clearInterval(interval);
+										$('#count_down_bar_div').css('width', '100%');
+										$('#count_down_bar_div').text((total_time)+'s');
+										$('#count_down_button').removeAttr('disabled');
+										$('#count_down_modal_div').modal('hide');
+										close_process_dialog_click();
+									});
+									break;
+
+									case wds_mode:
+									$.get("../.sta_sts", function(data) {
+										console.log('Request reponse', data);
+										if (data == '0') {
+											// successed
+											clearInterval(interval);
+											$('#count_down_bar_div').css('width', '100%');
+											$('#count_down_bar_div').text((total_time)+'s');
+											$('#count_down_button').removeAttr('disabled');
+											$('#count_down_modal_div').modal('hide');
+											close_process_dialog_click();
+										} else {
+											// failed
+										}
+									});
+									break;
+
+									case admin_mode:
+									break;
+								}
+							}
+						}
+						$('#count_down_bar_div').text((counter_time)+'s');
+					}, 1000);
+				}, 500);
+			}
+
+			function show_alert(isShow, error, alertType) {
+				var alert_bridge = 0;
+				var alert_router = 1;
+
+				var ip_error = 0;
+				var ip_conflict = 1;
+				var subnet_error = 2;
+
+				var ip_error_head = "IP error!";
+				var subnet_error_head = "Subnet error!";
+  				var ip_conflict_body = "You can not assign the static IP which is 10.5.1.X!";
+  				var ip_error_body = "Please check your ip.";
+  				var subnet_error_body = "Please check your subnet mask.";
+
+				if (isShow) {
+					if (alertType == alert_bridge) {
+						switch(error) {
+							case ip_error:
+							$('#alert_bridge_head_h4').html(ip_error_head);
+							$('#alert_bridge_body_p').html(ip_error_body);
+							break;
+
+							case ip_conflict:
+							$('#alert_bridge_head_h4').html(ip_error_head);
+							$('#alert_bridge_body_p').html(ip_conflict_body);
+							break;
+
+							case subnet_error:
+							$('#alert_bridge_head_h4').html(subnet_error_head);
+							$('#alert_bridge_body_p').html(subnet_error_body);
+							break;
+						}
+						$('#alert_bridge_div').css('display', 'inline-block');
+					} else {
+						switch(error) {
+							case ip_error:
+							$('#alert_router_head_h4').html(ip_error_head);
+							$('#alert_router_body_p').html(ip_error_body);
+							break;
+
+							case ip_conflict:
+							$('#alert_router_head_h4').html(ip_error_head);
+							$('#alert_router_body_p').html(ip_conflict_body);
+							break;
+
+							case subnet_error:
+							$('#alert_router_head_h4').html(subnet_error_head);
+							$('#alert_router_body_p').html(subnet_error_body);
+							break;
+						}
+						$('#alert_router_div').css('display', 'inline-block');
+					}
+				} else {
+					if (alertType == alert_bridge) {
+						$('#alert_bridge_div').css('display', 'none');
+					} else {
+						$('#alert_router_div').css('display', 'none');
+					}
+				}
+			}
+
+			function close_process_dialog_click() {
+				// redirect to home page
+				if (ip_changed == "0.0.0.0")
+					window.location = "/tr";
+				else
+					window.location = "http://"+ip_changed+"/tr";
+			}
+		</script>
+		<script type="text/javascript">
+			/* for admin decode */
+			var b64ch = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
+			//var b64ch = "STUVWXYZabcdefghiABCDEFGHIJKLMNOPQRjklmnopqrst456789+/uvwxyz0123";
+			var hexch = "0123456789ABCDEF";
+			var ASCII=0,UCLE=1,UCBE=2,UTF8=3,BIG5=4,BigEndian=false;
+			function base64Decode(b64, enc) {
+			   var i, j;
+			   var c = [0,0,0,0];  // base64 index
+			   var cba = [];       // unicode byte array
+			   var ch;             // single character
+			   for (j=0; ; ) {
+			      for (i=0; i<4 && j<b64.length; j++) {
+			         ch = b64.charAt(j);
+			         if (ch == '=')
+			            c[i] = 0;
+			         else if (/[a-z0-9+/]/i.test(ch))
+			            c[i++] = b64ch.indexOf(ch);
+			      }
+			      if (i>0) cba.push((c[0] << 2 | c[1] >>> 4) & 0xff);
+			      if (i>1) cba.push((c[1] << 4 | c[2] >>> 2) & 0xff);
+			      if (i>2) cba.push((c[2] << 6 | c[3]) & 0xff);
+			      if (i<4) break;
+			   }
+			   return joinFromArray(cba, enc);
+			}
+
+			function base64Encode(str, enc, flag) {
+			   var i;
+			   var b = [0,0,0];  // character code
+			   var cba;          // character code byte array
+			   var b64 = "";     // base64 string
+			   var len;          // length of base64 string
+			   cba = splitToArray(str, enc);
+			   for (len=0; ; ) {
+			      b[0] = b[1] = b[2] = 0;
+			      for (i=0; i<3 && cba.length>0; i++)
+			         b[i] = cba.shift();
+			      if (i==0) break;
+			      b64 += b64ch.charAt((b[0] >>> 2) & 0x3f).toString();
+			      b64 += b64ch.charAt((b[0] << 4 | b[1] >>> 4) & 0x3f).toString();
+			      b64 += i>1 ? b64ch.charAt((b[1] << 2 | b[2] >>> 6) & 0x3f).toString() : '=';
+			      b64 += i>2 ? b64ch.charAt(b[2] & 0x3f).toString() : '=';
+			      len += 4;
+			      if (flag && len%76==0) b64 += "\r\n";
+			   }
+			   return b64;
+			}
+
+			function joinFromArray(cba, enc) {
+			   var ucb = [];  // unicode/utf8 bytes
+			   var b, u;      // the first byte
+			   while (cba.length>0) {
+			      b = cba.shift();
+			      switch (enc) {
+			      case UTF8:
+			         if (b == 0) continue;
+			         u = b;  // 0xxxxxxx
+			         if (b > 0xc0) {  // 110xxxxx 10xxxxxx
+			            u = (u & 0x1f) << 6 | cba.shift() & 0x3f;
+			            if (b >= 0xe0) {  // 1110xxxx 10xxxxxx 10xxxxxx
+			               u = (u & 0x3ff) << 6 | cba.shift() & 0x3f;
+			               if (b >= 0xf0) {  // 11110xxx 10xxxxxx 10xxxxxx 10xxxxxx
+			                  u = (u & 0x7fff) << 6 | cba.shift() & 0x3f;
+			                  if (b >= 0xf8) {  // 111110xx 10xxxxxx 10xxxxxx 10xxxxxx 10xxxxxx
+			                     u = (u & 0xfffff) << 6 | cba.shift() & 0x3f;
+			                     if (b >= 0xfc)  // 111111xx 10xxxxxx 10xxxxxx 10xxxxxx 10xxxxxx 10xxxxxx
+			                        u = (u & 0x3ffffff) << 6 | cba.shift() & 0x3f;
+			         }  }  }  }
+			         break;
+			      case UCBE: u = b << 8 | cba.shift();
+			         break;
+			      case UCLE: u = b | cba.shift() << 8;
+			         break;
+			      case BIG5:  if (b > 127) { b = b << 8 | cba.shift(); }
+			         u = big5char(b);
+			         break;
+			      }
+			      ucb.push(u);
+			   }
+			   return enc == BIG5 ? ucb.join('') : String.fromCharCode.apply(null,ucb);
+			}
+
+			function splitToArray(str, enc) {
+			   var i;
+			   var cba = [];  // character code byte array
+			   var ch;        // single character
+			   for (i=0; i<str.length; i++) {
+			      ch = str.charCodeAt(i);
+			      switch (enc) {
+			      case UTF8:
+			         if (ch > 0x007f) {
+			            ch = parseInt(encodeURI(str.charAt(i)).replace(/%/g,''),16);
+			            if (ch > 0x07ff) cba.push((ch >>> 16) & 0xff);
+			            cba.push((ch >>> 8) & 0xff);
+			         }
+			         cba.push(ch & 0xff);
+			         break;
+			      case UCBE:
+			         cba.push((ch >>> 8) & 0xff);
+			         cba.push(ch & 0xff);
+			         break;
+			      case UCLE:
+			         cba.push(ch & 0xff);
+			         cba.push((ch >>> 8) & 0xff);
+			         break;
+			      case BIG5: ch = big5code(str.charAt(i));
+			         if (ch > 127) cba.push((ch >>> 8) & 0xff);
+			         cba.push(ch & 0xff);
+			      }
+			   }
+			   return cba;
+			}
+
+			function hexToStr(hst, enc) {
+			   var i;
+			   var hca = [];  // hexadecimal character array
+			   var lead;      // leading byte flag
+			   var hex = "";  // character code hexadecimal
+			   var ch;        // single character
+			   hst=hst.replace(/[^0-9A-F]/ig,"");
+			   for (i=0; i<hst.length; i++) {
+			      hex += hst.charAt(i).toString();
+			      if (hex.length==2) {
+			         hca.push(parseInt(hex,16) & 0xff);
+			         hex="";
+			      }
+			   }
+			   return joinFromArray(hca, enc);
+			}
+
+			function strToHex(str, enc, flag) {
+			   var i;
+			   var len;       // length of hexadecimal string
+			   var hst = "";  // hexadecimal string
+			   var cba;
+			   cba = splitToArray(str, enc);
+			   for (i=len=0; i<cba.length; i++) {
+			      hst += hexch.charAt((cba[i] >> 4) & 0x0f).toString();
+			      hst += hexch.charAt(cba[i] & 0x0f).toString();
+			      len += 2;
+			      if (flag && !(len%76)) hst += "\r\n";
+			   }
+			   return hst;
+			}
+		</script>
+		<script type="text/javascript">
+		/* ip and mask validation */
+		function checkIP(ip) {
+			if (ip == "0.0.0.0" || ip == "255.255.255.255") {
+				return true;
+			}
+
+			var re = /^((\d)|(([1-9])\d)|(1\d\d)|(2(([0-4]\d)|5([0-5]))))\.((\d)|(([1-9])\d)|(1\d\d)|(2(([0-4]\d)|5([0-5]))))\.((\d)|(([1-9])\d)|(1\d\d)|(2(([0-4]\d)|5([0-5]))))\.((\d)|(([1-9])\d)|(1\d\d)|(2(([0-4]\d)|5([0-5]))))$/;
+			if(re.test(ip))
+				return false;
+			else  
+				return true;
+		}
+
+		function validateNetMask(mask) {
+			//m[0] can be 128, 192, 224, 240, 248, 252, 254, 255
+			//m[1] can be 128, 192, 224, 240, 248, 252, 254, 255 if m[0] is 255, else m[1] must be 0
+			//m[2] can be 128, 192, 224, 240, 248, 252, 254, 255 if m[1] is 255, else m[2] must be 0
+			//m[3] can be 128, 192, 224, 240, 248, 252, 254, 255 if m[2] is 255, else m[3] must be 0
+			var re = /^((\d)|(([1-9])\d)|(1\d\d)|(2(([0-4]\d)|5([0-5]))))\.((\d)|(([1-9])\d)|(1\d\d)|(2(([0-4]\d)|5([0-5]))))\.((\d)|(([1-9])\d)|(1\d\d)|(2(([0-4]\d)|5([0-5]))))\.((\d)|(([1-9])\d)|(1\d\d)|(2(([0-4]\d)|5([0-5]))))$/;  
+			if(!re.test(mask))  
+				return true;
+
+			var flag = '';
+			var correct_range = {128:1,192:1,224:1,240:1,248:1,252:1,254:1,255:1,0:1};
+			var m = mask.split('.');
+
+			for (var i = 0; i <= 3; i ++) {
+				if (!(m[i] in correct_range)) {
+					flag = true;
+					break;
+				}
+			} 
+
+			if ((m[0] == 0) || (m[0] != 255 && m[1] != 0) || (m[1] != 255 && m[2] != 0) || (m[2] != 255 && m[3] != 0)) {
+				flag = true;
+			} 
+			return flag;
+		}
+		</script>
+	</body>
+</html>
