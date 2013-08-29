@@ -268,12 +268,12 @@
 		<!-- input admin dialog -->
 		<div id="admin_modal_div" class="modal hide fade" tabindex="-1" data-backdrop="static">
 			<div class="modal-header">
-				<h3>Login</h3>
+				<h3 id="lang_admin_modal_h3">Login</h3>
 			</div>
 			<form class="form-horizontal" id="admin_modal_form" method='post'>
 				<div class="modal-body control-group">
 					<div class="control-group">
-  						<label class="control-label" for="admin_modal_input">Admin's Password</label>
+  						<label class="control-label" for="admin_modal_input" id="lang_admin_modal_label">Admin's Password</label>
   						<div class="controls">
   							<input type="password" id="admin_modal_input" name="admin_modal_input">
   							<input type="password" id="admin_modal_confirm_input" name="admin_modal_confirm_input" style="display:none;">
@@ -281,7 +281,7 @@
   					</div>
 				</div>
 				<div class="modal-footer">
-					<button class="btn btn-primary" type="submit">Login</button>
+					<button class="btn btn-primary" type="submit" id="lang_admin_modal_button">Confirm</button>
 				</div>
 			</form>
 		</div>
@@ -296,8 +296,8 @@
 	    		<h5></h5>
 	  		</div>
 			<div class="modal-footer">
-				<button type="button" class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
-  				<button type="button" class="btn btn-primary" id="confirm_modal_button" data-dismiss="modal" aria-hidden="true">Confirm</button>
+				<button type="button" class="btn" data-dismiss="modal" aria-hidden="true" id="lang_confirm_modal_cancel_button">Cancel</button>
+  				<button type="button" class="btn btn-primary" id="confirm_modal_button" data-dismiss="modal" aria-hidden="true" id="lang_confirm_modal_confirm_button">Confirm</button>
 			</div>
 		</div>
 
@@ -312,42 +312,42 @@
   				<div class="modal-body">
   					<!-- signal -->
   					<div class="control-group">
-  						<label class="control-label" for="signal_modal_input">Signal</label>
+  						<label class="control-label" for="signal_modal_input" id="lang_wds_modal_signal_label">Signal</label>
   						<div class="controls">
   							<input id="signal_modal_input" disabled="disabled" type="text">
   						</div>
   					</div>
   					<!-- security -->
   					<div class="control-group">
-  						<label class="control-label" for="security_modal_input">Security</label>
+  						<label class="control-label" for="security_modal_input" id="lang_wds_modal_security_label">Security</label>
   						<div class="controls">
   							<input id="security_modal_input" disabled="disabled" type="text">
   						</div>
   					</div>
   					<!-- mac address -->
   					<div class="control-group">
-  						<label class="control-label" for="mac_modal_input">Mac Address</label>
+  						<label class="control-label" for="mac_modal_input" id="lang_wds_modal_mac_label">Mac Address</label>
   						<div class="controls">
   							<input id="mac_modal_input" disabled="disabled" type="text">
   						</div>
   					</div>
   					<!-- channel -->
   					<div class="control-group">
-  						<label class="control-label" for="channel_modal_input">Channel</label>
+  						<label class="control-label" for="channel_modal_input" id="lang_wds_modal_channel_label">Channel</label>
   						<div class="controls">
   							<input id="channel_modal_input" disabled="disabled" type="text">
   						</div>
   					</div>
   					<!-- password -->
   					<div class="control-group" id="password_modal_div">
-  						<label class="control-label" for="password_modal_input">Password</label>
+  						<label class="control-label" for="password_modal_input" id="lang_wds_modal_password_label">Password</label>
   						<div class="controls">
   							<input type="text" id="password_modal_input" name="password_modal_input">
   						</div>
   					</div>
   					<!-- wep key -->
   					<div class="control-group" id="wep_modal_div" style="display:none">
-  						<label class="control-label" for="wep_modal_select">Wep Key</label>
+  						<label class="control-label" for="wep_modal_select" id="lang_wds_modal_wep_label">Wep Key</label>
   						<div class="controls">
   							<select id="wep_modal_select">
   								<option>1</option>
@@ -360,7 +360,7 @@
   				</div>
 
   				<div class="modal-footer">
-  					<button type="button" class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
+  					<button type="button" class="btn" data-dismiss="modal" aria-hidden="true" id="wds_model_cancel_button">Cancel</button>
   					<button type="submit" class="btn btn-primary" id="wds_model_connect_button">Connect</button>
   				</div>
   			</form>
@@ -369,7 +369,7 @@
 		<!-- progress dialog -->
 		<div id="count_down_modal_div" class="modal hide fade" role="dialog" aria-labelledby="countModalLabel" aria-hidden="false" data-backdrop="static">
   			<div class="modal-header">
-    			<h3>Processing...</h3>
+    			<h3 id="lang_count_down_modal_h3">Processing...</h3>
   			</div>
 	  		<div class="modal-body">
 	    		<p></p>
@@ -389,8 +389,8 @@
 			</div>
 
 			<div id="status_div">
-				<strong style="color:white">Mode:<span id="status_mode_span" class="label"></span></strong>
-				<strong style="color:white">Mac Address:<span id="status_mac_span" class="label"></span></strong>
+				<strong style="color:white" id="lang_status_mode_strong">Mode:<span id="status_mode_span" class="label"></span></strong>
+				<strong style="color:white" id="lang_status_mac_strong">Mac Address:<span id="status_mac_span" class="label"></span></strong>
 			</div>
 			
 			<div id="content_div">
@@ -398,29 +398,29 @@
 				<div class="row-fluid" style="padding-top: 25px;">
 					<div class="span3" id="menu_div">
 						<div class="row-fluid">
-      						<button class="btn btn-primary reboot_reset_btn" type="button" onclick="reboot_reset_click(0)">Reboot</button>
-      						<button class="btn btn-primary reboot_reset_btn" type="button" style="margin-left: 5px;" onclick="reboot_reset_click(1)">Reset</button>
+      						<button class="btn btn-primary reboot_reset_btn" type="button" onclick="reboot_reset_click(0)" id="lang_reboot_button">Reboot</button>
+      						<button class="btn btn-primary reboot_reset_btn" type="button" style="margin-left: 5px;" onclick="reboot_reset_click(1)" id="lang_reset_button">Reset</button>
     					</div>
 
 						<ul class="nav nav-list">
 							<li>
-								<a href="#page1" data-toggle="tab">AP Bridge<img src="img/arrow.png" class="menu_arrow"/></a>
+								<a href="#page1" data-toggle="tab" id="lang_nav_ap_bridge_a">AP Bridge<img src="img/arrow.png" class="menu_arrow"/></a>
 							</li>
 							<li>
-								<a href="#page2" data-toggle="tab">AP Router<img src="img/arrow.png" class="menu_arrow"/></a>
+								<a href="#page2" data-toggle="tab" id="lang_nav_ap_router_a">AP Router<img src="img/arrow.png" class="menu_arrow"/></a>
 							</li>
 							<li>
-								<a href="#page3" data-toggle="tab">WDS Repeater<img src="img/arrow.png" class="menu_arrow"/></a>
+								<a href="#page3" data-toggle="tab" id="lang_nav_wds_repeater_a">WDS Repeater<img src="img/arrow.png" class="menu_arrow"/></a>
 							</li>
 							<li>
-								<a href="#page4" data-toggle="tab">WDS Bridge<img src="img/arrow.png" class="menu_arrow"/></a>
+								<a href="#page4" data-toggle="tab" id="lang_nav_wds_bridge_a">WDS Bridge<img src="img/arrow.png" class="menu_arrow"/></a>
 							</li>
 							<li class="divider"></li>
 							<li>
-								<a href="#page5" data-toggle="tab">Admin<img src="img/arrow.png" class="menu_arrow"/></a>
+								<a href="#page5" data-toggle="tab" id="lang_nav_admin_a">Admin<img src="img/arrow.png" class="menu_arrow"/></a>
 							</li>
 							<li>
-								<a href="#page6" data-toggle="tab">Help<img src="img/arrow.png" class="menu_arrow"/></a>
+								<a href="#page6" data-toggle="tab" id="lang_nav_help_a">Help<img src="img/arrow.png" class="menu_arrow"/></a>
 							</li>
 						</ul>
 						<select id="change_language_select">
@@ -435,7 +435,7 @@
 
 							<!-- AP Bridge -->
 							<div class="tab-pane fade in" id="page1">
-								<h4 style="float:left;padding-right: 20px;">AP Bridge Mode</h4>
+								<h4 style="float:left;padding-right: 20px;" id="lang_page_ap_bridge_h4">AP Bridge Mode</h4>
 								<img src="img/ap-bridge.png" />
 								<hr style="clear:both;">
 								<div id="ap_bridge_spin_div"></div>
@@ -457,22 +457,22 @@
 											</div>
 										</div>
 										<div class="control-group">
-	  										<label class="control-label custom_control-label" for="ap_bridge_ssid_input">SSID</label>
+	  										<label class="control-label custom_control-label" for="ap_bridge_ssid_input" id="lang_ap_bridge_ssid_label">SSID</label>
 	  										<div class="controls custom_controls">
 	  											<input type="text" id="ap_bridge_ssid_input" name="ap_bridge_ssid_input">
 	  										</div>
 	  									</div>
 	  									<div class="control-group" id="ap_bridge_pw_div" style="display:none">
-	  										<label class="control-label custom_control-label" for="ap_bridge_pwd_input">Password</label>
+	  										<label class="control-label custom_control-label" for="ap_bridge_pwd_input" id="lang_ap_bridge_password_label">Password</label>
 	  										<div class="controls custom_controls">
 	  											<input type="text" id="ap_bridge_pwd_input" name="ap_bridge_pwd_input">
 	  										</div>
 	  									</div>
 	  									<div class="control-group">
-	  										<label class="control-label custom_control-label" for="ap_bridge_channel_select">Channel</label>
+	  										<label class="control-label custom_control-label" for="ap_bridge_channel_select" id="lang_ap_bridge_channel_label">Channel</label>
 	  										<div class="controls custom_controls">
 		  										<select id="ap_bridge_channel_select">
-			  										<option value="0">Auto</option>
+			  										<option value="0" id="lang_ap_bridge_auto_channel_option">Auto</option>
 			  										<option value="1">1</option>
 			  										<option value="2">2</option>
 			  										<option value="3">3</option>
@@ -502,7 +502,7 @@
 											</div>
 										</div>
 										<div class="control-group">
-	  										<label class="control-label custom_control-label" for="ap_bridge_max_input">Maximum</label>
+	  										<label class="control-label custom_control-label" for="ap_bridge_max_input" id="lang_ap_bridge_max_label">Maximum</label>
 	  										<div class="controls custom_controls">
 	  											<input type="text" id="ap_bridge_max_input" name="ap_bridge_max_input" placeholder="Default:50 (1~150)">
 	  										</div>
@@ -514,7 +514,7 @@
 											</label>
 										</div>
 										<div class="control-group" id="ap_bridge_ip_div" style="display:none">
-	  										<label class="control-label custom_control-label" for="ap_bridge_ip_0_input">IP</label>
+	  										<label class="control-label custom_control-label" for="ap_bridge_ip_0_input" id="lang_ap_bridge_static_ip">IP</label>
 											<div class="controls controls-row custom_controls">
 	  											<input class="static_control_input" type="text" id="ap_bridge_ip_0_input" name="ap_bridge_ip_0_input">
 	  											<input class="static_control_input" type="text" id="ap_bridge_ip_1_input" name="ap_bridge_ip_1_input">
@@ -523,7 +523,7 @@
 											</div>
 										</div>
 										<div class="control-group" id="ap_bridge_subnet_div" style="display:none">
-	  										<label class="control-label custom_control-label" for="ap_bridge_subnet_0_input">Subnet</label>
+	  										<label class="control-label custom_control-label" for="ap_bridge_subnet_0_input" id="lang_ap_bridge_static_subnet">Subnet</label>
 											<div class="controls controls-row custom_controls">
 	  											<input class="static_control_input" type="text" id="ap_bridge_subnet_0_input" name="ap_bridge_subnet_0_input">
 	  											<input class="static_control_input" type="text" id="ap_bridge_subnet_1_input" name="ap_bridge_subnet_1_input">
@@ -532,7 +532,7 @@
 											</div>
 										</div>
 										<div class="control-group" id="ap_bridge_gw_div" style="display:none">
-	  										<label class="control-label custom_control-label" for="ap_bridge_gw_0_input">Gateway</label>
+	  										<label class="control-label custom_control-label" for="ap_bridge_gw_0_input" id="lang_ap_bridge_static_gw">Gateway</label>
 											<div class="controls controls-row custom_controls">
 	  											<input class="static_control_input" type="text" id="ap_bridge_gw_0_input" name="ap_bridge_gw_0_input">
 	  											<input class="static_control_input" type="text" id="ap_bridge_gw_1_input" name="ap_bridge_gw_1_input">
@@ -544,7 +544,7 @@
 									<hr>
 									<div class="row-fluid">
 										<div class="span2">
-											<button type="submit" class="btn">Save</button>
+											<button type="submit" class="btn" id="lang_ap_bridge_save_button">Save</button>
 										</div>
 									</div>
 									<!-- alert -->
@@ -558,7 +558,7 @@
 
 							<!-- AP Router -->
 							<div class="tab-pane fade in" id="page2">
-								<h4 style="float:left;padding-right: 20px;">AP Router</h4>
+								<h4 style="float:left;padding-right: 20px;" id="lang_page_ap_router_h4">AP Router</h4>
 								<img src="img/ap-router.png" />
 								<hr style="clear:both;">
 								<div id="ap_router_spin_div"></div>
@@ -579,22 +579,22 @@
 											</div>
 										</div>
 										<div class="control-group">
-	  										<label class="control-label custom_control-label" for="ap_router_ssid_input">SSID</label>
+	  										<label class="control-label custom_control-label" for="ap_router_ssid_input" id="lang_ap_router_ssid_label">SSID</label>
 	  										<div class="controls custom_controls">
 	  											<input type="text" id="ap_router_ssid_input" name="ap_router_ssid_input">
 	  										</div>
 	  									</div>
 	  									<div class="control-group" id="ap_router_pw_div" style="display:none">
-	  										<label class="control-label custom_control-label" for="ap_router_pwd_input">Password</label>
+	  										<label class="control-label custom_control-label" for="ap_router_pwd_input" id="lang_ap_router_password_label">Password</label>
 	  										<div class="controls custom_controls">
 	  											<input type="text" id="ap_router_pwd_input" name="ap_router_pwd_input">
 	  										</div>
 	  									</div>
 	  									<div class="control-group">
-	  										<label class="control-label custom_control-label" for="ap_router_channel_select">Channel</label>
+	  										<label class="control-label custom_control-label" for="ap_router_channel_select" id="lang_ap_router_channel_label">Channel</label>
 	  										<div class="controls custom_controls">
 		  										<select id="ap_router_channel_select">
-			  										<option value="0">Auto</option>
+			  										<option value="0" id="lang_ap_router_auto_channel_option">Auto</option>
 			  										<option value="1">1</option>
 			  										<option value="2">2</option>
 			  										<option value="3">3</option>
@@ -624,7 +624,7 @@
 											</div>
 										</div>
 										<div class="control-group">
-	  										<label class="control-label custom_control-label" for="ap_router_max_input">Maximum</label>
+	  										<label class="control-label custom_control-label" for="ap_router_max_input" id="lang_ap_router_max_label">Maximum</label>
 	  										<div class="controls custom_controls">
 	  											<input type="text" id="ap_router_max_input" name="ap_router_max_input" placeholder="Default:50 (1~150)">
 	  										</div>
@@ -636,7 +636,7 @@
 											</label>
 										</div>
 										<div class="control-group" id="ap_router_ip_div" style="display:none">
-	  										<label class="control-label custom_control-label" for="ap_router_ip_0_input">IP</label>
+	  										<label class="control-label custom_control-label" for="ap_router_ip_0_input" id="lang_ap_router_static_ip">IP</label>
 											<div class="controls controls-row custom_controls">
 	  											<input class="static_control_input" type="text" id="ap_router_ip_0_input" name="ap_router_ip_0_input">
 	  											<input class="static_control_input" type="text" id="ap_router_ip_1_input" name="ap_router_ip_1_input">
@@ -645,7 +645,7 @@
 											</div>
 										</div>
 										<div class="control-group" id="ap_router_subnet_div" style="display:none">
-	  										<label class="control-label custom_control-label" for="ap_router_subnet_0_input">Subnet</label>
+	  										<label class="control-label custom_control-label" for="ap_router_subnet_0_input" id="lang_ap_router_static_subnet">Subnet</label>
 											<div class="controls controls-row custom_controls">
 	  											<input class="static_control_input" type="text" id="ap_router_subnet_0_input" name="ap_router_subnet_0_input">
 	  											<input class="static_control_input" type="text" id="ap_router_subnet_1_input" name="ap_router_subnet_1_input">
@@ -654,7 +654,7 @@
 											</div>
 										</div>
 										<div class="control-group" id="ap_router_gw_div" style="display:none">
-	  										<label class="control-label custom_control-label" for="ap_router_gw_0_input">Gateway</label>
+	  										<label class="control-label custom_control-label" for="ap_router_gw_0_input" id="lang_ap_router_static_gw">Gateway</label>
 											<div class="controls controls-row custom_controls">
 	  											<input class="static_control_input" type="text" id="ap_router_gw_0_input" name="ap_router_gw_0_input">
 	  											<input class="static_control_input" type="text" id="ap_router_gw_1_input" name="ap_router_gw_1_input">
@@ -666,7 +666,7 @@
 									<hr>
 									<div class="row-fluid">
 										<div class="span2">
-											<button type="submit" class="btn">Save</button>
+											<button type="submit" class="btn" id="lang_ap_router_save_button">Save</button>
 										</div>
 									</div>
 									<!-- alert -->
@@ -680,7 +680,7 @@
 
 							<!-- WDS Repeater -->
 							<div class="tab-pane fade in" id="page3">
-								<h4 style="float:left;padding-right: 20px;">WDS Repeater</h4>
+								<h4 style="float:left;padding-right: 20px;" id="lang_page_wds_repeater_h4">WDS Repeater</h4>
 								<img src="img/wds-repeater.png" style="float:left"/>
 								<div class="refresh_btn_div">
 									<input class="refresh_btn_input" type="image" img src="img/refresh.png" onclick="wds_mode_refresh_click()">
@@ -694,11 +694,11 @@
 										<table class="table table-hover" style="display:none;">
 											<thead class="scan_list_thead">
 												<tr>
-													<th class="table_title_th" id="scan_list_ssid_th"    data-prop="ssid">SSID</th>
-													<th class="table_title_th" id="scan_list_sec_th"     data-prop="Security">Security</th>
-													<th class="table_title_th" id="scan_list_mac_th"     data-prop="mac">Mac Address</th>
-													<th class="table_title_th" id="scan_list_channel_th" data-prop="channel">Channel</th>
-													<th class="table_title_th" id="scan_list_signal_th"  data-prop="signal">Signal</th>
+													<th class="table_title_th" id="scan_list_wds_repeater_ssid_th"    data-prop="ssid">SSID</th>
+													<th class="table_title_th" id="scan_list_wds_repeater_sec_th"     data-prop="Security">Security</th>
+													<th class="table_title_th" id="scan_list_wds_repeater_mac_th"     data-prop="mac">Mac Address</th>
+													<th class="table_title_th" id="scan_list_wds_repeater_channel_th" data-prop="channel">Channel</th>
+													<th class="table_title_th" id="scan_list_wds_repeater_signal_th"  data-prop="signal">Signal</th>
 												</tr>
 											</thead>
 											<tbody class="scan_list_repeater_tbody">
@@ -730,11 +730,11 @@
 										<table class="table table-hover" style="display:none; clear:both;">
 											<thead class="scan_list_thead">
 												<tr>
-													<th class="table_title_th" id="scan_list_ssid_th"    data-prop="ssid">SSID</th>
-													<th class="table_title_th" id="scan_list_sec_th"     data-prop="Security">Security</th>
-													<th class="table_title_th" id="scan_list_mac_th"     data-prop="mac">Mac Address</th>
-													<th class="table_title_th" id="scan_list_channel_th" data-prop="channel">Channel</th>
-													<th class="table_title_th" id="scan_list_signal_th"  data-prop="signal">Signal</th>
+													<th class="table_title_th" id="scan_list_wds_bridge_ssid_th"    data-prop="ssid">SSID</th>
+													<th class="table_title_th" id="scan_list_wds_bridge_sec_th"     data-prop="Security">Security</th>
+													<th class="table_title_th" id="scan_list_wds_bridge_mac_th"     data-prop="mac">Mac Address</th>
+													<th class="table_title_th" id="scan_list_wds_bridge_channel_th" data-prop="channel">Channel</th>
+													<th class="table_title_th" id="scan_list_wds_bridge_signal_th"  data-prop="signal">Signal</th>
 												</tr>
 											</thead>
 											<tbody class="scan_list_bridge_tbody">
@@ -752,13 +752,13 @@
 
 							<!-- Admin -->
 							<div class="tab-pane fade in" id="page5">
-								<h4 style="float:left">Admin</h4>
+								<h4 style="float:left" id="lang_page_admin_h4">Admin</h4>
 								<hr style="clear:both;">
 								<div id="admin_spin_div"></div>
 								<form id="admin_change_form" class="form-horizontal" method='post'>
 									<div class="admin_change_div" style="display:none;">
 	  									<div class="control-group">
-	  										<label class="control-label custom_admin_control-label" for="admin_change_input">Admin's Password</label>
+	  										<label class="control-label custom_admin_control-label" for="admin_change_input" id="lang_admin_password_label">Admin's Password</label>
 	  										<div class="controls custom_admin_controls">
 	  											<input type="text" id="admin_change_input" name="admin_change_input">
 	  										</div>
@@ -767,7 +767,7 @@
 									<hr>
 									<div class="row-fluid">
 										<div class="span2">
-											<button type="submit" class="btn">Save</button>
+											<button type="submit" class="btn" id="lang_admin_save_button">Save</button>
 										</div>
 									</div>
 								</form>
@@ -868,6 +868,93 @@
 
 			// change the string for the different language
 			function change_language() {
+				$("#lang_admin_modal_h3").text(eval("lang_admin_modal_h3"));
+				$("#lang_admin_modal_label").text(eval("lang_admin_modal_label"));
+				$("#lang_admin_modal_button").text(eval("lang_admin_modal_button"));
+
+				$("#lang_confirm_modal_cancel_button").text(eval("lang_confirm_modal_cancel_button"));
+				$("#lang_confirm_modal_confirm_button").text(eval("lang_confirm_modal_confirm_button"));
+
+				$("#lang_wds_modal_signal_label").text(eval("lang_wds_modal_signal_label"));
+				$("#lang_wds_modal_security_label").text(eval("lang_wds_modal_security_label"));
+				$("#lang_wds_modal_mac_label").text(eval("lang_wds_modal_mac_label"));
+				$("#lang_wds_modal_channel_label").text(eval("lang_wds_modal_channel_label"));
+				$("#lang_wds_modal_password_label").text(eval("lang_wds_modal_password_label"));
+				$("#lang_wds_modal_wep_label").text(eval("lang_wds_modal_wep_label"));
+				$("#wds_model_cancel_button").text(eval("wds_model_cancel_button"));
+				$("#wds_model_connect_button").text(eval("wds_model_connect_button"));
+
+				$("#lang_count_down_modal_h3").text(eval("lang_count_down_modal_h3"));
+				$("#count_down_button").text(eval("count_down_button"));
+
+				$("#lang_status_mode_strong").text(eval("lang_status_mode_strong"));
+				$("#lang_status_mac_strong").text(eval("lang_status_mac_strong"));
+
+				$("#lang_reboot_button").text(eval("lang_reboot_button"));
+				$("#lang_reset_button").text(eval("lang_reset_button"));
+
+				$("#lang_nav_ap_bridge_a").text(eval("lang_nav_ap_bridge_a"));
+				$("#lang_nav_ap_router_a").text(eval("lang_nav_ap_router_a"));
+				$("#lang_nav_wds_repeater_a").text(eval("lang_nav_wds_repeater_a"));
+				$("#lang_nav_wds_bridge_a").text(eval("lang_nav_wds_bridge_a"));
+				$("#lang_nav_admin_a").text(eval("lang_nav_admin_a"));
+				$("#lang_nav_help_a").text(eval("lang_nav_help_a"));
+
+				$("#lang_page_ap_bridge_h4").text(eval("lang_page_ap_bridge_h4"));
+				$("#ap_bridge_radio_non_security").text(eval("ap_bridge_radio_non_security"));
+				$("#ap_bridge_radio_security").text(eval("ap_bridge_radio_security"));
+				$("#lang_ap_bridge_ssid_label").text(eval("lang_ap_bridge_ssid_label"));
+				$("#lang_ap_bridge_password_label").text(eval("lang_ap_bridge_password_label"));
+				$("#lang_ap_bridge_channel_label").text(eval("lang_ap_bridge_channel_label"));
+				$("#lang_ap_bridge_auto_channel_option").text(eval("lang_ap_bridge_auto_channel_option"));
+				$("#ap_bridge_radio_ht20").text(eval("ap_bridge_radio_ht20"));
+				$("#ap_bridge_radio_ht40").text(eval("ap_bridge_radio_ht40"));
+				$("#lang_ap_bridge_max_label").text(eval("lang_ap_bridge_max_label"));
+				$("#ap_bridge_static_input").text(eval("ap_bridge_static_input"));
+				$("#lang_ap_bridge_static_ip").text(eval("lang_ap_bridge_static_ip"));
+				$("#lang_ap_bridge_static_subnet").text(eval("lang_ap_bridge_static_subnet"));
+				$("#lang_ap_bridge_static_gw").text(eval("lang_ap_bridge_static_gw"));
+				$("#lang_ap_bridge_save_button").text(eval("lang_ap_bridge_save_button"));
+
+				$("#lang_page_ap_router_h4").text(eval("lang_page_ap_router_h4"));
+				$("#ap_router_radio_non_security").text(eval("ap_router_radio_non_security"));
+				$("#ap_router_radio_security").text(eval("ap_router_radio_security"));
+				$("#lang_ap_router_ssid_label").text(eval("lang_ap_router_ssid_label"));
+				$("#lang_ap_router_password_label").text(eval("lang_ap_router_password_label"));
+				$("#lang_ap_router_channel_label").text(eval("lang_ap_router_channel_label"));
+				$("#lang_ap_router_auto_channel_option").text(eval("lang_ap_router_auto_channel_option"));
+				$("#ap_router_radio_ht20").text(eval("ap_router_radio_ht20"));
+				$("#ap_router_radio_ht40").text(eval("ap_router_radio_ht40"));
+				$("#lang_ap_router_max_label").text(eval("lang_ap_router_max_label"));
+				$("#ap_router_static_input").text(eval("ap_router_static_input"));
+				$("#lang_ap_router_static_ip").text(eval("lang_ap_router_static_ip"));
+				$("#lang_ap_router_static_subnet").text(eval("lang_ap_router_static_subnet"));
+				$("#lang_ap_router_static_gw").text(eval("lang_ap_router_static_gw"));
+				$("#lang_ap_router_save_button").text(eval("lang_ap_router_save_button"));
+
+				$("#lang_page_wds_repeater_h4").text(eval("lang_page_wds_repeater_h4"));
+				$("#scan_list_wds_repeater_ssid_th").text(eval("scan_list_wds_repeater_ssid_th"));
+				$("#scan_list_wds_repeater_sec_th").text(eval("scan_list_wds_repeater_sec_th"));
+				$("#scan_list_wds_repeater_mac_th").text(eval("scan_list_wds_repeater_mac_th"));
+				$("#scan_list_wds_repeater_channel_th").text(eval("scan_list_wds_repeater_channel_th"));
+				$("#scan_list_wds_repeater_signal_th").text(eval("scan_list_wds_repeater_signal_th"));
+
+				$("#lang_page_wds_bridge_h4").text(eval("lang_page_wds_bridge_h4"));
+				$("#scan_list_wds_bridge_ssid_th").text(eval("scan_list_wds_bridge_ssid_th"));
+				$("#scan_list_wds_bridge_sec_th").text(eval("scan_list_wds_bridge_sec_th"));
+				$("#scan_list_wds_bridge_mac_th").text(eval("scan_list_wds_bridge_mac_th"));
+				$("#scan_list_wds_bridge_channel_th").text(eval("scan_list_wds_bridge_channel_th"));
+				$("#scan_list_wds_bridge_signal_th").text(eval("scan_list_wds_bridge_signal_th"));
+
+				$("#signal_strength_excellent").text(eval("signal_strength_excellent"));
+				$("#signal_strength_good").text(eval("signal_strength_good"));
+				$("#signal_strength_fair").text(eval("signal_strength_fair"));
+				$("#signal_strength_poor").text(eval("signal_strength_poor"));
+
+				$("#lang_page_admin_h4").text(eval("lang_page_admin_h4"));
+				$("#lang_admin_password_label").text(eval("lang_admin_password_label"));
+				$("#lang_admin_save_button").text(eval("lang_admin_save_button"));
+
 				$("#change_language_select option").each(function(i) {
 					$(this).text(eval("lang_option_"+(i+1)));
 				});
@@ -884,12 +971,14 @@
 				// set the language
 				console.log('default language', $.localise.defaultLanguage);
 				$.localise('greeting', {loadBase: true, path: 'js/lang/'});
+				change_language();
 				$("#change_language_select").change(function() {
 					console.log($(this).val());
 					$.localise('js/lang/greeting', {loadBase: true, language: $(this).val()});
 					change_language();
 				});
-				change_language();
+
+				$("#change_language_select").val($.localise.defaultLanguage);
 
 				// information
 				information = [];
@@ -2828,7 +2917,7 @@
 									case wds_mode:
 									$.get("../.sta_sts", function(data) {
 										console.log('Request reponse', data);
-										if (data == '0') {
+										if (data.indexOf('0') >= 0) {
 											// successed
 											clearInterval(interval);
 											$('#count_down_bar_div').css('width', '100%');
