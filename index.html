@@ -297,7 +297,7 @@
 	  		</div>
 			<div class="modal-footer">
 				<button type="button" class="btn" data-dismiss="modal" aria-hidden="true" id="lang_confirm_modal_cancel_button">Cancel</button>
-  				<button type="button" class="btn btn-primary" id="confirm_modal_button" data-dismiss="modal" aria-hidden="true" id="lang_confirm_modal_confirm_button">Confirm</button>
+  				<button type="button" class="btn btn-primary" id="confirm_modal_button" data-dismiss="modal" aria-hidden="true">Confirm</button>
 			</div>
 		</div>
 
@@ -444,13 +444,13 @@
 									<div class="ap_mode_div ap_bridge_mode_div" style="display:none;width: 100%;">
 										<div class="control-group row-fluid">
 											<div class="radio span3">
-											  	<label>
+											  	<label id="lang_ap_bridge_non_security_label">
 											    	<input type="radio" id="ap_bridge_radio_non_security" name="ap_bridge_radio" value="non-security" class="ap_bridge_radio">
 											    	Non-Security
 											  	</label>
 											</div>
 											<div class="radio span3">
-											  	<label>
+											  	<label id="lang_ap_bridge_security_label">
 											    	<input type="radio" id="ap_bridge_radio_security" name="ap_bridge_radio" value="security" class="ap_bridge_radio">
 											    	Security
 											  	</label>
@@ -508,7 +508,7 @@
 	  										</div>
 	  									</div>
 	  									<div class="control-group">
-											<label class="checkbox">
+											<label class="checkbox" id="lang_ap_bridge_static_label">
 	  											<input type="checkbox" id="ap_bridge_static_input">
 	  												Static
 											</label>
@@ -566,13 +566,13 @@
 									<div class="ap_mode_div ap_router_mode_div" style="display:none;">
 										<div class="row-fluid control-group">
 											<div class="radio span3">
-											  	<label>
+											  	<label id="lang_ap_router_non_security_label">
 											    	<input type="radio" id="ap_router_radio_non_security" name="ap_router_radio" value="non-security" class="ap_router_radio">
 											    		Non-Security
 											  	</label>
 											</div>
 											<div class="radio span3">
-											  	<label>
+											  	<label id="lang_ap_router_security_label">
 											    	<input type="radio" id="ap_router_radio_security" name="ap_router_radio" value="security" class="ap_router_radio">
 											    		Security
 											  	</label>
@@ -630,7 +630,7 @@
 	  										</div>
 	  									</div>
 	  									<div class="control-group">
-											<label class="checkbox">
+											<label class="checkbox" id="lang_ap_router_static_label">
 	  											<input type="checkbox" id="ap_router_static_input">
 	  												Static
 											</label>
@@ -716,7 +716,7 @@
 			
 							<!-- WDS Bridge -->
 							<div class="tab-pane fade in" id="page4">
-								<h4 style="float:left;padding-right: 20px;">WDS Bridge</h4>
+								<h4 style="float:left;padding-right: 20px;" id="lang_page_wds_bridge_h4">WDS Bridge</h4>
 								<img src="img/wds-bridge.png" style="float:left;"/>
 								<div class="refresh_btn_div">
 									<input class="refresh_btn_input" type="image" img src="img/refresh.png" onclick="wds_mode_refresh_click()">
@@ -832,7 +832,6 @@
 			var ip_changed = "0.0.0.0";
 
 			var signal_strength      = [90, 80, 70];
-			var signal_strength_msg  = ["Excellent", "Good", "Fair", "Poor"];
 			var info_ssid_index      = "AP_SSID";
 			var info_pwd_index       = "PSK_KEY";
 			var info_mode_index      = "TR_TYPE";
@@ -861,10 +860,16 @@
 			var scan_list = [];
 			var json_scan_list;
 
+			var admin_modal_validator;
+			var ap_bridge_validator;
+			var ap_router_validator;
+			var wds_modal_validator;
+			var admin_change_validator;
+
 			// add new rule for validation
 			$.validator.addMethod('nonBlank', function(value, element) {
 				return this.optional(element) || value.indexOf(" ") <= 0;
-			}, "There is an invalid character!");
+			}, eval("land_invalid_char"));
 
 			// change the string for the different language
 			function change_language() {
@@ -873,7 +878,7 @@
 				$("#lang_admin_modal_button").text(eval("lang_admin_modal_button"));
 
 				$("#lang_confirm_modal_cancel_button").text(eval("lang_confirm_modal_cancel_button"));
-				$("#lang_confirm_modal_confirm_button").text(eval("lang_confirm_modal_confirm_button"));
+				$("#confirm_modal_button").text(eval("lang_confirm_modal_confirm_button"));
 
 				$("#lang_wds_modal_signal_label").text(eval("lang_wds_modal_signal_label"));
 				$("#lang_wds_modal_security_label").text(eval("lang_wds_modal_security_label"));
@@ -881,28 +886,28 @@
 				$("#lang_wds_modal_channel_label").text(eval("lang_wds_modal_channel_label"));
 				$("#lang_wds_modal_password_label").text(eval("lang_wds_modal_password_label"));
 				$("#lang_wds_modal_wep_label").text(eval("lang_wds_modal_wep_label"));
-				$("#wds_model_cancel_button").text(eval("wds_model_cancel_button"));
-				$("#wds_model_connect_button").text(eval("wds_model_connect_button"));
+				$("#wds_model_cancel_button").html(eval("wds_model_cancel_button"));
+				$("#wds_model_connect_button").html(eval("wds_model_connect_button"));
 
 				$("#lang_count_down_modal_h3").text(eval("lang_count_down_modal_h3"));
 				$("#count_down_button").text(eval("count_down_button"));
 
-				$("#lang_status_mode_strong").text(eval("lang_status_mode_strong"));
-				$("#lang_status_mac_strong").text(eval("lang_status_mac_strong"));
+				$("#lang_status_mode_strong").html(eval("lang_status_mode_strong"));
+				$("#lang_status_mac_strong").html(eval("lang_status_mac_strong"));
 
 				$("#lang_reboot_button").text(eval("lang_reboot_button"));
 				$("#lang_reset_button").text(eval("lang_reset_button"));
 
-				$("#lang_nav_ap_bridge_a").text(eval("lang_nav_ap_bridge_a"));
-				$("#lang_nav_ap_router_a").text(eval("lang_nav_ap_router_a"));
-				$("#lang_nav_wds_repeater_a").text(eval("lang_nav_wds_repeater_a"));
-				$("#lang_nav_wds_bridge_a").text(eval("lang_nav_wds_bridge_a"));
-				$("#lang_nav_admin_a").text(eval("lang_nav_admin_a"));
-				$("#lang_nav_help_a").text(eval("lang_nav_help_a"));
+				$("#lang_nav_ap_bridge_a").html(eval("lang_nav_ap_bridge_a"));
+				$("#lang_nav_ap_router_a").html(eval("lang_nav_ap_router_a"));
+				$("#lang_nav_wds_repeater_a").html(eval("lang_nav_wds_repeater_a"));
+				$("#lang_nav_wds_bridge_a").html(eval("lang_nav_wds_bridge_a"));
+				$("#lang_nav_admin_a").html(eval("lang_nav_admin_a"));
+				$("#lang_nav_help_a").html(eval("lang_nav_help_a"));
 
 				$("#lang_page_ap_bridge_h4").text(eval("lang_page_ap_bridge_h4"));
-				$("#ap_bridge_radio_non_security").text(eval("ap_bridge_radio_non_security"));
-				$("#ap_bridge_radio_security").text(eval("ap_bridge_radio_security"));
+				$("#lang_ap_bridge_non_security_label").html(eval("lang_ap_bridge_non_security_label"));
+				$("#lang_ap_bridge_security_label").html(eval("lang_ap_bridge_security_label"));
 				$("#lang_ap_bridge_ssid_label").text(eval("lang_ap_bridge_ssid_label"));
 				$("#lang_ap_bridge_password_label").text(eval("lang_ap_bridge_password_label"));
 				$("#lang_ap_bridge_channel_label").text(eval("lang_ap_bridge_channel_label"));
@@ -910,15 +915,15 @@
 				$("#ap_bridge_radio_ht20").text(eval("ap_bridge_radio_ht20"));
 				$("#ap_bridge_radio_ht40").text(eval("ap_bridge_radio_ht40"));
 				$("#lang_ap_bridge_max_label").text(eval("lang_ap_bridge_max_label"));
-				$("#ap_bridge_static_input").text(eval("ap_bridge_static_input"));
+				$("#lang_ap_bridge_static_label").html(eval("lang_ap_bridge_static_label"));
 				$("#lang_ap_bridge_static_ip").text(eval("lang_ap_bridge_static_ip"));
 				$("#lang_ap_bridge_static_subnet").text(eval("lang_ap_bridge_static_subnet"));
 				$("#lang_ap_bridge_static_gw").text(eval("lang_ap_bridge_static_gw"));
 				$("#lang_ap_bridge_save_button").text(eval("lang_ap_bridge_save_button"));
 
 				$("#lang_page_ap_router_h4").text(eval("lang_page_ap_router_h4"));
-				$("#ap_router_radio_non_security").text(eval("ap_router_radio_non_security"));
-				$("#ap_router_radio_security").text(eval("ap_router_radio_security"));
+				$("#lang_ap_router_non_security_label").html(eval("lang_ap_router_non_security_label"));
+				$("#lang_ap_router_security_label").html(eval("lang_ap_router_security_label"));
 				$("#lang_ap_router_ssid_label").text(eval("lang_ap_router_ssid_label"));
 				$("#lang_ap_router_password_label").text(eval("lang_ap_router_password_label"));
 				$("#lang_ap_router_channel_label").text(eval("lang_ap_router_channel_label"));
@@ -926,7 +931,7 @@
 				$("#ap_router_radio_ht20").text(eval("ap_router_radio_ht20"));
 				$("#ap_router_radio_ht40").text(eval("ap_router_radio_ht40"));
 				$("#lang_ap_router_max_label").text(eval("lang_ap_router_max_label"));
-				$("#ap_router_static_input").text(eval("ap_router_static_input"));
+				$("#lang_ap_router_static_label").html(eval("lang_ap_router_static_label"));
 				$("#lang_ap_router_static_ip").text(eval("lang_ap_router_static_ip"));
 				$("#lang_ap_router_static_subnet").text(eval("lang_ap_router_static_subnet"));
 				$("#lang_ap_router_static_gw").text(eval("lang_ap_router_static_gw"));
@@ -958,6 +963,123 @@
 				$("#change_language_select option").each(function(i) {
 					$(this).text(eval("lang_option_"+(i+1)));
 				});
+
+				// security
+				if (information[info_pwd_index] == "") {
+					$('#ap_bridge_radio_non_security').attr('checked', '');
+					$('#ap_bridge_radio_security').removeAttr('checked');
+						
+					$('#ap_router_radio_non_security').attr('checked', '');
+					$('#ap_router_radio_security').removeAttr('checked');
+
+					$("#ap_bridge_pw_div").css("display" , "none");
+					$("#ap_router_pw_div").css("display" , "none");
+				} else {
+					$('#ap_bridge_radio_security').attr('checked', '');
+					$('#ap_bridge_radio_non_security').removeAttr('checked');
+						
+					$('#ap_router_radio_security').attr('checked', '');
+					$('#ap_router_radio_non_security').removeAttr('checked');
+
+					$("#ap_bridge_pw_div").css("display" , "inline-block");
+					$("#ap_router_pw_div").css("display" , "inline-block");
+				}
+
+				// show the status
+	  			if (information[info_mode_index] == mode_ap_bridge) {
+	  				$('#status_mode_span').text(eval("lang_status_ap_bridge_mode"));
+	  			} else if (information[info_mode_index] == mode_ap_router) {
+	  				$('#status_mode_span').text(eval("lang_status_ap_router_mode"));
+	  			} else if (information[info_mode_index] == mode_wds_repeater) {
+	  				$('#status_mode_span').text(eval("lang_status_wds_repeater_mode"));
+	  			} else if (information[info_mode_index] == mode_wds_bridge) {
+	  				$('#status_mode_span').text(eval("lang_status_wds_bridge_mode"));
+	  			} else {
+	  				$('#status_mode_span').text(eval("lang_status_ap_bridge_mode"));
+	  			}
+	  			$('#status_mac_span').html(information[info_mac_index].toUpperCase());
+
+	  			// static 
+	  			if (information[info_ip_index] == "" || information[info_subnet_index] == "" || information[info_gw_index] == "") {
+					$("#ap_router_static_input").prop("checked", false);
+					$('#ap_router_ip_div').css('display', 'none');
+				     $('#ap_router_subnet_div').css('display', 'none');
+				     $('#ap_router_gw_div').css('display', 'none');
+
+				     $("#ap_bridge_static_input").prop("checked", false);
+					$('#ap_bridge_ip_div').css('display', 'none');
+				     $('#ap_bridge_subnet_div').css('display', 'none');
+				     $('#ap_bridge_gw_div').css('display', 'none');
+				} else {
+					$("#ap_router_static_input").prop("checked", true);
+					$('#ap_router_ip_div').css('display', 'inline');
+					$('#ap_router_subnet_div').css('display', 'inline');
+					$('#ap_router_gw_div').css('display', 'inline-block');
+
+					$("#ap_bridge_static_input").prop("checked", true);
+					$('#ap_bridge_ip_div').css('display', 'inline');
+					$('#ap_bridge_subnet_div').css('display', 'inline');
+					$('#ap_bridge_gw_div').css('display', 'inline-block');
+				}
+
+				$('.ap_bridge_radio').change(
+			    	function(){
+				        if($(this).is(':checked')){
+				        	var _mode = $(this).val();
+				        	console.log("radio : "+$(this).val());
+				        	if( _mode == "non-security") {
+				        		$("#ap_bridge_pw_div").css("display" , "none");
+				        	} else if( _mode="security") {
+				        		$("#ap_bridge_pw_div").css("display" , "inline-block");
+				        	}
+				        }
+				    }
+				);
+
+				$('.ap_router_radio').change(
+				    function(){
+				        if($(this).is(':checked')){
+				        	var _mode = $(this).val();
+				        	console.log("radio : "+$(this).val());
+				        	if( _mode == "non-security") {
+				        		$("#ap_router_pw_div").css("display" , "none");
+				        	} else if( _mode="security") {
+				        		$("#ap_router_pw_div").css("display" , "inline-block");
+				        	}
+				        }
+				    }
+				); 
+
+				// static checkbox
+				$("#ap_router_static_input").click(function() {
+
+   					if($(this).is(":checked")) {
+					    $('#ap_router_ip_div').css('display', 'inline');
+					    $('#ap_router_subnet_div').css('display', 'inline');
+					    $('#ap_router_gw_div').css('display', 'inline-block');
+					    $('.ap_router_mode_div').animate({ scrollTop: $('.ap_router_mode_div')[0].scrollHeight}, 800);
+			   		} else {
+				     	$('#ap_router_ip_div').css('display', 'none');
+				     	$('#ap_router_subnet_div').css('display', 'none');
+				     	$('#ap_router_gw_div').css('display', 'none');
+			   		}
+				});
+
+				$("#ap_bridge_static_input").click(function() {
+
+   					if($(this).is(":checked")) {
+					    $('#ap_bridge_ip_div').css('display', 'inline');
+					    $('#ap_bridge_subnet_div').css('display', 'inline');
+					    $('#ap_bridge_gw_div').css('display', 'inline-block');
+					    $('.ap_bridge_mode_div').animate({ scrollTop: $('.ap_bridge_mode_div')[0].scrollHeight}, 800);
+			   		} else {
+				     	$('#ap_bridge_ip_div').css('display', 'none');
+				     	$('#ap_bridge_subnet_div').css('display', 'none');
+				     	$('#ap_bridge_gw_div').css('display', 'none');
+			   		}
+				});
+
+	  			validation();
 			}
 
 			$(document).ready(function() {
@@ -967,18 +1089,6 @@
 				var spinner_ap_bridge = new Spinner(opts).spin(document.getElementById('ap_bridge_spin_div'));
 				var spinner_ap_router = new Spinner(opts).spin(document.getElementById('ap_router_spin_div'));
 				var spinner_admin = new Spinner(opts).spin(document.getElementById('admin_spin_div'));
-
-				// set the language
-				console.log('default language', $.localise.defaultLanguage);
-				$.localise('greeting', {loadBase: true, path: 'js/lang/'});
-				change_language();
-				$("#change_language_select").change(function() {
-					console.log($(this).val());
-					$.localise('js/lang/greeting', {loadBase: true, language: $(this).val()});
-					change_language();
-				});
-
-				$("#change_language_select").val($.localise.defaultLanguage);
 
 				// information
 				information = [];
@@ -994,6 +1104,33 @@
 					var array_admin = hexToStr(base64Decode(information[info_admin_index], UTF8), UTF8).split('@');
 					information[info_admin_index] = array_admin[1];
 					information[info_key_index] = array_admin[0];
+
+					// set the language
+					console.log('default language', $.localise.defaultLanguage);
+					$.localise('greeting', {loadBase: true, path: 'js/lang/'});
+					
+					$("#change_language_select").change(function() {
+						console.log($(this).val());
+						$.localise('js/lang/greeting', {loadBase: true, language: $(this).val()});
+
+						if ($(this).val() == "zh-TW") {
+							$(".form-horizontal .custom_control-label").css('width', '73px');
+						} else {
+							$(".form-horizontal .custom_control-label").css('width', '0px');
+						}
+
+						change_language();
+					});
+
+					$("#change_language_select").val($.localise.defaultLanguage);
+					$.localise('js/lang/greeting', {loadBase: true, language: $.localise.defaultLanguage});
+
+					if ($.localise.defaultLanguage == "zh-TW") {
+						$(".form-horizontal .custom_control-label").css('width', '73px');
+					} else {
+						$(".form-horizontal .custom_control-label").css('width', '0px');
+					}
+					change_language();
 
 					// console.log("ADMIN", hexToStr(base64Decode(information[info_admin_index], UTF8), UTF8));
 
@@ -1014,10 +1151,36 @@
 					$('#ap_router_max_input').val(information[info_dhcp_index]);
 					$('#ap_bridge_max_input').val(information[info_dhcp_index]);
 
+					// switch to current mode
+		  			if (information[info_mode_index] == mode_ap_bridge) {
+		  				$(".nav-list").children('li').eq(0).addClass("active");
+		  				$("#page1").addClass("active");
+		  				$('#status_mode_span').text(eval("lang_status_ap_bridge_mode"));
+		  			} else if (information[info_mode_index] == mode_ap_router) {
+		  				$(".nav-list").children('li').eq(1).addClass("active");
+		  				$("#page2").addClass("active");
+		  				$('#status_mode_span').text(eval("lang_status_ap_router_mode"));
+		  			} else if (information[info_mode_index] == mode_wds_repeater) {
+		  				$(".nav-list").children('li').eq(2).addClass("active");
+		  				$("#page3").addClass("active");
+		  				$('#status_mode_span').text(eval("lang_status_wds_repeater_mode"));
+		  			} else if (information[info_mode_index] == mode_wds_bridge) {
+		  				$(".nav-list").children('li').eq(3).addClass("active");
+		  				$("#page4").addClass("active");
+		  				$('#status_mode_span').text(eval("lang_status_wds_bridge_mode"));
+		  			} else {
+		  				$(".nav-list").children('li').eq(0).addClass("active");
+		  				$("#page1").addClass("active");
+		  				$('#status_mode_span').text(eval("lang_status_ap_bridge_mode"));
+		  			}
+		  			$('#status_mac_span').html(information[info_mac_index].toUpperCase());
+
+					// static ip for redirect
 					if (information[info_ip_index] != "") {
 						ip_changed = information[info_ip_index];
 					}
 
+					// static
 					if (information[info_ip_index] == "" || information[info_subnet_index] == "" || information[info_gw_index] == "") {
 						// set the ip when static 
 						$('#ap_router_ip_0_input').val(default_ip[0]);
@@ -1112,55 +1275,11 @@
 					    $('#ap_bridge_gw_div').css('display', 'inline-block');
 					}
 
-	  				// switch to current mode
-	  				if (information[info_mode_index] == mode_ap_bridge) {
-	  					$(".nav-list").children('li').eq(0).addClass("active");
-	  					$("#page1").addClass("active");
-	  				} else if (information[info_mode_index] == mode_ap_router) {
-	  					$(".nav-list").children('li').eq(1).addClass("active");
-	  					$("#page2").addClass("active");
-	  				} else if (information[info_mode_index] == mode_wds_repeater) {
-	  					$(".nav-list").children('li').eq(2).addClass("active");
-	  					$("#page3").addClass("active");
-	  				} else if (information[info_mode_index] == mode_wds_bridge) {
-	  					$(".nav-list").children('li').eq(3).addClass("active");
-	  					$("#page4").addClass("active");
-	  				} else {
-	  					$(".nav-list").children('li').eq(0).addClass("active");
-	  					$("#page1").addClass("active");
-	  				}
-
-	  				$('#status_mode_span').html(information[info_mode_index].toUpperCase());
-	  				$('#status_mac_span').html(information[info_mac_index].toUpperCase());
-	  		// 		info_html += "Mode:"+information[info_mode_index]+"  ";
-	  		// 		info_html += "Mac Address:"+information[info_mac_index]+" ";
-					// $('#status_div').html(info_html);
-
 					$('#ap_bridge_ssid_input').val(information[info_ssid_index]);
 					$('#ap_router_ssid_input').val(information[info_ssid_index]);
 
 					$('#ap_bridge_pwd_input').val(information[info_pwd_index]);
 					$('#ap_router_pwd_input').val(information[info_pwd_index]);
-
-					if (information[info_pwd_index] == "") {
-						$('#ap_bridge_radio_non_security').attr('checked', '');
-						$('#ap_bridge_radio_security').removeAttr('checked');
-						
-						$('#ap_router_radio_non_security').attr('checked', '');
-						$('#ap_router_radio_security').removeAttr('checked');
-
-						$("#ap_bridge_pw_div").css("display" , "none");
-						$("#ap_router_pw_div").css("display" , "none");
-					} else {
-						$('#ap_bridge_radio_security').attr('checked', '');
-						$('#ap_bridge_radio_non_security').removeAttr('checked');
-						
-						$('#ap_router_radio_security').attr('checked', '');
-						$('#ap_router_radio_non_security').removeAttr('checked');
-
-						$("#ap_bridge_pw_div").css("display" , "inline-block");
-						$("#ap_router_pw_div").css("display" , "inline-block");
-					}
 
 					if (information[info_ht40_index] == "1") {
 						$('#ap_bridge_radio_ht40').attr('checked', '');
@@ -1585,8 +1704,6 @@
 					}
 				});
 
-
-
 				// router
 				$('#ap_router_ip_0_input').keyup(function() {
 					if (parseInt($(this).val()) >= 100 && parseInt($(this).val()) <= 255) {
@@ -1895,10 +2012,25 @@
 						}
 					}
 				});
+			});
 
-
+			// validation
+			function validation() {
 				// admin login validation
-				$("#admin_modal_form").validate({
+				if (admin_modal_validator != undefined) {
+					admin_modal_validator.resetForm();
+					$("#admin_modal_input").rules("remove");
+					$("#admin_modal_input").rules("add", { 
+        				equalTo: '#admin_modal_confirm_input',
+		              	nonBlank: true,
+        				messages: { 
+            				equalTo: eval("lang_password_not_correct"),
+            				nonBlank: eval("land_invalid_char"),
+        				} 
+    				}); 
+				}
+
+				admin_modal_validator = $("#admin_modal_form").validate({
 		          	rules:{
 		            	admin_modal_input:{
 		              		equalTo: '#admin_modal_confirm_input',
@@ -1907,7 +2039,7 @@
 		        	},
 		        	messages:{
 		          		admin_modal_input:{
-		            		equalTo : "Password is not correct."
+		            		equalTo : eval("lang_password_not_correct")
 		          		},
 		        	},
 			        errorClass: "help-inline",
@@ -1927,7 +2059,43 @@
 		      	});
 
 				// AP Bridge validation
-				$("#ap_bridge_form").validate({
+				if (ap_bridge_validator != undefined) {
+					ap_bridge_validator.resetForm();
+					$("#ap_bridge_ssid_input").rules("remove");
+					$("#ap_bridge_ssid_input").rules("add", { 
+        				required: true,
+		              	minlength: 1,
+		              	nonBlank: true, 
+        				messages: { 
+            				required: eval("lang_enter_ssid"), 
+            				nonBlank: eval("land_invalid_char"),
+        				} 
+    				}); 
+    				$("#ap_bridge_pwd_input").rules("remove");
+					$("#ap_bridge_pwd_input").rules("add", { 
+        				required: true,
+		              	minlength: 8,
+		              	nonBlank: true, 
+        				messages: { 
+            				required: eval("lang_enter_password"),
+		            		minlength: eval("lang_require_eight"),
+		            		nonBlank: eval("land_invalid_char"),
+        				} 
+    				}); 
+    				$("#ap_bridge_max_input").rules("remove");
+					$("#ap_bridge_max_input").rules("add", { 
+        				required: true,
+		              	range: [1, 150],
+		            	nonBlank: true,
+        				messages: { 
+            				required: eval("lang_enter_maximum"),
+		            		range: eval("lang_maximum_range"),
+		            		nonBlank: eval("land_invalid_char"),
+        				} 
+    				}); 
+				}
+
+				ap_bridge_validator = $("#ap_bridge_form").validate({
 		          	rules:{
 		            	ap_bridge_ssid_input:{
 		              		required: true,
@@ -2007,15 +2175,15 @@
 		        	},
 		        	messages:{
 		          		ap_bridge_ssid_input:{
-		            		required: "Please enter the SSID."
+		            		required: eval("lang_enter_ssid"),
 		          		},
 		          		ap_bridge_pwd_input:{
-		            		required: "Please enter the password.",
-		            		minlength: "Required eight characters at least."
+		            		required: eval("lang_enter_password"),
+		            		minlength: eval("lang_require_eight")
 		          		},
 		          		ap_bridge_max_input:{
-		          			required: "Please enter the maximum.",
-		            		range: "The range of the maximum is 1~150.",
+		          			required: eval("lang_enter_maximum"),
+		            		range: eval("lang_maximum_range"),
 		          		}
 		        	},
 			        errorClass: "help-inline",
@@ -2081,9 +2249,44 @@
 			        }
 		      	});
 				
-
 				// AP Router validation
-				$("#ap_router_form").validate({
+				if (ap_router_validator != undefined) {
+					ap_router_validator.resetForm();
+					$("#ap_router_ssid_input").rules("remove");
+					$("#ap_router_ssid_input").rules("add", { 
+        				required: true,
+		              	minlength: 1,
+		              	nonBlank: true, 
+        				messages: { 
+            				required: eval("lang_enter_ssid"), 
+            				nonBlank: eval("land_invalid_char"),
+        				} 
+    				}); 
+    				$("#ap_router_pwd_input").rules("remove");
+					$("#ap_router_pwd_input").rules("add", { 
+        				required: true,
+		              	minlength: 8,
+		              	nonBlank: true, 
+        				messages: { 
+            				required: eval("lang_enter_password"),
+		            		minlength: eval("lang_require_eight"),
+		            		nonBlank: eval("land_invalid_char"),
+        				} 
+    				}); 
+    				$("#ap_router_max_input").rules("remove");
+					$("#ap_router_max_input").rules("add", { 
+        				required: true,
+		              	range: [1, 150],
+		            	nonBlank: true,
+        				messages: { 
+            				required: eval("lang_enter_maximum"),
+		            		range: eval("lang_maximum_range"),
+		            		nonBlank: eval("land_invalid_char"),
+        				} 
+    				}); 
+				}
+
+				ap_router_validator = $("#ap_router_form").validate({
 		          	rules:{
 		            	ap_router_ssid_input:{
 		              		required: true,
@@ -2163,15 +2366,15 @@
 		        	},
 		        	messages:{
 		          		ap_router_ssid_input:{
-		            		required: "Please enter the SSID."
+		            		required: eval("lang_enter_ssid")
 		          		},
 		          		ap_router_pwd_input:{
-		            		required: "Please enter the password.",
-		            		minlength: "Required eight characters at least."
+		            		required: eval("lang_enter_password"),
+		            		minlength: eval("lang_require_eight")
 		          		},
 		          		ap_router_max_input:{
-		          			required: "Please enter the maximum.",
-		            		range: "The range of the maximum is 1~150.",
+		          			required: eval("lang_enter_maximum"),
+		            		range: eval("lang_maximum_range"),
 		          		}
 		        	},
 		        	focusCleanup: false,
@@ -2238,7 +2441,23 @@
 		      	});
 
 				// wds modal validation
-				$("#wds_modal_form").validate({
+				if (wds_modal_validator != undefined) {
+					wds_modal_validator.resetForm();
+
+					$("#password_modal_input").rules("remove");
+					$("#password_modal_input").rules("add", { 
+        				required: true,
+		              	minlength: 8,
+		            	nonBlank: true,
+        				messages: { 
+            				required: eval("lang_enter_password"),
+		            		minlength: eval("lang_require_eight"),
+		            		nonBlank: eval("land_invalid_char"),
+        				} 
+    				}); 
+				}
+
+				wds_modal_validator = $("#wds_modal_form").validate({
 		          	rules:{
 		            	password_modal_input:{
 		              		required: true,
@@ -2248,8 +2467,8 @@
 		        	},
 		        	messages:{
 		          		password_modal_input:{
-		            		required: "Please enter the password.",
-		            		minlength: "Required eight characters at least."
+		            		required: eval("lang_enter_password"),
+		            		minlength: eval("lang_require_eight")
 		          		}
 		        	},
 			        errorClass: "help-inline",
@@ -2269,7 +2488,19 @@
 		      	});
 
 				// admin change validation
-				$("#admin_change_form").validate({
+				if (admin_change_validator != undefined) {
+					admin_change_validator.resetForm();
+
+					$("#admin_change_input").rules("remove");
+					$("#admin_change_input").rules("add", { 
+		            	nonBlank: true,
+        				messages: { 
+		            		nonBlank: eval("land_invalid_char"),
+        				} 
+    				}); 
+				}
+
+				admin_change_validator = $("#admin_change_form").validate({
 		          	rules:{
 		            	admin_change_input:{
 		              		nonBlank: true
@@ -2289,7 +2520,7 @@
 			        	change_admin_click();
 			        }
 		      	});
-			});
+			}
 
 			function ap_bridge_mode_save_onclick() {
 				var ssid    = $("#ap_bridge_ssid_input").val();
@@ -2654,13 +2885,13 @@
 
                 	var signal_msg;
                 	if (int_signal >= signal_strength[0]) {
-				    	signal_msg = signal_strength_msg[0];
+				    	signal_msg = eval("signal_strength_excellent");
 				    } else if (int_signal >= signal_strength[1]) {
-				    	signal_msg = signal_strength_msg[1];
+				    	signal_msg = eval("signal_strength_good");
 				    } else if (int_signal >= signal_strength[2]) {
-				    	signal_msg = signal_strength_msg[2];
+				    	signal_msg = eval("signal_strength_fair");
 				    } else {
-				    	signal_msg = signal_strength_msg[3];
+				    	signal_msg = eval("signal_strength_poor");
 				    }
 
                 	$("#ssid_modal_h3").html($(this).children('td').eq(0).html());
@@ -2698,18 +2929,18 @@
                 			// $('#password_modal_input').attr('disabled', 'disabled');
                 			$('#wep_modal_select').attr('disabled', 'disabled');
                 			// $('#wds_model_connect_button').css('display', 'none');
-                			$('#wds_model_connect_button').html('Reconnect');
+                			$('#wds_model_connect_button').html(eval("wds_model_reconnect_button"));
                 		} else {
                 			// $('#password_modal_input').removeAttr('disabled');
                 			$('#wep_modal_select').removeAttr('disabled');
                 			// $('#wds_model_connect_button').css('display', 'inline');
-                			$('#wds_model_connect_button').html('Connect');
+                			$('#wds_model_connect_button').html(eval("wds_model_connect_button"));
                 		}
                 	} else {
                 		// $('#password_modal_input').removeAttr('disabled');
                 		$('#wep_modal_select').removeAttr('disabled');
                 		// $('#wds_model_connect_button').css('display', 'inline');
-                		$('#wds_model_connect_button').html('Connect');
+                		$('#wds_model_connect_button').html(eval("wds_model_connect_button"));
                 	}
 
                 	$("#wds_modal_div").attr('aria-labelledby', 'wds_repeater_modal');
@@ -2721,13 +2952,13 @@
 
                 	var signal_msg;
                 	if (int_signal >= signal_strength[0]) {
-				    	signal_msg = signal_strength_msg[0];
+				    	signal_msg = eval("signal_strength_excellent");
 				    } else if (int_signal >= signal_strength[1]) {
-				    	signal_msg = signal_strength_msg[1];
+				    	signal_msg = eval("signal_strength_good");
 				    } else if (int_signal >= signal_strength[2]) {
-				    	signal_msg = signal_strength_msg[2];
+				    	signal_msg = eval("signal_strength_fair");
 				    } else {
-				    	signal_msg = signal_strength_msg[3];
+				    	signal_msg = eval("signal_strength_poor");
 				    }
 
                 	$("#ssid_modal_h3").html($(this).children('td').eq(0).html());
@@ -2765,18 +2996,18 @@
                 			// $('#password_modal_input').attr('disabled', 'disabled');
                 			$('#wep_modal_select').attr('disabled', 'disabled');
                 			// $('#wds_model_connect_button').css('display', 'none');
-                			$('#wds_model_connect_button').html('Reconnect');
+                			$('#wds_model_connect_button').html(eval("wds_model_reconnect_button"));
                 		} else {
                 			// $('#password_modal_input').removeAttr('disabled');
                 			$('#wep_modal_select').removeAttr('disabled');
                 			// $('#wds_model_connect_button').css('display', 'inline');
-                			$('#wds_model_connect_button').html('Connect');
+                			$('#wds_model_connect_button').html(eval("wds_model_connect_button"));
                 		}
                 	} else {
                 		// $('#password_modal_input').removeAttr('disabled');
                 		$('#wep_modal_select').removeAttr('disabled');
                 		// $('#wds_model_connect_button').css('display', 'inline');
-                		$('#wds_model_connect_button').html('Connect');
+                		$('#wds_model_connect_button').html(eval("wds_model_connect_button"));
                 	}
 
                 	$("#wds_modal_div").attr('aria-labelledby', 'wds_bridge_modal');
@@ -2846,14 +3077,14 @@
 				if (index == reboot_click_index) {
 					// reboot
 					$('#confirm_modal_div').attr('aria-labelledby', 'rebootModalLabel');
-					$('#confirm_modal_div').find('h3').html('Reboot');
-					$('#confirm_modal_div').find('h5').html('Do you want to reboot TR1?');
+					$('#confirm_modal_div').find('h3').html(eval("lang_dialog_reboot_title"));
+					$('#confirm_modal_div').find('h5').html(eval("lang_dialog_reboot_msg"));
 					$('#confirm_modal_button').attr('onclick', 'reboot_click()');
 				} else {
 					// reset
 					$('#confirm_modal_div').attr('aria-labelledby', 'resetModalLabel');
-					$('#confirm_modal_div').find('h3').html('Reset');
-					$('#confirm_modal_div').find('h5').html('Do you want to reset TR1?');
+					$('#confirm_modal_div').find('h3').html(eval("lang_dialog_reset_title"));
+					$('#confirm_modal_div').find('h5').html(eval("lang_dialog_reset_msg"));
 					$('#confirm_modal_button').attr('onclick', 'reset_click()');
 				}
 
@@ -2889,7 +3120,7 @@
 				var wds_mode     = 1;
 				var admin_mode   = 2;
 				$('#count_down_modal_div').modal('show');
-				$('#count_down_modal_div').find('p').html('Please wait '+total_time+' seconds, and then try to refresh the page.');
+				$('#count_down_modal_div').find('p').html(eval("lang_progress_wait")+total_time+eval("lang_progress_try_refresh"));
 				setTimeout(function() {
 					var counter_time = 0;
 					var interval = setInterval(function(){
@@ -2907,7 +3138,7 @@
 									$.get("../cgi-bin/tr1.cgi?cgi=6", function(data) {
 										clearInterval(interval);
 										$('#count_down_bar_div').css('width', '100%');
-										$('#count_down_bar_div').text((total_time)+'s');
+										$('#count_down_bar_div').text((total_time)+eval("lang_progress_second"));
 										$('#count_down_button').removeAttr('disabled');
 										$('#count_down_modal_div').modal('hide');
 										close_process_dialog_click();
@@ -2921,7 +3152,7 @@
 											// successed
 											clearInterval(interval);
 											$('#count_down_bar_div').css('width', '100%');
-											$('#count_down_bar_div').text((total_time)+'s');
+											$('#count_down_bar_div').text((total_time)+eval("lang_progress_second"));
 											$('#count_down_button').removeAttr('disabled');
 											$('#count_down_modal_div').modal('hide');
 											close_process_dialog_click();
@@ -2932,11 +3163,19 @@
 									break;
 
 									case admin_mode:
+									$.get("../cgi-bin/tr1.cgi?cgi=6", function(data) {
+										clearInterval(interval);
+										$('#count_down_bar_div').css('width', '100%');
+										$('#count_down_bar_div').text((total_time)+eval("lang_progress_second"));
+										$('#count_down_button').removeAttr('disabled');
+										$('#count_down_modal_div').modal('hide');
+										close_process_dialog_click();
+									});
 									break;
 								}
 							}
 						}
-						$('#count_down_bar_div').text((counter_time)+'s');
+						$('#count_down_bar_div').text((counter_time)+eval("lang_progress_second"));
 					}, 1000);
 				}, 500);
 			}
@@ -2949,46 +3188,40 @@
 				var ip_conflict = 1;
 				var subnet_error = 2;
 
-				var ip_error_head = "IP error!";
-				var subnet_error_head = "Subnet error!";
-  				var ip_conflict_body = "You can not assign the static IP which is 10.5.1.X!";
-  				var ip_error_body = "Please check your ip.";
-  				var subnet_error_body = "Please check your subnet mask.";
-
 				if (isShow) {
 					if (alertType == alert_bridge) {
 						switch(error) {
 							case ip_error:
-							$('#alert_bridge_head_h4').html(ip_error_head);
+							$('#alert_bridge_head_h4').html(eval("lang_ip_error_head"));
 							$('#alert_bridge_body_p').html(ip_error_body);
 							break;
 
 							case ip_conflict:
-							$('#alert_bridge_head_h4').html(ip_error_head);
-							$('#alert_bridge_body_p').html(ip_conflict_body);
+							$('#alert_bridge_head_h4').html(eval("lang_ip_error_head"));
+							$('#alert_bridge_body_p').html(eval("lang_ip_conflict_body"));
 							break;
 
 							case subnet_error:
-							$('#alert_bridge_head_h4').html(subnet_error_head);
-							$('#alert_bridge_body_p').html(subnet_error_body);
+							$('#alert_bridge_head_h4').html(eval("lang_subnet_error_head"));
+							$('#alert_bridge_body_p').html(eval("lang_subnet_error_body"));
 							break;
 						}
 						$('#alert_bridge_div').css('display', 'inline-block');
 					} else {
 						switch(error) {
 							case ip_error:
-							$('#alert_router_head_h4').html(ip_error_head);
-							$('#alert_router_body_p').html(ip_error_body);
+							$('#alert_router_head_h4').html(eval("lang_ip_error_head"));
+							$('#alert_router_body_p').html(eval("lang_ip_error_body"));
 							break;
 
 							case ip_conflict:
-							$('#alert_router_head_h4').html(ip_error_head);
-							$('#alert_router_body_p').html(ip_conflict_body);
+							$('#alert_router_head_h4').html(eval("lang_ip_error_head"));
+							$('#alert_router_body_p').html(eval("lang_ip_conflict_body"));
 							break;
 
 							case subnet_error:
-							$('#alert_router_head_h4').html(subnet_error_head);
-							$('#alert_router_body_p').html(subnet_error_body);
+							$('#alert_router_head_h4').html(eval("lang_subnet_error_head"));
+							$('#alert_router_body_p').html(eval("lang_subnet_error_body"));
 							break;
 						}
 						$('#alert_router_div').css('display', 'inline-block');
