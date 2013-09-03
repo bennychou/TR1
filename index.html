@@ -93,7 +93,6 @@
 			#status_div {
 				background-color: #808285;
 				height: 30px;
-				text-align: right;
 			}
 
 			#menu_div {
@@ -389,8 +388,16 @@
 			</div>
 
 			<div id="status_div">
-				<strong style="color:white" id="lang_status_mode_strong">Mode:<span id="status_mode_span" class="label"></span></strong>
-				<strong style="color:white" id="lang_status_mac_strong">Mac Address:<span id="status_mac_span" class="label"></span></strong>
+				<div style="float:left;line-height:28px;">
+					<img src="img/upload.png" style="height:25px;"/>
+					<strong style="color:white" id="status_upload_strong">0.0 Kbps</strong>
+					<img src="img/download.png" style="height:25px;"/>
+					<strong style="color:white" id="status_download_strong">0.0 Kbps</strong>
+				</div>
+				<div style="float:right;line-height:28px;">
+					<strong style="color:white" id="lang_status_mode_strong">Mode:<span id="status_mode_span" class="label"></span></strong>
+					<strong style="color:white" id="lang_status_mac_strong">Mac Address:<span id="status_mac_span" class="label"></span></strong>
+				</div>
 			</div>
 			
 			<div id="content_div">
