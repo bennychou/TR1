@@ -1,7 +1,6 @@
 lang_option_1 = "English";
-lang_option_2 = "日本語";
-lang_option_3 = "繁體中文";
-lang_option_4 = "简体中文";
+lang_option_2 = "繁體中文";
+lang_option_3 = "简体中文";
 
 // admin modal
 lang_admin_modal_h3 = "登入";

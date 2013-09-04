@@ -972,20 +972,20 @@
 
 				// security
 				if (information[info_pwd_index] == "") {
-					$('#ap_bridge_radio_non_security').attr('checked', '');
-					$('#ap_bridge_radio_security').removeAttr('checked');
+					$('#ap_bridge_radio_non_security').prop('checked', true);
+					$('#ap_bridge_radio_security').prop('checked', false);
 						
-					$('#ap_router_radio_non_security').attr('checked', '');
-					$('#ap_router_radio_security').removeAttr('checked');
+					$('#ap_router_radio_non_security').prop('checked', true);
+					$('#ap_router_radio_security').prop('checked', false);
 
 					$("#ap_bridge_pw_div").css("display" , "none");
 					$("#ap_router_pw_div").css("display" , "none");
 				} else {
-					$('#ap_bridge_radio_security').attr('checked', '');
-					$('#ap_bridge_radio_non_security').removeAttr('checked');
+					$('#ap_bridge_radio_security').prop('checked', true);
+					$('#ap_bridge_radio_non_security').prop('checked', false);
 						
-					$('#ap_router_radio_security').attr('checked', '');
-					$('#ap_router_radio_non_security').removeAttr('checked');
+					$('#ap_router_radio_security').prop('checked', true);
+					$('#ap_router_radio_non_security').prop('checked', false);
 
 					$("#ap_bridge_pw_div").css("display" , "inline-block");
 					$("#ap_router_pw_div").css("display" , "inline-block");
@@ -1139,8 +1139,13 @@
 
 						if ($(this).val() == "zh-TW") {
 							$(".form-horizontal .custom_control-label").css('width', '73px');
+							$("#lang_reset_button").css('font-size', '13px');
+						} else if ($(this).val() == "zh-CN") {
+							$(".form-horizontal .custom_control-label").css('width', '73px');
+							$("#lang_reset_button").css('font-size', '13px');
 						} else {
 							$(".form-horizontal .custom_control-label").css('width', '0px');
+							$("#lang_reset_button").removeAttr('style');
 						}
 
 						change_language();
@@ -1149,10 +1154,15 @@
 					$("#change_language_select").val($.localise.defaultLanguage);
 					$.localise('js/lang/greeting', {loadBase: true, language: $.localise.defaultLanguage});
 
-					if ($.localise.defaultLanguage == "zh-TW") {
+					if ($("#change_language_select").val() == "zh-TW") {
 						$(".form-horizontal .custom_control-label").css('width', '73px');
+						$("#lang_reset_button").css('font-size', '13px');
+					} else if ($("#change_language_select").val() == "zh-CN") {
+						$(".form-horizontal .custom_control-label").css('width', '73px');
+						$("#lang_reset_button").css('font-size', '13px');
 					} else {
 						$(".form-horizontal .custom_control-label").css('width', '0px');
+						$("#lang_reset_button").removeAttr('style');
 					}
 					change_language();
 
