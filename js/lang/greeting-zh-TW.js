@@ -137,6 +137,6 @@ land_invalid_char = "錯誤字元！";
 // alert
 lang_ip_error_head = "IP 錯誤";
 lang_ip_error_body = "請檢查您的IP";
-lang_ip_conflict_body = "您設定的 IP 不能與 10.5.1.1 同網段";
+lang_ip_conflict_body = "您設定的 IP 不能與 192.168.16.1 同網段";
 lang_subnet_error_head = "子網域遮罩錯誤";
 lang_subnet_error_body = "請檢查您的子網域遮罩";

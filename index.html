@@ -859,7 +859,7 @@
 			var mode_wds_repeater = "wds-repeater";
 			var mode_wds_bridge   = "wds-bridge";
 
-			var default_ip     = ['10', '5', '1', '1'];
+			var default_ip     = ['192', '168', '16', '254'];
 			var default_subnet = ['255', '255', '255', '0'];
 			var default_gw     = ['0', '0', '0', '0'];
 
@@ -1096,6 +1096,24 @@
 				var spinner_ap_bridge = new Spinner(opts).spin(document.getElementById('ap_bridge_spin_div'));
 				var spinner_ap_router = new Spinner(opts).spin(document.getElementById('ap_router_spin_div'));
 				var spinner_admin = new Spinner(opts).spin(document.getElementById('admin_spin_div'));
+
+				// throughput
+				var interval_tp = setInterval(function(){
+					$.get("../.tp", function(data) {
+						console.log('Request throughput', data);
+						var throughput_arr = data.split(",");
+
+						if (throughput_arr[2] != undefined) {
+							var upload_value = parseFloat(throughput_arr[2]) / 1000;
+							$('#status_upload_strong').html(upload_value+" Kbps");
+						}
+
+						if (throughput_arr[3] != undefined) {
+							var download_value = parseFloat(throughput_arr[3]) / 1000;
+							$('#status_download_strong').html(download_value+" Kbps");
+						}
+					});
+				}, 10000);
 
 				// information
 				information = [];
@@ -2245,7 +2263,7 @@
 				        		show_alert(true, 0, 0);
 				        	} else if (validateNetMask(subnet)) {
 				        		show_alert(true, 2, 0);
-				        	} else if (ip.indexOf("10.5.1") >= 0) {
+				        	} else if (ip.indexOf("192.168.16") >= 0) {
 				        		show_alert(true, 1, 0);
 				        	} else {
 				        		ap_bridge_mode_save_onclick();
@@ -2436,7 +2454,7 @@
 				        		show_alert(true, 0, 1);
 				        	} else if (validateNetMask(subnet)) {
 				        		show_alert(true, 2, 1);
-				        	} else if (ip.indexOf("10.5.1") >= 0) {
+				        	} else if (ip.indexOf("192.168.16") >= 0) {
 				        		show_alert(true, 1, 1);
 				        	} else {
 				        		ap_router_mode_save_onclick();
@@ -3245,9 +3263,9 @@
 			function close_process_dialog_click() {
 				// redirect to home page
 				if (ip_changed == "0.0.0.0")
-					window.location = "/tr";
+					window.location = "/";
 				else
-					window.location = "http://"+ip_changed+"/tr";
+					window.location = "http://"+ip_changed+"/";
 			}
 		</script>
 		<script type="text/javascript">

@@ -136,6 +136,6 @@ land_invalid_char = "There is an invalid character!";
 // alert
 lang_ip_error_head = "IP error!";
 lang_ip_error_body = "Please check your ip.";
-lang_ip_conflict_body = "You can not assign the static IP which is 10.5.1.X!";
+lang_ip_conflict_body = "You can not assign the static IP which is 192.168.16.X!";
 lang_subnet_error_head = "Subnet error!";
 lang_subnet_error_body = "Please check your subnet mask.";
