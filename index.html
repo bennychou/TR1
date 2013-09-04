@@ -1105,12 +1105,12 @@
 
 						if (throughput_arr[2] != undefined) {
 							var upload_value = parseFloat(throughput_arr[2]) / 1000;
-							$('#status_upload_strong').html(upload_value+" Kbps");
+							$('#status_upload_strong').html(upload_value.toFixed(1)+" Kbps");
 						}
 
 						if (throughput_arr[3] != undefined) {
 							var download_value = parseFloat(throughput_arr[3]) / 1000;
-							$('#status_download_strong').html(download_value+" Kbps");
+							$('#status_download_strong').html(download_value.toFixed(1)+" Kbps");
 						}
 					});
 				}, 10000);
