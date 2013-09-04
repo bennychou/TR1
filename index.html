@@ -272,7 +272,7 @@
 			<form class="form-horizontal" id="admin_modal_form" method='post'>
 				<div class="modal-body control-group">
 					<div class="control-group">
-  						<label class="control-label" for="admin_modal_input" id="lang_admin_modal_label">Admin's Password</label>
+  						<label class="control-label" for="admin_modal_input" id="lang_admin_modal_label">Password</label>
   						<div class="controls">
   							<input type="password" id="admin_modal_input" name="admin_modal_input">
   							<input type="password" id="admin_modal_confirm_input" name="admin_modal_confirm_input" style="display:none;">
@@ -346,7 +346,7 @@
   					</div>
   					<!-- wep key -->
   					<div class="control-group" id="wep_modal_div" style="display:none">
-  						<label class="control-label" for="wep_modal_select" id="lang_wds_modal_wep_label">Wep Key</label>
+  						<label class="control-label" for="wep_modal_select" id="lang_wds_modal_wep_label">WEP Key</label>
   						<div class="controls">
   							<select id="wep_modal_select">
   								<option>1</option>
@@ -368,7 +368,7 @@
 		<!-- progress dialog -->
 		<div id="count_down_modal_div" class="modal hide fade" role="dialog" aria-labelledby="countModalLabel" aria-hidden="false" data-backdrop="static">
   			<div class="modal-header">
-    			<h3 id="lang_count_down_modal_h3">Processing...</h3>
+    			<h3 id="lang_count_down_modal_h3">Progress...</h3>
   			</div>
 	  		<div class="modal-body">
 	    		<p></p>
@@ -411,28 +411,27 @@
 
 						<ul class="nav nav-list">
 							<li>
-								<a href="#page1" data-toggle="tab" id="lang_nav_ap_bridge_a">AP Bridge<img src="img/arrow.png" class="menu_arrow"/></a>
+								<a href="#page1" data-toggle="tab" id="lang_nav_ap_bridge_a">AP Mode<img src="img/arrow.png" class="menu_arrow"/></a>
 							</li>
 							<li>
-								<a href="#page2" data-toggle="tab" id="lang_nav_ap_router_a">AP Router<img src="img/arrow.png" class="menu_arrow"/></a>
+								<a href="#page2" data-toggle="tab" id="lang_nav_ap_router_a">Router Mode<img src="img/arrow.png" class="menu_arrow"/></a>
 							</li>
 							<li>
-								<a href="#page3" data-toggle="tab" id="lang_nav_wds_repeater_a">WDS Repeater<img src="img/arrow.png" class="menu_arrow"/></a>
+								<a href="#page3" data-toggle="tab" id="lang_nav_wds_repeater_a">Repeater Mode<img src="img/arrow.png" class="menu_arrow"/></a>
 							</li>
 							<li>
-								<a href="#page4" data-toggle="tab" id="lang_nav_wds_bridge_a">WDS Bridge<img src="img/arrow.png" class="menu_arrow"/></a>
+								<a href="#page4" data-toggle="tab" id="lang_nav_wds_bridge_a">Client Mode<img src="img/arrow.png" class="menu_arrow"/></a>
 							</li>
 							<li class="divider"></li>
 							<li>
 								<a href="#page5" data-toggle="tab" id="lang_nav_admin_a">Admin<img src="img/arrow.png" class="menu_arrow"/></a>
 							</li>
-							<li>
+							<li style="display:none;">
 								<a href="#page6" data-toggle="tab" id="lang_nav_help_a">Help<img src="img/arrow.png" class="menu_arrow"/></a>
 							</li>
 						</ul>
 						<select id="change_language_select">
 						  	<option value="en"></option>
-						  	<option value="jp"></option>
 						  	<option value="zh-TW"></option>
 						  	<option value="zh-CN"></option>
 						</select>
@@ -442,7 +441,7 @@
 
 							<!-- AP Bridge -->
 							<div class="tab-pane fade in" id="page1">
-								<h4 style="float:left;padding-right: 20px;" id="lang_page_ap_bridge_h4">AP Bridge Mode</h4>
+								<h4 style="float:left;padding-right: 20px;" id="lang_page_ap_bridge_h4">AP Mode</h4>
 								<img src="img/ap-bridge.png" />
 								<hr style="clear:both;">
 								<div id="ap_bridge_spin_div"></div>
@@ -565,7 +564,7 @@
 
 							<!-- AP Router -->
 							<div class="tab-pane fade in" id="page2">
-								<h4 style="float:left;padding-right: 20px;" id="lang_page_ap_router_h4">AP Router</h4>
+								<h4 style="float:left;padding-right: 20px;" id="lang_page_ap_router_h4">Router Mode</h4>
 								<img src="img/ap-router.png" />
 								<hr style="clear:both;">
 								<div id="ap_router_spin_div"></div>
@@ -687,7 +686,7 @@
 
 							<!-- WDS Repeater -->
 							<div class="tab-pane fade in" id="page3">
-								<h4 style="float:left;padding-right: 20px;" id="lang_page_wds_repeater_h4">WDS Repeater</h4>
+								<h4 style="float:left;padding-right: 20px;" id="lang_page_wds_repeater_h4">Repeater Mode</h4>
 								<img src="img/wds-repeater.png" style="float:left"/>
 								<div class="refresh_btn_div">
 									<input class="refresh_btn_input" type="image" img src="img/refresh.png" onclick="wds_mode_refresh_click()">
@@ -723,7 +722,7 @@
 			
 							<!-- WDS Bridge -->
 							<div class="tab-pane fade in" id="page4">
-								<h4 style="float:left;padding-right: 20px;" id="lang_page_wds_bridge_h4">WDS Bridge</h4>
+								<h4 style="float:left;padding-right: 20px;" id="lang_page_wds_bridge_h4">Client Mode</h4>
 								<img src="img/wds-bridge.png" style="float:left;"/>
 								<div class="refresh_btn_div">
 									<input class="refresh_btn_input" type="image" img src="img/refresh.png" onclick="wds_mode_refresh_click()">
@@ -765,7 +764,7 @@
 								<form id="admin_change_form" class="form-horizontal" method='post'>
 									<div class="admin_change_div" style="display:none;">
 	  									<div class="control-group">
-	  										<label class="control-label custom_admin_control-label" for="admin_change_input" id="lang_admin_password_label">Admin's Password</label>
+	  										<label class="control-label custom_admin_control-label" for="admin_change_input" id="lang_admin_password_label">Password</label>
 	  										<div class="controls custom_admin_controls">
 	  											<input type="text" id="admin_change_input" name="admin_change_input">
 	  										</div>
@@ -2943,7 +2942,8 @@
                 	}
 
                 	if ($(this).children('td').eq(1).html() == 'WEP') {
-                		$('#wep_modal_div').css('display', 'inline-block');
+                		// $('#wep_modal_div').css('display', 'inline-block');
+                		$('#wep_modal_div').css('display', 'none');
                 	} else {
                 		$('#wep_modal_div').css('display', 'none');
                 	}
@@ -3010,7 +3010,8 @@
                 	}
 
                 	if ($(this).children('td').eq(1).html() == 'WEP') {
-                		$('#wep_modal_div').css('display', 'inline');
+                		// $('#wep_modal_div').css('display', 'inline');
+                		$('#wep_modal_div').css('display', 'none');
                 	} else {
                 		$('#wep_modal_div').css('display', 'none');
                 	}
