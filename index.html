@@ -29,7 +29,7 @@
 					margin-left: 90px;
 				}
 
-				.form-horizontal .control-label {
+				.form-horizontal .modal-control-label {
 					width: 0px;
 				}
 			}
@@ -43,7 +43,7 @@
 					margin-left: 70px;
 				}
 
-				.form-horizontal .control-label {
+				.form-horizontal .modal-control-label {
 					width: 0px;
 				}
 
@@ -62,7 +62,7 @@
 					margin-left: 50px;
 				}
 
-				.form-horizontal .control-label {
+				.form-horizontal .modal-control-label {
 					width: 0px;
 				}
 
@@ -272,7 +272,7 @@
 			<form class="form-horizontal" id="admin_modal_form" method='post'>
 				<div class="modal-body control-group">
 					<div class="control-group">
-  						<label class="control-label" for="admin_modal_input" id="lang_admin_modal_label">Password</label>
+  						<label class="control-label modal-control-label" for="admin_modal_input" id="lang_admin_modal_label">Password</label>
   						<div class="controls">
   							<input type="password" id="admin_modal_input" name="admin_modal_input">
   							<input type="password" id="admin_modal_confirm_input" name="admin_modal_confirm_input" style="display:none;">
@@ -311,42 +311,42 @@
   				<div class="modal-body">
   					<!-- signal -->
   					<div class="control-group">
-  						<label class="control-label" for="signal_modal_input" id="lang_wds_modal_signal_label">Signal</label>
+  						<label class="control-label modal-control-label" for="signal_modal_input" id="lang_wds_modal_signal_label">Signal</label>
   						<div class="controls">
   							<input id="signal_modal_input" disabled="disabled" type="text">
   						</div>
   					</div>
   					<!-- security -->
   					<div class="control-group">
-  						<label class="control-label" for="security_modal_input" id="lang_wds_modal_security_label">Security</label>
+  						<label class="control-label modal-control-label" for="security_modal_input" id="lang_wds_modal_security_label">Security</label>
   						<div class="controls">
   							<input id="security_modal_input" disabled="disabled" type="text">
   						</div>
   					</div>
   					<!-- mac address -->
   					<div class="control-group">
-  						<label class="control-label" for="mac_modal_input" id="lang_wds_modal_mac_label">Mac Address</label>
+  						<label class="control-label modal-control-label" for="mac_modal_input" id="lang_wds_modal_mac_label">Mac Address</label>
   						<div class="controls">
   							<input id="mac_modal_input" disabled="disabled" type="text">
   						</div>
   					</div>
   					<!-- channel -->
   					<div class="control-group">
-  						<label class="control-label" for="channel_modal_input" id="lang_wds_modal_channel_label">Channel</label>
+  						<label class="control-label modal-control-label" for="channel_modal_input" id="lang_wds_modal_channel_label">Channel</label>
   						<div class="controls">
   							<input id="channel_modal_input" disabled="disabled" type="text">
   						</div>
   					</div>
   					<!-- password -->
   					<div class="control-group" id="password_modal_div">
-  						<label class="control-label" for="password_modal_input" id="lang_wds_modal_password_label">Password</label>
+  						<label class="control-label modal-control-label" for="password_modal_input" id="lang_wds_modal_password_label">Password</label>
   						<div class="controls">
   							<input type="text" id="password_modal_input" name="password_modal_input">
   						</div>
   					</div>
   					<!-- wep key -->
   					<div class="control-group" id="wep_modal_div" style="display:none">
-  						<label class="control-label" for="wep_modal_select" id="lang_wds_modal_wep_label">WEP Key</label>
+  						<label class="control-label modal-control-label" for="wep_modal_select" id="lang_wds_modal_wep_label">WEP Key</label>
   						<div class="controls">
   							<select id="wep_modal_select">
   								<option>1</option>
@@ -1114,6 +1114,40 @@
 					});
 				}, 10000);
 
+				$(window).resize(function() {
+					if ($("#change_language_select").val() == "zh-TW") {
+						if ($(window).width() > 480) {
+								$('.form-horizontal .modal-control-label').css('width', '160px');
+						} else {
+							if ($(window).width() <= 480) {
+								$('.form-horizontal .modal-control-label').css('width', '60px');
+							} 
+							if ($(window).width() <= 360) {
+								$('.form-horizontal .modal-control-label').css('width', '60px');
+							}
+							if ($(window).width() <= 240) {
+								$('.form-horizontal .modal-control-label').css('width', '40px');
+							}
+						}
+					} else if ($("#change_language_select").val() == "zh-CN") {
+						if ($(window).width() > 480) {
+								$('.form-horizontal .modal-control-label').css('width', '160px');
+						} else {
+							if ($(window).width() <= 480) {
+								$('.form-horizontal .modal-control-label').css('width', '60px');
+							} 
+							if ($(window).width() <= 360) {
+								$('.form-horizontal .modal-control-label').css('width', '60px');
+							}
+							if ($(window).width() <= 240) {
+								$('.form-horizontal .modal-control-label').css('width', '40px');
+							}
+						}
+					} else {
+						$('.form-horizontal .modal-control-label').css('width', '160px');
+					}
+				});
+
 				// information
 				information = [];
 				$.get("../cgi-bin/tr1.cgi?cgi=6", function(data) {
@@ -1140,12 +1174,42 @@
 						if ($(this).val() == "zh-TW") {
 							$(".form-horizontal .custom_control-label").css('width', '73px');
 							$("#lang_reset_button").css('font-size', '13px');
+
+							if ($(window).width() > 480) {
+								$('.form-horizontal .modal-control-label').css('width', '160px');
+							} else {
+								if ($(window).width() <= 480) {
+									$('.form-horizontal .modal-control-label').css('width', '60px');
+								} 
+								if ($(window).width() <= 360) {
+									$('.form-horizontal .modal-control-label').css('width', '60px');
+								}
+								if ($(window).width() <= 240) {
+									$('.form-horizontal .modal-control-label').css('width', '40px');
+								}
+							}
 						} else if ($(this).val() == "zh-CN") {
 							$(".form-horizontal .custom_control-label").css('width', '73px');
 							$("#lang_reset_button").css('font-size', '13px');
+
+							if ($(window).width() > 480) {
+								$('.form-horizontal .modal-control-label').css('width', '160px');
+							} else {
+								if ($(window).width() <= 480) {
+									$('.form-horizontal .modal-control-label').css('width', '60px');
+								} 
+								if ($(window).width() <= 360) {
+									$('.form-horizontal .modal-control-label').css('width', '60px');
+								}
+								if ($(window).width() <= 240) {
+									$('.form-horizontal .modal-control-label').css('width', '40px');
+								}
+							}
 						} else {
 							$(".form-horizontal .custom_control-label").css('width', '0px');
 							$("#lang_reset_button").removeAttr('style');
+
+							$('.form-horizontal .modal-control-label').css('width', '160px');
 						}
 
 						change_language();
@@ -1157,12 +1221,42 @@
 					if ($("#change_language_select").val() == "zh-TW") {
 						$(".form-horizontal .custom_control-label").css('width', '73px');
 						$("#lang_reset_button").css('font-size', '13px');
+
+						if ($(window).width() > 480) {
+								$('.form-horizontal .modal-control-label').css('width', '160px');
+						} else {
+							if ($(window).width() <= 480) {
+								$('.form-horizontal .modal-control-label').css('width', '60px');
+							} 
+							if ($(window).width() <= 360) {
+								$('.form-horizontal .modal-control-label').css('width', '60px');
+							}
+							if ($(window).width() <= 240) {
+								$('.form-horizontal .modal-control-label').css('width', '40px');
+							}
+						}
 					} else if ($("#change_language_select").val() == "zh-CN") {
 						$(".form-horizontal .custom_control-label").css('width', '73px');
 						$("#lang_reset_button").css('font-size', '13px');
+
+						if ($(window).width() > 480) {
+								$('.form-horizontal .modal-control-label').css('width', '160px');
+						} else {
+							if ($(window).width() <= 480) {
+								$('.form-horizontal .modal-control-label').css('width', '60px');
+							} 
+							if ($(window).width() <= 360) {
+								$('.form-horizontal .modal-control-label').css('width', '60px');
+							}
+							if ($(window).width() <= 240) {
+								$('.form-horizontal .modal-control-label').css('width', '40px');
+							}
+						}
 					} else {
 						$(".form-horizontal .custom_control-label").css('width', '0px');
 						$("#lang_reset_button").removeAttr('style');
+
+						$('.form-horizontal .modal-control-label').css('width', '160x');
 					}
 					change_language();
 
