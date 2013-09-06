@@ -20,6 +20,7 @@ lang_wds_modal_password_label = "密码";
 lang_wds_modal_wep_label = "WEP 密钥";
 wds_model_cancel_button = "取消";
 wds_model_connect_button = "联机";
+wds_model_reconnect_button = "重新联机";
 
 // progerss modal
 lang_count_down_modal_h3 = "进行中...";
