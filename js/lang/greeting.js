@@ -1,6 +1,7 @@
 lang_option_1 = "English";
 lang_option_2 = "繁體中文";
 lang_option_3 = "简体中文";
+lang_option_3 = "日本語";
 
 // admin modal
 lang_admin_modal_h3 = "Login";
@@ -20,6 +21,7 @@ lang_wds_modal_password_label = "Password";
 lang_wds_modal_wep_label = "WEP Key";
 wds_model_cancel_button = "Cancel";
 wds_model_connect_button = "Connect";
+wds_model_reconnect_button = "Reconnect";
 
 // progerss modal
 lang_count_down_modal_h3 = "Progress...";
