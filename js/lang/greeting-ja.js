@@ -1,7 +1,7 @@
 lang_option_1 = "English";
 lang_option_2 = "繁體中文";
 lang_option_3 = "简体中文";
-lang_option_3 = "日本語";
+lang_option_4 = "日本語";
 
 // admin modal
 lang_admin_modal_h3 = "ログイン";
@@ -116,7 +116,7 @@ lang_dialog_reboot_msg = "R101 を再起動しますか？";
 
 // reset dialog
 lang_dialog_reset_title = "リセット";
-lang_dialog_reset_msg = "R101をリセットしますか？";
+lang_dialog_reset_msg = "R101 をリセットしますか？";
 
 // progress dialog
 lang_progress_wait = "お待ちください ";

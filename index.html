@@ -172,7 +172,7 @@
 			.nav-list > .active > a > .menu_arrow {
 				display: inline;
 				position: absolute;
-				left: 132px;
+				left: 150px;
 				margin-top: 5px;
 			}
 
@@ -434,6 +434,7 @@
 						  	<option value="en"></option>
 						  	<option value="zh-TW"></option>
 						  	<option value="zh-CN"></option>
+						  	<option value="ja"></option>
 						</select>
 					</div>
 					<div class="span8" id="content" style="width:72%;">
@@ -1143,6 +1144,20 @@
 								$('.form-horizontal .modal-control-label').css('width', '40px');
 							}
 						}
+					} else if ($("#change_language_select").val() == "ja") {
+						if ($(window).width() > 480) {
+								$('.form-horizontal .modal-control-label').css('width', '160px');
+						} else {
+							if ($(window).width() <= 480) {
+								$('.form-horizontal .modal-control-label').css('width', '60px');
+							} 
+							if ($(window).width() <= 360) {
+								$('.form-horizontal .modal-control-label').css('width', '60px');
+							}
+							if ($(window).width() <= 240) {
+								$('.form-horizontal .modal-control-label').css('width', '40px');
+							}
+						}
 					} else {
 						$('.form-horizontal .modal-control-label').css('width', '160px');
 					}
@@ -1205,6 +1220,23 @@
 									$('.form-horizontal .modal-control-label').css('width', '40px');
 								}
 							}
+						} else if ($(this).val() == "ja") {
+							$(".form-horizontal .custom_control-label").css('width', '87px');
+							$("#lang_reset_button").css('font-size', '13px');
+
+							if ($(window).width() > 480) {
+								$('.form-horizontal .modal-control-label').css('width', '160px');
+							} else {
+								if ($(window).width() <= 480) {
+									$('.form-horizontal .modal-control-label').css('width', '60px');
+								} 
+								if ($(window).width() <= 360) {
+									$('.form-horizontal .modal-control-label').css('width', '60px');
+								}
+								if ($(window).width() <= 240) {
+									$('.form-horizontal .modal-control-label').css('width', '40px');
+								}
+							}
 						} else {
 							$(".form-horizontal .custom_control-label").css('width', '0px');
 							$("#lang_reset_button").removeAttr('style');
@@ -1237,6 +1269,23 @@
 						}
 					} else if ($("#change_language_select").val() == "zh-CN") {
 						$(".form-horizontal .custom_control-label").css('width', '73px');
+						$("#lang_reset_button").css('font-size', '13px');
+
+						if ($(window).width() > 480) {
+								$('.form-horizontal .modal-control-label').css('width', '160px');
+						} else {
+							if ($(window).width() <= 480) {
+								$('.form-horizontal .modal-control-label').css('width', '60px');
+							} 
+							if ($(window).width() <= 360) {
+								$('.form-horizontal .modal-control-label').css('width', '60px');
+							}
+							if ($(window).width() <= 240) {
+								$('.form-horizontal .modal-control-label').css('width', '40px');
+							}
+						}
+					} else if ($("#change_language_select").val() == "ja") {
+						$(".form-horizontal .custom_control-label").css('width', '87px');
 						$("#lang_reset_button").css('font-size', '13px');
 
 						if ($(window).width() > 480) {
