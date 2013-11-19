@@ -41,7 +41,7 @@ lang_nav_ap_router_a = "路由模式<img src=\"img/arrow.png\" class=\"menu_arro
 lang_nav_wds_repeater_a = "中繼模式<img src=\"img/arrow.png\" class=\"menu_arrow\"/>";
 lang_nav_wds_bridge_a = "客戶端模式<img src=\"img/arrow.png\" class=\"menu_arrow\"/>";
 lang_nav_admin_a = "管理者<img src=\"img/arrow.png\" class=\"menu_arrow\"/>";
-lang_nav_help_a = "幫助<img src=\"img/arrow.png\" class=\"menu_arrow\"/>";
+lang_nav_firmware_a = "韌體升級<img src=\"img/arrow.png\" class=\"menu_arrow\"/>";
 
 // ap bridge mode page
 lang_page_ap_bridge_h4 = "AP 模式";
@@ -92,6 +92,13 @@ scan_list_wds_bridge_sec_th = "安全";
 scan_list_wds_bridge_mac_th = "Mac 位址";
 scan_list_wds_bridge_channel_th = "頻道";
 scan_list_wds_bridge_signal_th = "訊號";
+
+// firmware upgrade
+lang_page_firmware_h4 = "韌體升級";
+lang_firm_upgrapde_label = "韌體映像檔";
+lang_firmware_upgrade_button = "升級";
+lang_firmware_error_head = "升級失敗！";
+lang_firmware_error_body = "請檢查映像檔並再試一次。"
 
 // wifi strength
 signal_strength_excellent = "極佳";

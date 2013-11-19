@@ -41,7 +41,7 @@ lang_nav_ap_router_a = "ルーターモード<img src=\"img/arrow.png\" class=\"
 lang_nav_wds_repeater_a = "リピーターモード<img src=\"img/arrow.png\" class=\"menu_arrow\"/>";
 lang_nav_wds_bridge_a = "クライアントモード<img src=\"img/arrow.png\" class=\"menu_arrow\"/>";
 lang_nav_admin_a = "スーパーバイザー<img src=\"img/arrow.png\" class=\"menu_arrow\"/>";
-lang_nav_help_a = "Help<img src=\"img/arrow.png\" class=\"menu_arrow\"/>";
+lang_nav_firmware_a = "韧体升级<img src=\"img/arrow.png\" class=\"menu_arrow\"/>";
 
 // ap bridge mode page
 lang_page_ap_bridge_h4 = "AP モード";
@@ -92,6 +92,13 @@ scan_list_wds_bridge_sec_th = "セキュリティー";
 scan_list_wds_bridge_mac_th = "Mac アドレス";
 scan_list_wds_bridge_channel_th = "チャンネル";
 scan_list_wds_bridge_signal_th = "シグナル";
+
+// firmware upgrade
+lang_page_firmware_h4 = "Firmware Upgrade";
+lang_firm_upgrapde_label = "Firmware Image";
+lang_firmware_upgrade_button = "Upgrade";
+lang_firmware_error_head = "Upgrade failed!";
+lang_firmware_error_body = "Please check the image and try again."
 
 // wifi strength
 signal_strength_excellent = "エクセレント";

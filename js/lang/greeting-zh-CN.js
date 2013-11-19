@@ -41,7 +41,7 @@ lang_nav_ap_router_a = "路由模式<img src=\"img/arrow.png\" class=\"menu_arro
 lang_nav_wds_repeater_a = "中继模式<img src=\"img/arrow.png\" class=\"menu_arrow\"/>";
 lang_nav_wds_bridge_a = "客户端模式<img src=\"img/arrow.png\" class=\"menu_arrow\"/>";
 lang_nav_admin_a = "管理者<img src=\"img/arrow.png\" class=\"menu_arrow\"/>";
-lang_nav_help_a = "帮助<img src=\"img/arrow.png\" class=\"menu_arrow\"/>";
+lang_nav_firmware_a = "韧体升级<img src=\"img/arrow.png\" class=\"menu_arrow\"/>";
 
 // ap bridge mode page
 lang_page_ap_bridge_h4 = "AP 模式";
@@ -92,6 +92,13 @@ scan_list_wds_bridge_sec_th = "安全";
 scan_list_wds_bridge_mac_th = "Mac 地址";
 scan_list_wds_bridge_channel_th = "频道";
 scan_list_wds_bridge_signal_th = "信号";
+
+// firmware upgrade
+lang_page_firmware_h4 = "韧体升级";
+lang_firm_upgrapde_label = "韧体映像档";
+lang_firmware_upgrade_button = "升级";
+lang_firmware_error_head = "升级失败！";
+lang_firmware_error_body = "请检查映像档并再试一次。"
 
 // wifi strength
 signal_strength_excellent = "极佳";

@@ -5,6 +5,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<link href="bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
 		<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+		<script src="js/jquery-1.9.0.min.js"></script>
 		<style>
 			@media (min-width: 1200px) {}
  
@@ -409,7 +410,7 @@
       						<button class="btn btn-primary reboot_reset_btn" type="button" style="margin-left: 5px;" onclick="reboot_reset_click(1)" id="lang_reset_button">Reset</button>
     					</div>
 
-						<ul class="nav nav-list">
+						<ul class="nav nav-list" data-tabs="tabs">
 							<li>
 								<a href="#page1" data-toggle="tab" id="lang_nav_ap_bridge_a">AP Mode<img src="img/arrow.png" class="menu_arrow"/></a>
 							</li>
@@ -426,8 +427,8 @@
 							<li>
 								<a href="#page5" data-toggle="tab" id="lang_nav_admin_a">Admin<img src="img/arrow.png" class="menu_arrow"/></a>
 							</li>
-							<li style="display:none;">
-								<a href="#page6" data-toggle="tab" id="lang_nav_help_a">Help<img src="img/arrow.png" class="menu_arrow"/></a>
+							<li>
+								<a href="#page6" data-toggle="tab" id="lang_nav_firmware_a">Firmware Upgrade<img src="img/arrow.png" class="menu_arrow"/></a>
 							</li>
 						</ul>
 						<select id="change_language_select">
@@ -441,7 +442,7 @@
 						<div class="tab-content">
 
 							<!-- AP Bridge -->
-							<div class="tab-pane fade in" id="page1">
+							<div class="tab-pane" id="page1">
 								<h4 style="float:left;padding-right: 20px;" id="lang_page_ap_bridge_h4">AP Mode</h4>
 								<img src="img/ap-bridge.png" />
 								<hr style="clear:both;">
@@ -564,7 +565,7 @@
 							</div>
 
 							<!-- AP Router -->
-							<div class="tab-pane fade in" id="page2">
+							<div class="tab-pane" id="page2">
 								<h4 style="float:left;padding-right: 20px;" id="lang_page_ap_router_h4">Router Mode</h4>
 								<img src="img/ap-router.png" />
 								<hr style="clear:both;">
@@ -686,7 +687,7 @@
 							</div>
 
 							<!-- WDS Repeater -->
-							<div class="tab-pane fade in" id="page3">
+							<div class="tab-pane" id="page3">
 								<h4 style="float:left;padding-right: 20px;" id="lang_page_wds_repeater_h4">Repeater Mode</h4>
 								<img src="img/wds-repeater.png" style="float:left"/>
 								<div class="refresh_btn_div">
@@ -722,7 +723,7 @@
 							</div>
 			
 							<!-- WDS Bridge -->
-							<div class="tab-pane fade in" id="page4">
+							<div class="tab-pane" id="page4">
 								<h4 style="float:left;padding-right: 20px;" id="lang_page_wds_bridge_h4">Client Mode</h4>
 								<img src="img/wds-bridge.png" style="float:left;"/>
 								<div class="refresh_btn_div">
@@ -758,7 +759,7 @@
 							</div>
 
 							<!-- Admin -->
-							<div class="tab-pane fade in" id="page5">
+							<div class="tab-pane" id="page5">
 								<h4 style="float:left" id="lang_page_admin_h4">Admin</h4>
 								<hr style="clear:both;">
 								<div id="admin_spin_div"></div>
@@ -780,16 +781,32 @@
 								</form>
 							</div>
 
-							<!-- Help -->
-							<div class="tab-pane fade in" id="page6">
-								<h4 style="float:left">Help</h4>
+							<!-- Firmware Upgrade -->
+							<div class="tab-pane" id="page6">
+								<h4 style="float:left" id="lang_page_firmware_h4">Firmware Upgrade</h4>
 								<hr style="clear:both;">
-								<div class="row-fluid">
-									<div class="span2">
-										<!-- <button type="button" class="btn" onclick="show_process_dialog(5)">Help</button> -->
-										<a href="#wds_modal_div" role="button" class="btn" data-toggle="modal">Help</a>
+								<form id="firmware_upgrade_form" class="form-horizontal" method='post' enctype="multipart/form-data">
+									<div class="admin_change_div">
+	  									<div class="control-group">
+	  										<label class="control-label" for="firmware_image_input" id="lang_firm_upgrapde_label">Firmware Image</label>
+	  										<div class="controls">
+	  											<input type="file" id="firmware_image_input" name="firmware">
+	  										</div>
+	  									</div>
+	  								</div>
+									<hr>
+									<div class="row-fluid">
+										<div class="span2">
+											<button type="submit" class="btn" id="lang_firmware_upgrade_button">Upgrade</button>
+										</div>
 									</div>
-								</div>
+									<!-- alert -->
+  									<div id="alert_firmware_div" class="alert alert-block alert-error fade in" style="display:none">
+  										<button type="button" class="close" onclick="show_firmware_alert(0)">&times;</button>
+  										<h4 id="alert_firmware_head_h4" class="alert-heading"></h4>
+  										<p id="alert_firmware_body_p"></p>
+  									</div>
+								</form>
 							</div>
 						</div>
 					</div>
@@ -802,13 +819,14 @@
 
 		</div>
 
-		<script src="js/jquery-1.9.0.min.js"></script>
+		
 		<script src="js/jquery.validate.min.js"></script>
 		<script src="js/jquery.cookie.js"></script>
 		<script src="bootstrap/js/bootstrap.min.js"></script>
 		<script src="js/spin.min.js"></script>
 		<script src="js/jquery.localisation.min.js"></script>
 		<script src="js/lang/greeting.js"></script>
+		<script src="js/jquery.form.min.js"></script>
 		<script type="text/javascript">
 			var opts = {
 				lines: 13, // The number of lines to draw
@@ -873,10 +891,78 @@
 			var wds_modal_validator;
 			var admin_change_validator;
 
+			var options = { 
+		        // target:        '#output2',   // target element(s) to be updated with server response 
+		        beforeSubmit:  showRequest,  // pre-submit callback 
+		        success:       showResponse  // post-submit callback 
+		 
+		        // other available options: 
+		        //url:       url         // override for form's 'action' attribute 
+		        //type:      type        // 'get' or 'post', override for form's 'method' attribute 
+		        //dataType:  null        // 'xml', 'script', or 'json' (expected server response type) 
+		        //clearForm: true        // clear all form fields after successful submit 
+		        //resetForm: true        // reset the form after successful submit 
+		 
+		        // $.ajax options can be used here too, for example: 
+		        //timeout:   3000 
+		    }; 
+
 			// add new rule for validation
 			$.validator.addMethod('nonBlank', function(value, element) {
 				return this.optional(element) || value.indexOf(" ") <= 0;
 			}, eval("land_invalid_char"));
+
+			// firmware upgrader
+			$('#firmware_upgrade_form').submit(function(event) { 
+				event.preventDefault();
+				$(this).attr("action", 'http://'+window.location.hostname+':8080');
+    			// submit the form 
+    			$(this).ajaxSubmit(options); 
+			});
+
+			// pre-submit callback 
+			function showRequest(formData, jqForm, options) { 
+    			// formData is an array; here we use $.param to convert it to a string to display it 
+    			// but the form plugin does this for you automatically when it submits the data 
+			    // var queryString = $.param(formData); 
+			 
+			    // jqForm is a jQuery object encapsulating the form element.  To access the 
+			    // DOM element for the form do this: 
+			    // var formElement = jqForm[0]; 
+			 
+			    // alert('About to submit: \n\n' + queryString); 
+
+			    show_process_dialog(progress_normal_time, 1);
+			 
+			    // here we could return false to prevent the form from being submitted; 
+			    // returning anything other than false will allow the form submit to continue 
+			    return true; 
+			} 
+
+			// post-submit callback 
+			function showResponse(responseText, statusText, xhr, $form)  { 
+			    // for normal html responses, the first argument to the success callback 
+			    // is the XMLHttpRequest object's responseText property 
+			 
+			    // if the ajaxSubmit method was passed an Options Object with the dataType 
+			    // property set to 'xml' then the first argument to the success callback 
+			    // is the XMLHttpRequest object's responseXML property 
+			 
+			    // if the ajaxSubmit method was passed an Options Object with the dataType 
+			    // property set to 'json' then the first argument to the success callback 
+			    // is the json data object returned by the server 
+			 	if (responseText.indexOf('OK') < 0) {
+			 		// failed
+			 		clearInterval(interval);
+			 		$('#count_down_bar_div').css('width', '0%');
+			 		$('#count_down_modal_div').modal('hide');
+			 		show_firmware_alert(1);
+			 	} else {
+			 		console.log("upgrade:"+responseText);
+			 	}
+			    // alert('status: ' + statusText + '\n\nresponseText: \n' + responseText + 
+			    //     '\n\nThe output div should have already been updated with the responseText.'); 
+			} 
 
 			// change the string for the different language
 			function change_language() {
@@ -910,7 +996,7 @@
 				$("#lang_nav_wds_repeater_a").html(eval("lang_nav_wds_repeater_a"));
 				$("#lang_nav_wds_bridge_a").html(eval("lang_nav_wds_bridge_a"));
 				$("#lang_nav_admin_a").html(eval("lang_nav_admin_a"));
-				$("#lang_nav_help_a").html(eval("lang_nav_help_a"));
+				$("#lang_nav_firmware_a").html(eval("lang_nav_firmware_a"));
 
 				$("#lang_page_ap_bridge_h4").text(eval("lang_page_ap_bridge_h4"));
 				$("#lang_ap_bridge_non_security_label").html(eval("lang_ap_bridge_non_security_label"));
@@ -970,6 +1056,10 @@
 				$("#change_language_select option").each(function(i) {
 					$(this).text(eval("lang_option_"+(i+1)));
 				});
+
+				$("#lang_page_firmware_h4").text(eval("lang_page_firmware_h4"));
+				$("#lang_firm_upgrapde_label").text(eval("lang_firm_upgrapde_label"));
+				$("#lang_firmware_upgrade_button").text(eval("lang_firmware_upgrade_button"));
 
 				// security
 				if (information[info_pwd_index] == "") {
@@ -3294,6 +3384,7 @@
 					});
 			}
 
+			var interval;
 			function show_process_dialog(total_time, mode) {
 				var refresh_mode = 0;
 				var wds_mode     = 1;
@@ -3302,7 +3393,7 @@
 				$('#count_down_modal_div').find('p').html(eval("lang_progress_wait")+total_time+eval("lang_progress_try_refresh"));
 				setTimeout(function() {
 					var counter_time = 0;
-					var interval = setInterval(function(){
+					interval = setInterval(function(){
 						if (counter_time >= total_time) {
 							clearInterval(interval);
 							$('#count_down_button').removeAttr('disabled');
@@ -3357,6 +3448,16 @@
 						$('#count_down_bar_div').text((counter_time)+eval("lang_progress_second"));
 					}, 1000);
 				}, 500);
+			}
+
+			function show_firmware_alert(isShow) {
+				if (isShow) {
+					$('#alert_firmware_head_h4').html(eval("lang_firmware_error_head"));
+					$('#alert_firmware_body_p').html(eval("lang_firmware_error_body"));
+					$('#alert_firmware_div').css('display', 'inline-block');
+				} else {
+					$('#alert_firmware_div').css('display', 'none');
+				}
 			}
 
 			function show_alert(isShow, error, alertType) {
