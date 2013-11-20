@@ -894,7 +894,8 @@
 			var options = { 
 		        // target:        '#output2',   // target element(s) to be updated with server response 
 		        beforeSubmit:  showRequest,  // pre-submit callback 
-		        success:       showResponse  // post-submit callback 
+		        success:       showResponse,  // post-submit callback 
+		        error:         showError
 		 
 		        // other available options: 
 		        //url:       url         // override for form's 'action' attribute 
@@ -963,6 +964,14 @@
 			    // alert('status: ' + statusText + '\n\nresponseText: \n' + responseText + 
 			    //     '\n\nThe output div should have already been updated with the responseText.'); 
 			} 
+
+			// error
+			function showError() {
+				clearInterval(interval);
+			 	$('#count_down_bar_div').css('width', '0%');
+			 	$('#count_down_modal_div').modal('hide');
+			 	show_firmware_alert(1);
+			}
 
 			// change the string for the different language
 			function change_language() {
