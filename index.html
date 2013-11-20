@@ -828,6 +828,8 @@
 		<script src="js/lang/greeting.js"></script>
 		<script src="js/jquery.form.min.js"></script>
 		<script type="text/javascript">
+			var browser_type = navigator.userAgent.toLowerCase();
+
 			var opts = {
 				lines: 13, // The number of lines to draw
 				length: 4, // The length of each line
@@ -975,6 +977,10 @@
 
 			// change the string for the different language
 			function change_language() {
+				if (browser_type.indexOf("safari") >= 0) {
+					$(".label").css("display", "");
+				}
+
 				$("#lang_admin_modal_h3").text(eval("lang_admin_modal_h3"));
 				$("#lang_admin_modal_label").text(eval("lang_admin_modal_label"));
 				$("#lang_admin_modal_button").text(eval("lang_admin_modal_button"));
@@ -1014,8 +1020,12 @@
 				$("#lang_ap_bridge_password_label").text(eval("lang_ap_bridge_password_label"));
 				$("#lang_ap_bridge_channel_label").text(eval("lang_ap_bridge_channel_label"));
 				$("#lang_ap_bridge_auto_channel_option").text(eval("lang_ap_bridge_auto_channel_option"));
-				$("#ap_bridge_radio_ht20").text(eval("ap_bridge_radio_ht20"));
-				$("#ap_bridge_radio_ht40").text(eval("ap_bridge_radio_ht40"));
+
+				if (browser_type.indexOf("safari") < 0) {
+					$("#ap_bridge_radio_ht20").text(eval("ap_bridge_radio_ht20"));
+					$("#ap_bridge_radio_ht40").text(eval("ap_bridge_radio_ht40"));
+				}
+				
 				$("#lang_ap_bridge_max_label").text(eval("lang_ap_bridge_max_label"));
 				$("#lang_ap_bridge_static_label").html(eval("lang_ap_bridge_static_label"));
 				$("#lang_ap_bridge_static_ip").text(eval("lang_ap_bridge_static_ip"));
@@ -1030,8 +1040,12 @@
 				$("#lang_ap_router_password_label").text(eval("lang_ap_router_password_label"));
 				$("#lang_ap_router_channel_label").text(eval("lang_ap_router_channel_label"));
 				$("#lang_ap_router_auto_channel_option").text(eval("lang_ap_router_auto_channel_option"));
-				$("#ap_router_radio_ht20").text(eval("ap_router_radio_ht20"));
-				$("#ap_router_radio_ht40").text(eval("ap_router_radio_ht40"));
+
+				if (browser_type.indexOf("safari") < 0) {
+					$("#ap_router_radio_ht20").text(eval("ap_router_radio_ht20"));
+					$("#ap_router_radio_ht40").text(eval("ap_router_radio_ht40"));
+				}
+				
 				$("#lang_ap_router_max_label").text(eval("lang_ap_router_max_label"));
 				$("#lang_ap_router_static_label").html(eval("lang_ap_router_static_label"));
 				$("#lang_ap_router_static_ip").text(eval("lang_ap_router_static_ip"));
