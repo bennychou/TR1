@@ -977,10 +977,6 @@
 
 			// change the string for the different language
 			function change_language() {
-				if (browser_type.indexOf("safari") >= 0) {
-					$(".label").css("display", "");
-				}
-
 				$("#lang_admin_modal_h3").text(eval("lang_admin_modal_h3"));
 				$("#lang_admin_modal_label").text(eval("lang_admin_modal_label"));
 				$("#lang_admin_modal_button").text(eval("lang_admin_modal_button"));
@@ -1118,6 +1114,12 @@
 	  				$('#status_mode_span').text(eval("lang_status_ap_bridge_mode"));
 	  			}
 	  			$('#status_mac_span').html(information[info_mac_index].toUpperCase());
+
+	  			if (browser_type.indexOf("safari") >= 0) {
+					// console.log("Safari");
+					$("#status_mode_span").css("display", "inline");
+					$("#status_mac_span").css("display", "inline");
+				}
 
 	  			// static 
 	  			if (information[info_ip_index] == "" || information[info_subnet_index] == "" || information[info_gw_index] == "") {
