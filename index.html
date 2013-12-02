@@ -437,6 +437,10 @@
 						  	<option value="zh-CN"></option>
 						  	<option value="ja"></option>
 						</select>
+
+						<div>
+							<h5 id="firmware_version_h5"></h5>
+						</div>
 					</div>
 					<div class="span8" id="content" style="width:72%;">
 						<div class="tab-content">
@@ -635,6 +639,24 @@
 	  										<label class="control-label custom_control-label" for="ap_router_max_input" id="lang_ap_router_max_label">Maximum</label>
 	  										<div class="controls custom_controls">
 	  											<input type="text" id="ap_router_max_input" name="ap_router_max_input" placeholder="Default:50 (1~150)">
+	  										</div>
+	  									</div>
+	  									<div class="control-group">
+											<label class="checkbox" id="lang_ap_router_pppoe_label">
+	  											<input type="checkbox" id="ap_router_pppoe_input">
+	  												PPPoE
+											</label>
+										</div>
+										<div class="control-group" id="ap_router_pppoe_username_div" style="display:none">
+	  										<label class="control-label custom_control-label" for="ap_router_pppoe_username_input" id="lang_ap_router_pppoe_username_label">Username</label>
+	  										<div class="controls custom_controls">
+	  											<input type="text" id="ap_router_pppoe_username_input" name="ap_router_pppoe_username_input">
+	  										</div>
+	  									</div>
+	  									<div class="control-group" id="ap_router_pppoe_pwd_div" style="display:none">
+	  										<label class="control-label custom_control-label" for="ap_router_pppoe_pwd_input" id="lang_ap_router_pppoe_pwd_label">Password</label>
+	  										<div class="controls custom_controls">
+	  											<input type="text" id="ap_router_pppoe_pwd_input" name="ap_router_pppoe_pwd_input">
 	  										</div>
 	  									</div>
 	  									<div class="control-group">
@@ -857,6 +879,8 @@
 			var reset_click_index = 1;
 
 			var ip_changed = "0.0.0.0";
+
+			var firm_version;
 
 			var signal_strength      = [90, 80, 70];
 			var info_ssid_index      = "AP_SSID";
@@ -1172,6 +1196,20 @@
 				    }
 				); 
 
+				// PPPoE checkbox
+				$("#ap_router_pppoe_input").click(function() {
+
+   					if($(this).is(":checked")) {
+					    $('#ap_router_pppoe_username_div').css('display', 'inline');
+					    $('#ap_router_pppoe_pwd_div').css('display', 'inline-block');
+					    // $('#ap_router_gw_div').css('display', 'inline-block');
+					    $('.ap_router_mode_div').animate({ scrollTop: $('.ap_router_mode_div')[0].scrollHeight}, 800);
+			   		} else {
+				     	$('#ap_router_pppoe_username_div').css('display', 'none');
+				     	$('#ap_router_pppoe_pwd_div').css('display', 'none');
+			   		}
+				});
+
 				// static checkbox
 				$("#ap_router_static_input").click(function() {
 
@@ -1278,6 +1316,16 @@
 					}
 				});
 
+				// version
+				$.get("../cgi-bin/tr1.cgi?cgi=11", function(data) {
+					var version_split = data.split("\n");
+					firm_version = version_split[0];
+					console.log(firm_version);
+
+					if (firm_version != "OK") {
+						$("#firmware_version_h5").html(" Version: "+firm_version);
+					}
+				});
 				// information
 				information = [];
 				$.get("../cgi-bin/tr1.cgi?cgi=6", function(data) {
@@ -3329,7 +3377,7 @@
 					// console.log('MAC', $("#mac_modal_input").val());
 					// console.log('PWD', $("#password_modal_input").val());
 
-					wds_repeater_connect_ap($("#ssid_modal_h3").html(), $("#mac_modal_input").val(), $("#password_modal_input").val());
+					wds_repeater_connect_ap($("#ssid_modal_h3").text(), $("#mac_modal_input").val(), $("#password_modal_input").val());
 				} else {
 					// wds - bridge
 					// console.log('MODE', 'Bridge');
@@ -3337,7 +3385,7 @@
 					// console.log('MAC', $("#mac_modal_input").val());
 					// console.log('PWD', $("#password_modal_input").val());
 
-					wds_bridge_connect_ap($("#ssid_modal_h3").html(), $("#mac_modal_input").val(), $("#password_modal_input").val());
+					wds_bridge_connect_ap($("#ssid_modal_h3").text(), $("#mac_modal_input").val(), $("#password_modal_input").val());
 				}
 			}
 
