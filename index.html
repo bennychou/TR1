@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<link href="bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
 		<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
-		<script src="js/jquery-1.9.0.min.js"></script>
+		<script src="js/jquery-1.10.1.min.js"></script>
+		<script src="js/jquery.localisation.min.js"></script>
+		<script src="js/lang/greeting.js"></script>
 		<style>
 			@media (min-width: 1200px) {}
  
@@ -847,10 +849,11 @@
 		<script src="js/jquery.cookie.js"></script>
 		<script src="bootstrap/js/bootstrap.min.js"></script>
 		<script src="js/spin.min.js"></script>
-		<script src="js/jquery.localisation.min.js"></script>
-		<script src="js/lang/greeting.js"></script>
+		
 		<script src="js/jquery.form.min.js"></script>
 		<script type="text/javascript">
+			if (!window.console) console = {log: function() {}};
+
 			var browser_type = navigator.userAgent.toLowerCase();
 
 			var opts = {
@@ -957,9 +960,8 @@
 			    // jqForm is a jQuery object encapsulating the form element.  To access the 
 			    // DOM element for the form do this: 
 			    // var formElement = jqForm[0]; 
-			 
-			    // alert('About to submit: \n\n' + queryString); 
 
+			    // alert('About to submit: \n\n' + queryString); 
 			    show_process_dialog(progress_normal_time*3, 1);
 			 
 			    // here we could return false to prevent the form from being submitted; 
@@ -2361,14 +2363,14 @@
 			function validation() {
 				// admin login validation
 				if (admin_modal_validator != undefined) {
-					admin_modal_validator.resetForm();
+					// admin_modal_validator.resetForm();
 					$("#admin_modal_input").rules("remove");
 					$("#admin_modal_input").rules("add", { 
         				equalTo: '#admin_modal_confirm_input',
 		              	nonBlank: true,
         				messages: { 
             				equalTo: eval("lang_password_not_correct"),
-            				nonBlank: eval("land_invalid_char"),
+            				nonBlank: eval("land_invalid_char")
         				} 
     				}); 
 				}
@@ -2378,32 +2380,32 @@
 		            	admin_modal_input:{
 		              		equalTo: '#admin_modal_confirm_input',
 		              		nonBlank: true
-		            	},
+		            	}
 		        	},
 		        	messages:{
 		          		admin_modal_input:{
 		            		equalTo : eval("lang_password_not_correct")
-		          		},
+		          		}
 		        	},
 			        errorClass: "help-inline",
 			        errorElement: "span",
 			        highlight:function(element, errorClass, validClass) {
 			          	// $(element).parents('.control-group').removeClass('success');
-			          	$(element).parents('.control-group').addClass('error');
+			          	$(element).parents('.control-group').addClass('error')
 			        },
 			        unhighlight: function(element, errorClass, validClass) {
-			          	$(element).parents('.control-group').removeClass('error');
+			          	$(element).parents('.control-group').removeClass('error')
 			          	// $(element).parents('.control-group').addClass('success');
 			        },
 			        submitHandler: function(form) {
 			        	$("#admin_modal_div").modal('hide');
-			        	$.cookie(info_admin_index, $("#admin_modal_input").val(), { expires: 7 });
+			        	$.cookie(info_admin_index, $("#admin_modal_input").val(), { expires: 7 })
 			        }
 		      	});
 
 				// AP Bridge validation
 				if (ap_bridge_validator != undefined) {
-					ap_bridge_validator.resetForm();
+					// ap_bridge_validator.resetForm();
 					$("#ap_bridge_ssid_input").rules("remove");
 					$("#ap_bridge_ssid_input").rules("add", { 
         				required: true,
@@ -2411,7 +2413,7 @@
 		              	nonBlank: true, 
         				messages: { 
             				required: eval("lang_enter_ssid"), 
-            				nonBlank: eval("land_invalid_char"),
+            				nonBlank: eval("land_invalid_char")
         				} 
     				}); 
     				$("#ap_bridge_pwd_input").rules("remove");
@@ -2422,7 +2424,7 @@
         				messages: { 
             				required: eval("lang_enter_password"),
 		            		minlength: eval("lang_require_eight"),
-		            		nonBlank: eval("land_invalid_char"),
+		            		nonBlank: eval("land_invalid_char")
         				} 
     				}); 
     				$("#ap_bridge_max_input").rules("remove");
@@ -2433,7 +2435,7 @@
         				messages: { 
             				required: eval("lang_enter_maximum"),
 		            		range: eval("lang_maximum_range"),
-		            		nonBlank: eval("land_invalid_char"),
+		            		nonBlank: eval("land_invalid_char")
         				} 
     				}); 
 				}
@@ -2518,7 +2520,7 @@
 		        	},
 		        	messages:{
 		          		ap_bridge_ssid_input:{
-		            		required: eval("lang_enter_ssid"),
+		            		required: eval("lang_enter_ssid")
 		          		},
 		          		ap_bridge_pwd_input:{
 		            		required: eval("lang_enter_password"),
@@ -2526,7 +2528,7 @@
 		          		},
 		          		ap_bridge_max_input:{
 		          			required: eval("lang_enter_maximum"),
-		            		range: eval("lang_maximum_range"),
+		            		range: eval("lang_maximum_range")
 		          		}
 		        	},
 			        errorClass: "help-inline",
@@ -2594,7 +2596,7 @@
 				
 				// AP Router validation
 				if (ap_router_validator != undefined) {
-					ap_router_validator.resetForm();
+					// ap_router_validator.resetForm();
 					$("#ap_router_ssid_input").rules("remove");
 					$("#ap_router_ssid_input").rules("add", { 
         				required: true,
@@ -2602,7 +2604,7 @@
 		              	nonBlank: true, 
         				messages: { 
             				required: eval("lang_enter_ssid"), 
-            				nonBlank: eval("land_invalid_char"),
+            				nonBlank: eval("land_invalid_char")
         				} 
     				}); 
     				$("#ap_router_pwd_input").rules("remove");
@@ -2613,7 +2615,7 @@
         				messages: { 
             				required: eval("lang_enter_password"),
 		            		minlength: eval("lang_require_eight"),
-		            		nonBlank: eval("land_invalid_char"),
+		            		nonBlank: eval("land_invalid_char")
         				} 
     				}); 
     				$("#ap_router_max_input").rules("remove");
@@ -2624,7 +2626,7 @@
         				messages: { 
             				required: eval("lang_enter_maximum"),
 		            		range: eval("lang_maximum_range"),
-		            		nonBlank: eval("land_invalid_char"),
+		            		nonBlank: eval("land_invalid_char")
         				} 
     				}); 
 				}
@@ -2717,7 +2719,7 @@
 		          		},
 		          		ap_router_max_input:{
 		          			required: eval("lang_enter_maximum"),
-		            		range: eval("lang_maximum_range"),
+		            		range: eval("lang_maximum_range")
 		          		}
 		        	},
 		        	focusCleanup: false,
@@ -2785,7 +2787,7 @@
 
 				// wds modal validation
 				if (wds_modal_validator != undefined) {
-					wds_modal_validator.resetForm();
+					// wds_modal_validator.resetForm();
 
 					$("#password_modal_input").rules("remove");
 					$("#password_modal_input").rules("add", { 
@@ -2795,7 +2797,7 @@
         				messages: { 
             				required: eval("lang_enter_password"),
 		            		minlength: eval("lang_require_eight"),
-		            		nonBlank: eval("land_invalid_char"),
+		            		nonBlank: eval("land_invalid_char")
         				} 
     				}); 
 				}
@@ -2832,13 +2834,13 @@
 
 				// admin change validation
 				if (admin_change_validator != undefined) {
-					admin_change_validator.resetForm();
+					// admin_change_validator.resetForm();
 
 					$("#admin_change_input").rules("remove");
 					$("#admin_change_input").rules("add", { 
 		            	nonBlank: true,
         				messages: { 
-		            		nonBlank: eval("land_invalid_char"),
+		            		nonBlank: eval("land_invalid_char")
         				} 
     				}); 
 				}
@@ -2847,7 +2849,7 @@
 		          	rules:{
 		            	admin_change_input:{
 		              		nonBlank: true
-		            	},
+		            	}
 		        	},
 			        errorClass: "help-inline",
 			        errorElement: "span",
@@ -3388,7 +3390,7 @@
 					// console.log('MAC', $("#mac_modal_input").val());
 					// console.log('PWD', $("#password_modal_input").val());
 
-					wds_repeater_connect_ap($("#ssid_modal_h3").text(), $("#mac_modal_input").val(), $("#password_modal_input").val());
+					wds_repeater_connect_ap(base64Encode($("#ssid_modal_h3").text(), UTF8, 1), $("#mac_modal_input").val(), base64Encode($("#password_modal_input").val(), UTF8, 1));
 				} else {
 					// wds - bridge
 					// console.log('MODE', 'Bridge');
@@ -3396,7 +3398,7 @@
 					// console.log('MAC', $("#mac_modal_input").val());
 					// console.log('PWD', $("#password_modal_input").val());
 
-					wds_bridge_connect_ap($("#ssid_modal_h3").text(), $("#mac_modal_input").val(), $("#password_modal_input").val());
+					wds_bridge_connect_ap(base64Encode($("#ssid_modal_h3").text(), UTF8, 1), $("#mac_modal_input").val(), base64Encode($("#password_modal_input").val(), UTF8, 1));
 				}
 			}
 
