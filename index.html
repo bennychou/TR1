@@ -2931,7 +2931,7 @@
 							'&dhcp='+dhcp+'&static=1&ip='+ip+
 							'&subnet='+subnet+
 							'&gw='+gw+
-							'&pwd="'+pw+'"');
+							'&pwd='+pw);
 
 						$.get('../cgi-bin/tr1.cgi?cgi=2&mode=0&ssid='+ssid+
 							'&ht='+ht+
@@ -2939,7 +2939,7 @@
 							'&dhcp='+dhcp+'&static=1&ip='+ip+
 							'&subnet='+subnet+
 							'&gw='+gw+
-							'&pwd="'+pw+'"', 
+							'&pwd='+pw, 
 							function(data) {
 								ip_changed = ip;
 						  		console.log("ap bridge mode req_security: "+data);  		
@@ -2949,12 +2949,12 @@
 						console.log('Request', '../cgi-bin/tr1.cgi?cgi=2&mode=0&ssid='+ssid+
 						'&ht='+ht+
 						'&channel='+channel+
-						'&dhcp=50&static=0&ip=0.0.0.0&subnet=0.0.0.0&gw=0.0.0.0&pwd="'+pw+'"');
+						'&dhcp=50&static=0&ip=0.0.0.0&subnet=0.0.0.0&gw=0.0.0.0&pwd='+pw);
 
 						$.get('../cgi-bin/tr1.cgi?cgi=2&mode=0&ssid='+ssid+
 							'&ht='+ht+
 							'&channel='+channel+
-							'&dhcp=50&static=0&ip=0.0.0.0&subnet=0.0.0.0&gw=0.0.0.0&pwd="'+pw+'"', 
+							'&dhcp=50&static=0&ip=0.0.0.0&subnet=0.0.0.0&gw=0.0.0.0&pwd='+pw, 
 							function(data) {
 						  		console.log("ap bridge mode req_security: "+data);  		
 							}
@@ -3029,7 +3029,7 @@
 							'&dhcp='+dhcp+'&static=1&ip='+ip+
 							'&subnet='+subnet+
 							'&gw='+gw+
-							'&pwd="'+pw+'"');
+							'&pwd='+pw);
 
 						$.get('../cgi-bin/tr1.cgi?cgi=2&mode=1&ssid='+ssid+
 							'&ht='+ht+
@@ -3037,7 +3037,7 @@
 							'&dhcp='+dhcp+'&static=1&ip='+ip+
 							'&subnet='+subnet+
 							'&gw='+gw+
-							'&pwd="'+pw+'"', 
+							'&pwd='+pw, 
 							function(data) {
 								ip_changed = ip;
 					  			console.log("ap router mode req_security: "+data);
@@ -3049,13 +3049,13 @@
 							'&ht='+ht+
 							'&channel='+channel+
 							'&dhcp='+dhcp+
-							'&static=0&ip=0.0.0.0&subnet=0.0.0.0&gw=0.0.0.0&pwd="'+pw+'"');
+							'&static=0&ip=0.0.0.0&subnet=0.0.0.0&gw=0.0.0.0&pwd='+pw);
 
 						$.get('../cgi-bin/tr1.cgi?cgi=2&mode=1&ssid='+ssid+
 							'&ht='+ht+
 							'&channel='+channel+
 							'&dhcp='+dhcp+
-							'&static=0&ip=0.0.0.0&subnet=0.0.0.0&gw=0.0.0.0&pwd="'+pw+'"', 
+							'&static=0&ip=0.0.0.0&subnet=0.0.0.0&gw=0.0.0.0&pwd='+pw, 
 							function(data) {
 					  			console.log("ap router mode req_security: "+data);
 					  		}
