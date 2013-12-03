@@ -1107,6 +1107,9 @@
 				$("#lang_firm_upgrapde_label").text(eval("lang_firm_upgrapde_label"));
 				$("#lang_firmware_upgrade_button").text(eval("lang_firmware_upgrade_button"));
 
+				$("#lang_ap_router_pppoe_username_label").text(eval("lang_ap_router_pppoe_username_label"));
+				$("#lang_ap_router_pppoe_pwd_label").text(eval("lang_ap_router_pppoe_pwd_label"));
+
 				// security
 				if (information[info_pwd_index] == "") {
 					$('#ap_bridge_radio_non_security').prop('checked', true);
@@ -1124,8 +1127,8 @@
 					$('#ap_router_radio_security').prop('checked', true);
 					$('#ap_router_radio_non_security').prop('checked', false);
 
-					$("#ap_bridge_pw_div").css("display" , "inline-block");
-					$("#ap_router_pw_div").css("display" , "inline-block");
+					$("#ap_bridge_pw_div").css("display" , "block");
+					$("#ap_router_pw_div").css("display" , "block");
 				}
 
 				// show the status
@@ -1161,14 +1164,14 @@
 				     $('#ap_bridge_gw_div').css('display', 'none');
 				} else {
 					$("#ap_router_static_input").prop("checked", true);
-					$('#ap_router_ip_div').css('display', 'inline');
-					$('#ap_router_subnet_div').css('display', 'inline');
-					$('#ap_router_gw_div').css('display', 'inline-block');
+					$('#ap_router_ip_div').css('display', 'block');
+					$('#ap_router_subnet_div').css('display', 'block');
+					$('#ap_router_gw_div').css('display', 'block');
 
 					$("#ap_bridge_static_input").prop("checked", true);
-					$('#ap_bridge_ip_div').css('display', 'inline');
-					$('#ap_bridge_subnet_div').css('display', 'inline');
-					$('#ap_bridge_gw_div').css('display', 'inline-block');
+					$('#ap_bridge_ip_div').css('display', 'block');
+					$('#ap_bridge_subnet_div').css('display', 'block');
+					$('#ap_bridge_gw_div').css('display', 'block');
 				}
 
 				$('.ap_bridge_radio').change(
@@ -1179,7 +1182,7 @@
 				        	if( _mode == "non-security") {
 				        		$("#ap_bridge_pw_div").css("display" , "none");
 				        	} else if( _mode="security") {
-				        		$("#ap_bridge_pw_div").css("display" , "inline-block");
+				        		$("#ap_bridge_pw_div").css("display" , "block");
 				        	}
 				        }
 				    }
@@ -1193,7 +1196,7 @@
 				        	if( _mode == "non-security") {
 				        		$("#ap_router_pw_div").css("display" , "none");
 				        	} else if( _mode="security") {
-				        		$("#ap_router_pw_div").css("display" , "inline-block");
+				        		$("#ap_router_pw_div").css("display" , "block");
 				        	}
 				        }
 				    }
@@ -1203,8 +1206,8 @@
 				$("#ap_router_pppoe_input").click(function() {
 
    					if($(this).is(":checked")) {
-					    $('#ap_router_pppoe_username_div').css('display', 'inline');
-					    $('#ap_router_pppoe_pwd_div').css('display', 'inline-block');
+					    $('#ap_router_pppoe_username_div').css('display', 'block');
+					    $('#ap_router_pppoe_pwd_div').css('display', 'block');
 					    // $('#ap_router_gw_div').css('display', 'inline-block');
 					    $('.ap_router_mode_div').animate({ scrollTop: $('.ap_router_mode_div')[0].scrollHeight}, 800);
 			   		} else {
@@ -1217,9 +1220,9 @@
 				$("#ap_router_static_input").click(function() {
 
    					if($(this).is(":checked")) {
-					    $('#ap_router_ip_div').css('display', 'inline');
-					    $('#ap_router_subnet_div').css('display', 'inline');
-					    $('#ap_router_gw_div').css('display', 'inline-block');
+					    $('#ap_router_ip_div').css('display', 'block');
+					    $('#ap_router_subnet_div').css('display', 'block');
+					    $('#ap_router_gw_div').css('display', 'block');
 					    $('.ap_router_mode_div').animate({ scrollTop: $('.ap_router_mode_div')[0].scrollHeight}, 800);
 			   		} else {
 				     	$('#ap_router_ip_div').css('display', 'none');
@@ -1231,9 +1234,9 @@
 				$("#ap_bridge_static_input").click(function() {
 
    					if($(this).is(":checked")) {
-					    $('#ap_bridge_ip_div').css('display', 'inline');
-					    $('#ap_bridge_subnet_div').css('display', 'inline');
-					    $('#ap_bridge_gw_div').css('display', 'inline-block');
+					    $('#ap_bridge_ip_div').css('display', 'block');
+					    $('#ap_bridge_subnet_div').css('display', 'block');
+					    $('#ap_bridge_gw_div').css('display', 'block');
 					    $('.ap_bridge_mode_div').animate({ scrollTop: $('.ap_bridge_mode_div')[0].scrollHeight}, 800);
 			   		} else {
 				     	$('#ap_bridge_ip_div').css('display', 'none');

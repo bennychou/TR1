@@ -147,3 +147,7 @@ lang_ip_error_body = "IP を確認してください。";
 lang_ip_conflict_body = "192.168.16.254 と同じドメインにスタティック IP を使用できません。";
 lang_subnet_error_head = "サブネット エラー";
 lang_subnet_error_body = "サブネットマスクを確認してください。";
+
+// pppoe
+lang_ap_router_pppoe_username_label = "ユーザー名";
+lang_ap_router_pppoe_pwd_label = "パスワード";

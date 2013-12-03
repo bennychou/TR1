@@ -147,3 +147,7 @@ lang_ip_error_body = "請檢查您的 IP";
 lang_ip_conflict_body = "您不能設定使用 192.168.16.X 這類 IP 地址";
 lang_subnet_error_head = "子網路錯誤";
 lang_subnet_error_body = "請確認您的子網遮罩";
+
+// pppoe
+lang_ap_router_pppoe_username_label = "使用者名稱";
+lang_ap_router_pppoe_pwd_label = "密碼";

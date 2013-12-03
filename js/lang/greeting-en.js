@@ -147,3 +147,7 @@ lang_ip_error_body = "Please check your IP.";
 lang_ip_conflict_body = "You can not assign the static IP as 192.168.16.X!";
 lang_subnet_error_head = "Subnet error!";
 lang_subnet_error_body = "Please check your subnet mask.";
+
+// pppoe
+lang_ap_router_pppoe_username_label = "Username";
+lang_ap_router_pppoe_pwd_label = "Password";
