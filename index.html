@@ -1623,11 +1623,11 @@
 					    $('#ap_bridge_gw_div').css('display', 'inline-block');
 					}
 
-					$('#ap_bridge_ssid_input').val(information[info_ssid_index]);
-					$('#ap_router_ssid_input').val(information[info_ssid_index]);
+					$('#ap_bridge_ssid_input').val(hexToStr(base64Decode(information[info_ssid_index], UTF8), UTF8));
+					$('#ap_router_ssid_input').val(hexToStr(base64Decode(information[info_ssid_index], UTF8), UTF8));
 
-					$('#ap_bridge_pwd_input').val(information[info_pwd_index]);
-					$('#ap_router_pwd_input').val(information[info_pwd_index]);
+					$('#ap_bridge_pwd_input').val(hexToStr(base64Decode(information[info_pwd_index], UTF8), UTF8));
+					$('#ap_router_pwd_input').val(hexToStr(base64Decode(information[info_pwd_index], UTF8), UTF8));
 
 					if (information[info_ht40_index] == "1") {
 						$('#ap_bridge_radio_ht40').attr('checked', '');
@@ -3253,8 +3253,8 @@
                 	if ($.cookie($(this).children('td').eq(0).html()) != null) {
                 		$('#password_modal_input').val($.cookie($(this).children('td').eq(0).html()));
                 	} else {
-                		if ((information[info_mode_index] == mode_wds_repeater || information[info_mode_index] == mode_wds_bridge) && $(this).children('td').eq(0).html() == information[info_ssid_index]) {
-                			$('#password_modal_input').val(information[info_pwd_index]);
+                		if ((information[info_mode_index] == mode_wds_repeater || information[info_mode_index] == mode_wds_bridge) && $(this).children('td').eq(0).html() == hexToStr(base64Decode(information[info_ssid_index], UTF8), UTF8)) {
+                			$('#password_modal_input').val(hexToStr(base64Decode(information[info_pwd_index], UTF8), UTF8));
                 		} else
                 			$('#password_modal_input').val('');
                 	}
@@ -3321,8 +3321,8 @@
                 	if ($.cookie($(this).children('td').eq(0).html()) != null) {
                 		$('#password_modal_input').val($.cookie($(this).children('td').eq(0).html()));
                 	} else {
-                		if ((information[info_mode_index] == mode_wds_repeater || information[info_mode_index] == mode_wds_bridge) && $(this).children('td').eq(0).html() == information[info_ssid_index]) {
-                			$('#password_modal_input').val(information[info_pwd_index]);
+                		if ((information[info_mode_index] == mode_wds_repeater || information[info_mode_index] == mode_wds_bridge) && $(this).children('td').eq(0).html() == hexToStr(base64Decode(information[info_ssid_index], UTF8), UTF8)) {
+                			$('#password_modal_input').val(hexToStr(base64Decode(information[info_pwd_index], UTF8), UTF8));
                 		} else
                 			$('#password_modal_input').val('');
                 	}
