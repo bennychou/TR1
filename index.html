@@ -2872,11 +2872,7 @@
 
 			function ap_bridge_mode_save_onclick() {
 				var ssid    = base64Encode($("#ap_bridge_ssid_input").val(), UTF8, 1);
-				var pw      = $("#ap_bridge_pwd_input").val();
-
-				if (pw != "")
-					pw = base64Encode(pw, UTF8, 1);
-
+				var pw      = base64Encode($("#ap_bridge_pwd_input").val(), UTF8, 1);
 				var ht      = $('input[name=ap_bridge_radio_ht]:checked').val();
 				var channel = $('#ap_bridge_channel_select').val();
 				var dhcp    = $('#ap_bridge_max_input').val();
@@ -2969,11 +2965,7 @@
 
 			function ap_router_mode_save_onclick() {
 				var ssid    = base64Encode($("#ap_router_ssid_input").val(), UTF8, 1);
-				var pw      = $("#ap_router_pwd_input").val();
-
-				if (pw != "")
-					pw = base64Encode(pw, UTF8, 1);
-
+				var pw      = base64Encode($("#ap_router_pwd_input").val(), UTF8, 1);
 				var ht      = $('input[name=ap_router_radio_ht]:checked').val();
 				var channel = $('#ap_router_channel_select').val();
 				var dhcp    = $('#ap_router_max_input').val();
