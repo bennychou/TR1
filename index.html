@@ -731,10 +731,9 @@
 	  										</div>
 	  									</div>
 										<div class="control-group">
-	  										<label class="control-label custom_control-label" id="lang_pppoe_status_label">Status</label>
+	  										<label class="control-label custom_control-label" id="lang_pppoe_status_label" for="pppoe_status_input">Status</label>
 	  										<div class="controls custom_controls">
-	  											<!-- <span class="label label-success">Success</span> -->
-	  											<!-- <input type="text" id="ap_bridge_max_input" name="ap_bridge_max_input" placeholder="Default:50 (1~150)"> -->
+	  											<input type="text" id="pppoe_status_input" name="pppoe_status_input" disabled>
 	  										</div>
 	  									</div>
   									</div>
@@ -952,6 +951,8 @@
 			var mode_pppoe        = "ap-pppoe";
 			var mode_wds_repeater = "wds-repeater";
 			var mode_wds_bridge   = "wds-bridge";
+
+			var is_pppoe_connected = false;
 
 			var default_ip     = ['192', '168', '16', '254'];
 			var default_subnet = ['255', '255', '255', '0'];
@@ -1184,12 +1185,19 @@
 				}
 
 				// pppoe
+				$("#lang_pppoe_save_button").text(eval("lang_pppoe_save_button"));
 				if (information[info_pppoe_en_index] == "1") {
 					$('#pppoe_radio_enable').prop('checked', true);
 					$('#pppoe_radio_disable').prop('checked', false);
 				} else {
 					$('#pppoe_radio_enable').prop('checked', false);
 					$('#pppoe_radio_disable').prop('checked', true);
+				}
+
+				if (is_pppoe_connected) {
+					$("#pppoe_status_input").val(eval("lang_pppoe_status_connected"));
+				} else {
+					$("#pppoe_status_input").val(eval("lang_pppoe_status_disconnected"));
 				}
 
 				// show the status
@@ -1562,6 +1570,25 @@
 		  				$(".nav-list").children('li').eq(2).addClass("active");
 		  				$("#page3").addClass("active");
 		  				$('#status_mode_span').text(eval("lang_status_pppoe_mode"));
+
+		  				var interval_pppoe_status = setInterval(function(){
+							$.get("../cgi-bin/tr1.cgi?cgi=13", function(data) {
+								console.log('Request PPPoE', data);
+								var throughput_arr = data.split(",");
+
+								if (data == "1") {
+									// connected
+									is_pppoe_connected = true;
+									$("#pppoe_status_input").val(eval("lang_pppoe_status_connected"));
+									clearInterval(interval_pppoe_status);
+								} else {
+									// disconnected
+									is_pppoe_connected = false;
+									$("#pppoe_status_input").val(eval("lang_pppoe_status_disconnected"));
+								}
+							});
+						}, 2000);
+
 		  			} else if (information[info_mode_index] == mode_wds_repeater) {
 		  				$(".nav-list").children('li').eq(3).addClass("active");
 		  				$("#page4").addClass("active");
