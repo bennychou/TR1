@@ -160,4 +160,5 @@ lang_pppoe_disable_label = "<input type=\"radio\" id=\"pppoe_radio_disable\" nam
 lang_pppoe_status_label = "状态";
 lang_pppoe_status_connected = "已连接";
 lang_pppoe_status_disconnected = "没有连接";
+lang_pppoe_status_processing = "处理中...";
 lang_pppoe_save_button = "储存";

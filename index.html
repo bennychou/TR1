@@ -952,7 +952,7 @@
 			var mode_wds_repeater = "wds-repeater";
 			var mode_wds_bridge   = "wds-bridge";
 
-			var is_pppoe_connected = false;
+			var is_pppoe_connected = -1;
 
 			var default_ip     = ['192', '168', '16', '254'];
 			var default_subnet = ['255', '255', '255', '0'];
@@ -1194,10 +1194,13 @@
 					$('#pppoe_radio_disable').prop('checked', true);
 				}
 
-				if (is_pppoe_connected) {
-					$("#pppoe_status_input").val(eval("lang_pppoe_status_connected"));
+				if (is_pppoe_connected < 0) {
+					$("#pppoe_status_input").val(eval("lang_pppoe_status_processing"));
 				} else {
-					$("#pppoe_status_input").val(eval("lang_pppoe_status_disconnected"));
+					if (is_pppoe_connected == 1) {
+						$("#pppoe_status_input").val(eval("lang_pppoe_status_connected"));
+					} else 
+						$("#pppoe_status_input").val(eval("lang_pppoe_status_disconnected"));
 				}
 
 				// show the status
@@ -1576,7 +1579,7 @@
 								console.log('Request PPPoE', data);
 								var throughput_arr = data.split(",");
 
-								if (data == "1") {
+								if (data.indexOf("1") >= 0) {
 									// connected
 									is_pppoe_connected = true;
 									$("#pppoe_status_input").val(eval("lang_pppoe_status_connected"));

@@ -160,4 +160,5 @@ lang_pppoe_disable_label = "<input type=\"radio\" id=\"pppoe_radio_disable\" nam
 lang_pppoe_status_label = "ステータス";
 lang_pppoe_status_connected = "接続";
 lang_pppoe_status_disconnected = "切断された";
+lang_pppoe_status_processing = "処理...";
 lang_pppoe_save_button = "保存";
