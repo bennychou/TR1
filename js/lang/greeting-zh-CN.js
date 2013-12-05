@@ -38,6 +38,7 @@ lang_reset_button = "恢复出厂设置";
 // nav menu
 lang_nav_ap_bridge_a = "AP 模式<img src=\"img/arrow.png\" class=\"menu_arrow\"/>";
 lang_nav_ap_router_a = "路由模式<img src=\"img/arrow.png\" class=\"menu_arrow\"/>";
+lang_nav_pppoe_a = "PPPoE 模式<img src=\"img/arrow.png\" class=\"menu_arrow\"/>";
 lang_nav_wds_repeater_a = "中继模式<img src=\"img/arrow.png\" class=\"menu_arrow\"/>";
 lang_nav_wds_bridge_a = "客户端模式<img src=\"img/arrow.png\" class=\"menu_arrow\"/>";
 lang_nav_admin_a = "管理者<img src=\"img/arrow.png\" class=\"menu_arrow\"/>";
@@ -114,6 +115,7 @@ lang_admin_save_button = "储存";
 // mode
 lang_status_ap_bridge_mode = "AP 模式";
 lang_status_ap_router_mode = "路由模式";
+lang_status_pppoe_mode = "PPPoE 模式";
 lang_status_wds_repeater_mode = "中继模式";
 lang_status_wds_bridge_mode = "客户端模式";
 
@@ -135,6 +137,7 @@ lang_password_not_correct = "密码错误";
 
 // validation
 lang_enter_ssid = "请输入服务设置标识符";
+lang_enter_username = "请输入用户名称";
 lang_enter_password = "请输入密码";
 lang_require_eight = "至少八字符";
 lang_enter_maximum = "请输入最大值";
@@ -149,5 +152,9 @@ lang_subnet_error_head = "子网错误";
 lang_subnet_error_body = "請確認您的子網遮罩";
 
 // pppoe
-lang_ap_router_pppoe_username_label = "用户名称";
-lang_ap_router_pppoe_pwd_label = "密码";
+lang_page_pppoe_h4 = "PPPoE 模式";
+lang_pppoe_username_label = "用户名称";
+lang_pppoe_pwd_label = "密码";
+lang_pppoe_enable_label = "启动";
+lang_pppoe_disable_label = "关闭";
+lang_pppoe_status_label = "状态";

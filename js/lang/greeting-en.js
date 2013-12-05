@@ -38,6 +38,7 @@ lang_reset_button = "Reset";
 // nav menu
 lang_nav_ap_bridge_a = "AP Mode<img src=\"img/arrow.png\" class=\"menu_arrow\"/>";
 lang_nav_ap_router_a = "Router Mode<img src=\"img/arrow.png\" class=\"menu_arrow\"/>";
+lang_nav_pppoe_a = "PPPoE Mode<img src=\"img/arrow.png\" class=\"menu_arrow\"/>";
 lang_nav_wds_repeater_a = "Repeater Mode<img src=\"img/arrow.png\" class=\"menu_arrow\"/>";
 lang_nav_wds_bridge_a = "Client Mode<img src=\"img/arrow.png\" class=\"menu_arrow\"/>";
 lang_nav_admin_a = "Admin<img src=\"img/arrow.png\" class=\"menu_arrow\"/>";
@@ -114,6 +115,7 @@ lang_admin_save_button = "Save";
 // mode
 lang_status_ap_bridge_mode = "AP MODE";
 lang_status_ap_router_mode = "ROUTER MODE";
+lang_status_pppoe_mode = "PPPoE MODE";
 lang_status_wds_repeater_mode = "REPEATER MODE";
 lang_status_wds_bridge_mode = "CLIENT MODE";
 
@@ -135,6 +137,7 @@ lang_password_not_correct = "Password is not correct.";
 
 // validation
 lang_enter_ssid = "Please enter the SSID.";
+lang_enter_username = "Please enter the username.";
 lang_enter_password = "Please enter the password.";
 lang_require_eight = "Minimum 8 characters.";
 lang_enter_maximum = "Please enter the maximum.";
@@ -149,5 +152,9 @@ lang_subnet_error_head = "Subnet error!";
 lang_subnet_error_body = "Please check your subnet mask.";
 
 // pppoe
-lang_ap_router_pppoe_username_label = "Username";
-lang_ap_router_pppoe_pwd_label = "Password";
+lang_page_pppoe_h4 = "PPPoE Mode";
+lang_pppoe_username_label = "Username";
+lang_pppoe_pwd_label = "Password";
+lang_pppoe_enable_label = "Enable";
+lang_pppoe_disable_label = "Disable";
+lang_pppoe_status_label = "Status";

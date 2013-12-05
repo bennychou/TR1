@@ -38,6 +38,7 @@ lang_reset_button = "リセット";
 // nav menu
 lang_nav_ap_bridge_a = "AP モード<img src=\"img/arrow.png\" class=\"menu_arrow\"/>";
 lang_nav_ap_router_a = "ルーターモード<img src=\"img/arrow.png\" class=\"menu_arrow\"/>";
+lang_nav_pppoe_a = "PPPoE モード<img src=\"img/arrow.png\" class=\"menu_arrow\"/>";
 lang_nav_wds_repeater_a = "リピーターモード<img src=\"img/arrow.png\" class=\"menu_arrow\"/>";
 lang_nav_wds_bridge_a = "クライアントモード<img src=\"img/arrow.png\" class=\"menu_arrow\"/>";
 lang_nav_admin_a = "スーパーバイザー<img src=\"img/arrow.png\" class=\"menu_arrow\"/>";
@@ -114,6 +115,7 @@ lang_admin_save_button = "保存";
 // mode
 lang_status_ap_bridge_mode = "AP モード";
 lang_status_ap_router_mode = "ルーターモード";
+lang_status_pppoe_mode = "PPPoE モード";
 lang_status_wds_repeater_mode = "リピーターモード";
 lang_status_wds_bridge_mode = "クライアントモード";
 
@@ -135,6 +137,7 @@ lang_password_not_correct = "パスワードが正しくありません。";
 
 // validation
 lang_enter_ssid = "SSID を入力してください。";
+lang_enter_username = "ユーザー名を入力してください。";
 lang_enter_password = "パスワードを入力してください。";
 lang_require_eight = "最小 8 桁";
 lang_enter_maximum = "最大桁数まで入力してください。";
@@ -149,5 +152,9 @@ lang_subnet_error_head = "サブネット エラー";
 lang_subnet_error_body = "サブネットマスクを確認してください。";
 
 // pppoe
-lang_ap_router_pppoe_username_label = "ユーザー名";
-lang_ap_router_pppoe_pwd_label = "パスワード";
+lang_page_pppoe_h4 = "PPPoE モード";
+lang_pppoe_username_label = "ユーザー名";
+lang_pppoe_pwd_label = "パスワード";
+lang_pppoe_enable_label = "上の";
+lang_pppoe_disable_label = "オフ";
+lang_pppoe_status_label = "ステータス";
