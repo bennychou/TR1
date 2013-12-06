@@ -162,3 +162,5 @@ lang_pppoe_status_connected = "接続";
 lang_pppoe_status_disconnected = "切断された";
 lang_pppoe_status_processing = "処理...";
 lang_pppoe_save_button = "保存";
+alert_pppoe_head_h4 = "Saved";
+alert_pppoe_body_p = "You have successfully saved the configuration for PPPoE Mode."

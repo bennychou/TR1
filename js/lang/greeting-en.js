@@ -162,3 +162,5 @@ lang_pppoe_status_connected = "Connected";
 lang_pppoe_status_disconnected = "Disconnected";
 lang_pppoe_status_processing = "Processing...";
 lang_pppoe_save_button = "Save";
+alert_pppoe_head_h4 = "Saved";
+alert_pppoe_body_p = "You have successfully saved the configuration for PPPoE Mode."

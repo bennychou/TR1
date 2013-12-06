@@ -162,3 +162,5 @@ lang_pppoe_status_connected = "已連接";
 lang_pppoe_status_disconnected = "未連接";
 lang_pppoe_status_processing = "處理中...";
 lang_pppoe_save_button = "儲存";
+alert_pppoe_head_h4 = "已儲存";
+alert_pppoe_body_p = "您已成功儲存 PPPoE 模式之設定。"

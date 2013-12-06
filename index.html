@@ -744,11 +744,11 @@
 										</div>
 									</div>
 									<!-- alert -->
-  									<!-- <div id="alert_bridge_div" class="alert alert-block alert-error fade in" style="display:none">
-  										<button type="button" class="close" onclick="show_alert(false, 0, 0)">&times;</button>
-  										<h4 id="alert_bridge_head_h4" class="alert-heading"></h4>
-  										<p id="alert_bridge_body_p"></p>
-  									</div> -->
+  									<div id="alert_pppoe_div" class="alert alert-block alert-success fade in" style="display:none">
+  										<button type="button" class="close" onclick="show_pppoe_alert(0)">&times;</button>
+  										<h4 id="alert_pppoe_head_h4" class="alert-heading"></h4>
+  										<p id="alert_pppoe_body_p"></p>
+  									</div>
 								</form>
 							</div>
 
@@ -3247,8 +3247,6 @@
 				} else {
 					if (information[info_pppoe_en_index] == "1")
 						show_process_dialog(progress_normal_time, 0);
-					else
-						show_process_dialog(progress_short_time, 0);
 
 					console.log('Request', '../cgi-bin/tr1.cgi?cgi=12&mode=0&usr='+username+
 						'&pwd='+password);
@@ -3257,6 +3255,9 @@
 						'&pwd='+password, 
 						function(data) {
 					  		console.log("pppoe req_disable: "+data);
+					  		if (data.indexOf("OK") >= 0) {
+					  			show_pppoe_alert(1);
+					  		}
 					  	}
 					);
 				}
@@ -3736,6 +3737,16 @@
 					$('#alert_firmware_div').css('display', 'inline-block');
 				} else {
 					$('#alert_firmware_div').css('display', 'none');
+				}
+			}
+
+			function show_pppoe_alert(isShow) {
+				if (isShow) {
+					$('#alert_pppoe_head_h4').html(eval("alert_pppoe_head_h4"));
+					$('#alert_pppoe_body_p').html(eval("alert_pppoe_body_p"));
+					$('#alert_pppoe_div').css('display', 'inline-block');
+				} else {
+					$('#alert_pppoe_div').css('display', 'none');
 				}
 			}
 
