@@ -3245,7 +3245,10 @@
 					  	}
 					);
 				} else {
-					show_process_dialog(progress_normal_time, 0);
+					if (information[info_pppoe_en_index] == "1")
+						show_process_dialog(progress_normal_time, 0);
+					else
+						show_process_dialog(progress_short_time, 0);
 
 					console.log('Request', '../cgi-bin/tr1.cgi?cgi=12&mode=0&usr='+username+
 						'&pwd='+password);
