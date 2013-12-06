@@ -1195,7 +1195,10 @@
 				}
 
 				if (is_pppoe_connected < 0) {
-					$("#pppoe_status_input").val(eval("lang_pppoe_status_processing"));
+					if (information[info_mode_index] == mode_pppoe)
+						$("#pppoe_status_input").val(eval("lang_pppoe_status_processing"));
+					else
+						$("#pppoe_status_input").val(eval("lang_pppoe_status_disconnected"));
 				} else {
 					if (is_pppoe_connected == 1) {
 						$("#pppoe_status_input").val(eval("lang_pppoe_status_connected"));
