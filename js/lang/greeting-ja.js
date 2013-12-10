@@ -100,6 +100,8 @@ lang_firm_upgrapde_label = "Firmware Image";
 lang_firmware_upgrade_button = "Upgrade";
 lang_firmware_error_head = "Upgrade failed!";
 lang_firmware_error_body = "Please check the image and try again."
+alert_firmware_change_head_h4 = "Warning";
+alert_firmware_change_body_p = "Please change to AP Mode or Router Mode.";
 
 // wifi strength
 signal_strength_excellent = "エクセレント";

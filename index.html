@@ -872,6 +872,10 @@
   										<h4 id="alert_firmware_head_h4" class="alert-heading"></h4>
   										<p id="alert_firmware_body_p"></p>
   									</div>
+  									<div id="alert_firmware_change_div" class="alert alert-block fade in" style="display:none">
+  										<h4 id="alert_firmware_change_head_h4" class="alert-heading"></h4>
+  										<p id="alert_firmware_change_body_p"></p>
+  									</div>
 								</form>
 							</div>
 						</div>
@@ -945,6 +949,9 @@
 			var info_pppoe_en_index  = "PPPOE_EN";
 			var info_pppoe_usr_index = "PPPOE_USR";
 			var info_pppoe_pwd_index = "PPPOE_PWD";
+			var info_wds_ssid_index  = "WDS_AP_SSID";
+			var info_wds_pwd_index   = "WDS_PSK_KEY";
+			var info_wds_mac_index   = "WDS_STA_MAC"; 
 
 			var mode_ap_bridge    = "ap-bridge";
 			var mode_ap_router    = "ap-router";
@@ -1162,6 +1169,8 @@
 				$("#lang_page_firmware_h4").text(eval("lang_page_firmware_h4"));
 				$("#lang_firm_upgrapde_label").text(eval("lang_firm_upgrapde_label"));
 				$("#lang_firmware_upgrade_button").text(eval("lang_firmware_upgrade_button"));
+				$("#alert_firmware_change_head_h4").text(eval("alert_firmware_change_head_h4"));
+				$("#alert_firmware_change_body_p").text(eval("alert_firmware_change_body_p"));
 
 				// security
 				if (information[info_pwd_index] == "") {
@@ -1576,6 +1585,9 @@
 		  				$(".nav-list").children('li').eq(2).addClass("active");
 		  				$("#page3").addClass("active");
 		  				$('#status_mode_span').text(eval("lang_status_pppoe_mode"));
+
+		  				$('#lang_firmware_upgrade_button').attr('disabled', 'disabled');
+		  				$('#alert_firmware_change_div').css('display', 'inline-block');
 
 		  				var interval_pppoe_status = setInterval(function(){
 							$.get("../cgi-bin/tr1.cgi?cgi=13", function(data) {
@@ -3333,8 +3345,8 @@
 			    // connected ssid
 			    if (information[info_mode_index] == mode_wds_bridge || information[info_mode_index] == mode_wds_repeater) {
 			    	for (var i in scan_list) {
-			    		// console.log(scan_list[i].mac, information[info_mac_index]);
-			    		if (scan_list[i].mac == information[info_stamac_index]) {
+			    		// console.log(scan_list[i].mac, hexToStr(base64Decode(information[info_wds_mac_index], UTF8), UTF8));
+			    		if (scan_list[i].mac == information[info_wds_mac_index]) {
 			    			var int_signal = parseInt(scan_list[i].signal);
 
 					    	var img_name;
@@ -3412,7 +3424,7 @@
 			        	'</tr>';
 
 				    if (information[info_mode_index] == mode_wds_bridge || information[info_mode_index] == mode_wds_repeater) {
-			    		if (scan_list[i].mac == information[info_stamac_index]) {
+			    		if (scan_list[i].mac == information[info_wds_mac_index]) {
 			    			continue;
 			    		}
 			    	}
@@ -3452,8 +3464,8 @@
                 	if ($.cookie($(this).children('td').eq(0).html()) != null) {
                 		$('#password_modal_input').val($.cookie($(this).children('td').eq(0).html()));
                 	} else {
-                		if ((information[info_mode_index] == mode_wds_repeater || information[info_mode_index] == mode_wds_bridge) && $(this).children('td').eq(0).html() == hexToStr(base64Decode(information[info_ssid_index], UTF8), UTF8)) {
-                			$('#password_modal_input').val(hexToStr(base64Decode(information[info_pwd_index], UTF8), UTF8));
+                		if ((information[info_mode_index] == mode_wds_repeater || information[info_mode_index] == mode_wds_bridge) && $(this).children('td').eq(0).html() == hexToStr(base64Decode(information[info_wds_ssid_index], UTF8), UTF8)) {
+                			$('#password_modal_input').val(hexToStr(base64Decode(information[info_wds_pwd_index], UTF8), UTF8));
                 		} else
                 			$('#password_modal_input').val('');
                 	}
@@ -3473,7 +3485,7 @@
 
                 	// connected ssid
                 	if (information[info_mode_index] == mode_wds_repeater) {
-                		if ($(this).children('td').eq(2).html() == information[info_stamac_index]) {
+                		if ($(this).children('td').eq(2).html() == information[info_wds_mac_index]) {
                 			// $('#password_modal_input').attr('disabled', 'disabled');
                 			$('#wep_modal_select').attr('disabled', 'disabled');
                 			// $('#wds_model_connect_button').css('display', 'none');
@@ -3520,8 +3532,8 @@
                 	if ($.cookie($(this).children('td').eq(0).html()) != null) {
                 		$('#password_modal_input').val($.cookie($(this).children('td').eq(0).html()));
                 	} else {
-                		if ((information[info_mode_index] == mode_wds_repeater || information[info_mode_index] == mode_wds_bridge) && $(this).children('td').eq(0).html() == hexToStr(base64Decode(information[info_ssid_index], UTF8), UTF8)) {
-                			$('#password_modal_input').val(hexToStr(base64Decode(information[info_pwd_index], UTF8), UTF8));
+                		if ((information[info_mode_index] == mode_wds_repeater || information[info_mode_index] == mode_wds_bridge) && $(this).children('td').eq(0).html() == hexToStr(base64Decode(information[info_wds_ssid_index], UTF8), UTF8)) {
+                			$('#password_modal_input').val(hexToStr(base64Decode(information[info_wds_pwd_index], UTF8), UTF8));
                 		} else
                 			$('#password_modal_input').val('');
                 	}
@@ -3541,7 +3553,7 @@
 
                 	// connected ssid
                 	if (information[info_mode_index] == mode_wds_bridge) {
-                		if ($(this).children('td').eq(2).html() == information[info_stamac_index]) {
+                		if ($(this).children('td').eq(2).html() == information[info_wds_mac_index]) {
                 			// $('#password_modal_input').attr('disabled', 'disabled');
                 			$('#wep_modal_select').attr('disabled', 'disabled');
                 			// $('#wds_model_connect_button').css('display', 'none');

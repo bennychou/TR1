@@ -100,6 +100,8 @@ lang_firm_upgrapde_label = "韧体映像档";
 lang_firmware_upgrade_button = "升级";
 lang_firmware_error_head = "升级失败！";
 lang_firmware_error_body = "请检查映像档并再试一次。"
+alert_firmware_change_head_h4 = "注意";
+alert_firmware_change_body_p = "请变换为 AP 模式或路由模式。";
 
 // wifi strength
 signal_strength_excellent = "极佳";
