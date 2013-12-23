@@ -644,7 +644,7 @@
 	  											<input type="text" id="ap_router_max_input" name="ap_router_max_input" placeholder="Default:50 (1~150)">
 	  										</div>
 	  									</div>
-	  									<div class="control-group">
+	  									<div class="control-group" id="ap_router_static_div" >
 											<label class="checkbox" id="lang_ap_router_static_label">
 	  											<input type="checkbox" id="ap_router_static_input">
 	  												Static
@@ -677,47 +677,49 @@
 	  											<input class="static_control_input" type="text" id="ap_router_gw_3_input" name="ap_router_gw_3_input">
 											</div>
 										</div>
-	  								</div>
-	  								<div class="control-group">
-										<label class="checkbox" id="lang_ap_router_pppoe_label">
-	  										<input type="checkbox" id="ap_router_pppoe_input">
-	  											PPPoE
-										</label>
-									</div>
-									<div class="pppoe_mode_div" style="display:none">
-										<div class="control-group row-fluid">
-											<div class="radio span3">
-											  	<label id="lang_pppoe_enable_label">
-											    	<input type="radio" id="pppoe_radio_enable" name="pppoe_radio" value="non-security" class="pppoe_radio">
-											    	Enable
-											  	</label>
-											</div>
-											<div class="radio span3">
-											  	<label id="lang_pppoe_disable_label">
-											    	<input type="radio" id="pppoe_radio_disable" name="pppoe_radio" value="security" class="pppoe_radio">
-											    	Disable
-											  	</label>
-											</div>
+										<div class="control-group">
+											<label class="checkbox" id="lang_ap_router_pppoe_label">
+		  										<input type="checkbox" id="ap_router_pppoe_input">
+		  											PPPoE
+											</label>
 										</div>
-										<div class="control-group">
-	  										<label class="control-label custom_control-label" for="pppoe_username_input" id="lang_pppoe_username_label">Username</label>
-	  										<div class="controls custom_controls">
-	  											<input type="text" id="pppoe_username_input" name="pppoe_username_input">
-	  										</div>
+										<div id="pppoe_mode_div" style="display:none">
+											<!--
+											<div class="control-group row-fluid">
+												<div class="radio span3">
+												  	<label id="lang_pppoe_enable_label">
+												    	<input type="radio" id="pppoe_radio_enable" name="pppoe_radio" value="non-security" class="pppoe_radio">
+												    	Enable
+												  	</label>
+												</div>
+												<div class="radio span3">
+												  	<label id="lang_pppoe_disable_label">
+												    	<input type="radio" id="pppoe_radio_disable" name="pppoe_radio" value="security" class="pppoe_radio">
+												    	Disable
+												  	</label>
+												</div>
+											</div>
+											-->
+											<div class="control-group">
+		  										<label class="control-label custom_control-label" for="pppoe_username_input" id="lang_pppoe_username_label">Username</label>
+		  										<div class="controls custom_controls">
+		  											<input type="text" id="pppoe_username_input" name="pppoe_username_input">
+		  										</div>
+		  									</div>
+		  									<div class="control-group">
+		  										<label class="control-label custom_control-label" for="pppoe_password_input" id="lang_pppoe_password_label">Password</label>
+		  										<div class="controls custom_controls">
+		  											<input type="text" id="pppoe_password_input" name="pppoe_password_input">
+		  										</div>
+		  									</div>
+											<div class="control-group">
+		  										<label class="control-label custom_control-label" id="lang_pppoe_status_label" for="pppoe_status_input">Status</label>
+		  										<div class="controls custom_controls">
+		  											<input type="text" id="pppoe_status_input" name="pppoe_status_input" disabled>
+		  										</div>
+		  									</div>
 	  									</div>
-	  									<div class="control-group">
-	  										<label class="control-label custom_control-label" for="pppoe_password_input" id="lang_pppoe_password_label">Password</label>
-	  										<div class="controls custom_controls">
-	  											<input type="text" id="pppoe_password_input" name="pppoe_password_input">
-	  										</div>
-	  									</div>
-										<div class="control-group">
-	  										<label class="control-label custom_control-label" id="lang_pppoe_status_label" for="pppoe_status_input">Status</label>
-	  										<div class="controls custom_controls">
-	  											<input type="text" id="pppoe_status_input" name="pppoe_status_input" disabled>
-	  										</div>
-	  									</div>
-  									</div>
+	  								</div>
 									<hr>
 									<div class="row-fluid">
 										<div class="span2">
@@ -730,9 +732,16 @@
   										<h4 id="alert_router_head_h4" class="alert-heading"></h4>
   										<p id="alert_router_body_p"></p>
   									</div>
+  									<!-- alert -->
+  									<div id="alert_pppoe_div" class="alert alert-block alert-success fade in" style="display:none">
+  										<button type="button" class="close" onclick="show_pppoe_alert(0)">&times;</button>
+  										<h4 id="alert_pppoe_head_h4" class="alert-heading"></h4>
+  										<p id="alert_pppoe_body_p"></p>
+  									</div>
 								</form>
 							</div>
 							<!-- PPPoE -->
+							<!--
 							<div class="tab-pane">
 								<h4 style="float:left" id="lang_page_pppoe_h4">PPPoE Mode</h4>
 								<hr style="clear:both;">
@@ -780,6 +789,7 @@
 										</div>
 									</div>
 									<!-- alert -->
+									<!--
   									<div id="alert_pppoe_div" class="alert alert-block alert-success fade in" style="display:none">
   										<button type="button" class="close" onclick="show_pppoe_alert(0)">&times;</button>
   										<h4 id="alert_pppoe_head_h4" class="alert-heading"></h4>
@@ -787,6 +797,7 @@
   									</div>
 								</form>
 							</div>
+							-->
 
 							<!-- WDS Repeater -->
 							<div class="tab-pane" id="page3">
@@ -991,7 +1002,6 @@
 
 			var mode_ap_bridge    = "ap-bridge";
 			var mode_ap_router    = "ap-router";
-			var mode_pppoe        = "ap-pppoe";
 			var mode_wds_repeater = "wds-repeater";
 			var mode_wds_bridge   = "wds-bridge";
 
@@ -1010,7 +1020,6 @@
 			var ap_router_validator;
 			var wds_modal_validator;
 			var admin_change_validator;
-			var pppoe_validator;
 
 			var options = { 
 		        // target:        '#output2',   // target element(s) to be updated with server response 
@@ -1171,8 +1180,8 @@
 				// $("#lang_page_pppoe_h4").text(eval("lang_page_pppoe_h4"));
 				$("#lang_pppoe_username_label").text(eval("lang_pppoe_username_label"));
 				$("#lang_pppoe_password_label").text(eval("lang_pppoe_pwd_label"));
-				$("#lang_pppoe_enable_label").html(eval("lang_pppoe_enable_label"));
-				$("#lang_pppoe_disable_label").html(eval("lang_pppoe_disable_label"));
+				// $("#lang_pppoe_enable_label").html(eval("lang_pppoe_enable_label"));
+				// $("#lang_pppoe_disable_label").html(eval("lang_pppoe_disable_label"));
 				$("#lang_pppoe_status_label").text(eval("lang_pppoe_status_label"));
 
 				$("#lang_page_wds_repeater_h4").text(eval("lang_page_wds_repeater_h4"));
@@ -1232,15 +1241,17 @@
 				// pppoe
 				$("#lang_pppoe_save_button").text(eval("lang_pppoe_save_button"));
 				if (information[info_pppoe_en_index] == "1") {
-					$('#pppoe_radio_enable').prop('checked', true);
-					$('#pppoe_radio_disable').prop('checked', false);
+					// $('#pppoe_radio_enable').prop('checked', true);
+					// $('#pppoe_radio_disable').prop('checked', false);
+					$("#ap_router_pppoe_input").prop("checked", true);
 				} else {
-					$('#pppoe_radio_enable').prop('checked', false);
-					$('#pppoe_radio_disable').prop('checked', true);
+					// $('#pppoe_radio_enable').prop('checked', false);
+					// $('#pppoe_radio_disable').prop('checked', true);
+					$("#ap_router_pppoe_input").prop("checked", false);
 				}
 
 				if (is_pppoe_connected < 0) {
-					if (information[info_mode_index] == mode_pppoe)
+					if (information[info_pppoe_en_index] == "1")
 						$("#pppoe_status_input").val(eval("lang_pppoe_status_processing"));
 					else
 						$("#pppoe_status_input").val(eval("lang_pppoe_status_disconnected"));
@@ -1256,8 +1267,6 @@
 	  				$('#status_mode_span').text(eval("lang_status_ap_bridge_mode"));
 	  			} else if (information[info_mode_index] == mode_ap_router) {
 	  				$('#status_mode_span').text(eval("lang_status_ap_router_mode"));
-	  			} else if (information[info_mode_index] == mode_pppoe) {
-	  				$('#status_mode_span').text(eval("lang_status_pppoe_mode"));
 	  			} else if (information[info_mode_index] == mode_wds_repeater) {
 	  				$('#status_mode_span').text(eval("lang_status_wds_repeater_mode"));
 	  			} else if (information[info_mode_index] == mode_wds_bridge) {
@@ -1358,9 +1367,15 @@
 
    					if($(this).is(":checked")) {
 					    $('#pppoe_mode_div').css('display', 'block');
+					    $('#ap_router_static_input').prop("checked", false);
+					    $('#ap_router_static_div').css("display", "none");
+					    $('#ap_router_ip_div').css('display', 'none');
+				     	$('#ap_router_subnet_div').css('display', 'none');
+				     	$('#ap_router_gw_div').css('display', 'none');
 					    $('.ap_router_mode_div').animate({ scrollTop: $('.ap_router_mode_div')[0].scrollHeight}, 800);
 			   		} else {
 				     	$('#pppoe_mode_div').css('display', 'none');
+				     	$('#ap_router_static_div').css("display", "block");
 			   		}
 				});
 
@@ -1629,38 +1644,12 @@
 		  				$(".nav-list").children('li').eq(1).addClass("active");
 		  				$("#page2").addClass("active");
 		  				$('#status_mode_span').text(eval("lang_status_ap_router_mode"));
-		  			} else if (information[info_mode_index] == mode_pppoe) {
-		  				$(".nav-list").children('li').eq(2).addClass("active");
-		  				$("#page3").addClass("active");
-		  				$('#status_mode_span').text(eval("lang_status_pppoe_mode"));
-
-		  				$('#lang_firmware_upgrade_button').attr('disabled', 'disabled');
-		  				$('#alert_firmware_change_div').css('display', 'inline-block');
-
-		  				var interval_pppoe_status = setInterval(function(){
-							$.get("../cgi-bin/tr1.cgi?cgi=13", function(data) {
-								console.log('Request PPPoE', data);
-								var throughput_arr = data.split(",");
-
-								if (data.indexOf("1") >= 0) {
-									// connected
-									is_pppoe_connected = true;
-									$("#pppoe_status_input").val(eval("lang_pppoe_status_connected"));
-									clearInterval(interval_pppoe_status);
-								} else {
-									// disconnected
-									is_pppoe_connected = false;
-									$("#pppoe_status_input").val(eval("lang_pppoe_status_disconnected"));
-								}
-							});
-						}, 2000);
-
 		  			} else if (information[info_mode_index] == mode_wds_repeater) {
-		  				$(".nav-list").children('li').eq(3).addClass("active");
+		  				$(".nav-list").children('li').eq(2).addClass("active");
 		  				$("#page4").addClass("active");
 		  				$('#status_mode_span').text(eval("lang_status_wds_repeater_mode"));
 		  			} else if (information[info_mode_index] == mode_wds_bridge) {
-		  				$(".nav-list").children('li').eq(4).addClass("active");
+		  				$(".nav-list").children('li').eq(3).addClass("active");
 		  				$("#page5").addClass("active");
 		  				$('#status_mode_span').text(eval("lang_status_wds_bridge_mode"));
 		  			} else {
@@ -1769,6 +1758,35 @@
 					    $('#ap_bridge_subnet_div').css('display', 'inline');
 					    $('#ap_bridge_gw_div').css('display', 'inline-block');
 					}
+
+					if (information[info_pppoe_en_index] == "1") {
+		  				$('#pppoe_mode_div').css('display', 'block');
+		  				$('#ap_router_static_input').prop("checked", false);
+		  				$('#ap_router_static_div').css("display", "none");
+		  				$('#ap_router_ip_div').css('display', 'none');
+				     	$('#ap_router_subnet_div').css('display', 'none');
+				     	$('#ap_router_gw_div').css('display', 'none');
+		  				var interval_pppoe_status = setInterval(function(){
+							$.get("../cgi-bin/tr1.cgi?cgi=13", function(data) {
+								console.log('Request PPPoE', data);
+								var throughput_arr = data.split(",");
+
+								if (data.indexOf("1") >= 0) {
+									// connected
+									is_pppoe_connected = 1;
+									$("#pppoe_status_input").val(eval("lang_pppoe_status_connected"));
+									clearInterval(interval_pppoe_status);
+								} else {
+									// disconnected
+									is_pppoe_connected = 0;
+									$("#pppoe_status_input").val(eval("lang_pppoe_status_disconnected"));
+								}
+							});
+						}, 2000);
+		  			} else {
+		  				$('#pppoe_mode_div').css('display', 'none');
+		  				$('#ap_router_static_div').css("display", "block");
+		  			}
 
 					$('#ap_bridge_ssid_input').val(hexToStr(base64Decode(information[info_ssid_index], UTF8), UTF8));
 					$('#ap_router_ssid_input').val(hexToStr(base64Decode(information[info_ssid_index], UTF8), UTF8));
@@ -2970,77 +2988,77 @@
 		      	});
 
 				// PPPoE validation
-				if (pppoe_validator != undefined) {
-					// pppoe_validator.resetForm();
-					$("#pppoe_username_input").rules("remove");
-					$("#pppoe_username_input").rules("add", { 
-        				required: true,
-		              	minlength: 1,
-		              	nonBlank: true, 
-        				messages: { 
-            				required: eval("lang_enter_username"), 
-            				nonBlank: eval("land_invalid_char")
-        				} 
-    				}); 
-    				$("#pppoe_password_input").rules("remove");
-					$("#pppoe_password_input").rules("add", { 
-        				required: true,
-		              	minlength: 1,
-		              	nonBlank: true, 
-        				messages: { 
-            				required: eval("lang_enter_password"),
-		            		nonBlank: eval("land_invalid_char")
-        				} 
-    				}); 
-				}
+				// if (pppoe_validator != undefined) {
+				// 	// pppoe_validator.resetForm();
+				// 	$("#pppoe_username_input").rules("remove");
+				// 	$("#pppoe_username_input").rules("add", { 
+    //     				required: true,
+		  //             	minlength: 1,
+		  //             	nonBlank: true, 
+    //     				messages: { 
+    //         				required: eval("lang_enter_username"), 
+    //         				nonBlank: eval("land_invalid_char")
+    //     				} 
+    // 				}); 
+    // 				$("#pppoe_password_input").rules("remove");
+				// 	$("#pppoe_password_input").rules("add", { 
+    //     				required: true,
+		  //             	minlength: 1,
+		  //             	nonBlank: true, 
+    //     				messages: { 
+    //         				required: eval("lang_enter_password"),
+		  //           		nonBlank: eval("land_invalid_char")
+    //     				} 
+    // 				}); 
+				// }
 
-				pppoe_validator = $("#pppoe_form").validate({
-		          	rules:{
-		            	pppoe_username_input:{
-		              		required: true,
-		              		minlength: 1,
-		              		nonBlank: true
-		            	},
-		            	pppoe_password_input:{
-		              		required: true,
-		              		minlength: 1,
-		              		nonBlank: true
-		            	}
-		        	},
-		        	messages:{
-		          		pppoe_username_input:{
-		            		required: eval("lang_enter_username")
-		          		},
-		          		pppoe_password_input:{
-		            		required: eval("lang_enter_password")
-		          		}
-		        	},
-		        	focusCleanup: false,
-			        errorClass: "help-inline",
-			        errorElement: "span",
-			        errorPlacement:function(error, element) {
-			        	console.log(element.attr('class'));
-			        	if (element.attr('class') == 'static_control_input') {
+				// pppoe_validator = $("#pppoe_form").validate({
+		  //         	rules:{
+		  //           	pppoe_username_input:{
+		  //             		required: true,
+		  //             		minlength: 1,
+		  //             		nonBlank: true
+		  //           	},
+		  //           	pppoe_password_input:{
+		  //             		required: true,
+		  //             		minlength: 1,
+		  //             		nonBlank: true
+		  //           	}
+		  //       	},
+		  //       	messages:{
+		  //         		pppoe_username_input:{
+		  //           		required: eval("lang_enter_username")
+		  //         		},
+		  //         		pppoe_password_input:{
+		  //           		required: eval("lang_enter_password")
+		  //         		}
+		  //       	},
+		  //       	focusCleanup: false,
+			 //        errorClass: "help-inline",
+			 //        errorElement: "span",
+			 //        errorPlacement:function(error, element) {
+			 //        	console.log(element.attr('class'));
+			 //        	if (element.attr('class') == 'static_control_input') {
 
-			        	} else 
-			        		error.insertAfter($(element));
-			        },
-			        highlight:function(element, errorClass, validClass) {
-			          	// $(element).parents('.control-group').removeClass('success');
-			          	$(element).parents('.control-group').addClass('error');
+			 //        	} else 
+			 //        		error.insertAfter($(element));
+			 //        },
+			 //        highlight:function(element, errorClass, validClass) {
+			 //          	// $(element).parents('.control-group').removeClass('success');
+			 //          	$(element).parents('.control-group').addClass('error');
 
-			          	console.log(element);
-			        },
-			        unhighlight: function(element, errorClass, validClass) {
-			        	$(element).parents('.control-group').removeClass('error');
+			 //          	console.log(element);
+			 //        },
+			 //        unhighlight: function(element, errorClass, validClass) {
+			 //        	$(element).parents('.control-group').removeClass('error');
 			          	
-			          	// $(element).parents('.control-group').addClass('success');
-			          	// console.log(element);
-			        },
-			        submitHandler: function(form) {
-			        	pppoe_mode_save_click();
-			        }
-		      	});
+			 //          	// $(element).parents('.control-group').addClass('success');
+			 //          	// console.log(element);
+			 //        },
+			 //        submitHandler: function(form) {
+			 //        	pppoe_mode_save_click();
+			 //        }
+		  //     	});
 
 				// wds modal validation
 				if (wds_modal_validator != undefined) {
@@ -3230,7 +3248,7 @@
 				var pppoe_password = base64Encode($("#pppoe_password_input").val(), UTF8, 1);
 
 				var pppoe_enabled = 0;
-				if ($('#pppoe_radio_enable').prop('checked')) {
+				if ($("#ap_router_pppoe_input").prop('checked')) {
 					pppoe_enabled = 1;
 				} else {
 					pppoe_enabled = 0;
@@ -3298,7 +3316,7 @@
 							'&pppmode='+pppoe_enabled+
 					  		'&pppusr='+pppoe_username+
 					  		'&ppppwd='+pppoe_password+
-							+'&pwd=', 
+							'&pwd=', 
 							function(data) {
 					  			console.log("ap router mode req_non_security: "+data);
 					  		}
