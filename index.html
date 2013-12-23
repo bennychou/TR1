@@ -3151,6 +3151,9 @@
 				var ip      = $('#ap_bridge_ip_0_input').val()+'.'+$('#ap_bridge_ip_1_input').val()+'.'+$('#ap_bridge_ip_2_input').val()+'.'+$('#ap_bridge_ip_3_input').val();
 				var subnet  = $('#ap_bridge_subnet_0_input').val()+'.'+$('#ap_bridge_subnet_1_input').val()+'.'+$('#ap_bridge_subnet_2_input').val()+'.'+$('#ap_bridge_subnet_3_input').val();
 				var gw      = $('#ap_bridge_gw_0_input').val()+'.'+$('#ap_bridge_gw_1_input').val()+'.'+$('#ap_bridge_gw_2_input').val()+'.'+$('#ap_bridge_gw_3_input').val();
+				var pppoe_username = base64Encode("null", UTF8, 1);
+				var pppoe_password = base64Encode("null", UTF8, 1);
+				var pppoe_enabled = 0;
 				// console.log("ssid : " + ssid);
 				// console.log("display : "+$("#ap_bridge_pw_div").css("display") );
 				if($("#ap_bridge_pw_div").css("display") == "none") {
@@ -3163,6 +3166,9 @@
 							'&dhcp='+dhcp+'&static=1&ip='+ip+
 							'&subnet='+subnet+
 							'&gw='+gw+
+							'&pppmode='+pppoe_enabled+
+					  		'&pppusr='+pppoe_username+
+					  		'&ppppwd='+pppoe_password+
 							'&pwd=');
 
 						$.get('../cgi-bin/tr1.cgi?cgi=2&mode=0&ssid='+ssid+
@@ -3171,6 +3177,9 @@
 							'&dhcp='+dhcp+'&static=1&ip='+ip+
 							'&subnet='+subnet+
 							'&gw='+gw+
+							'&pppmode='+pppoe_enabled+
+					  		'&pppusr='+pppoe_username+
+					  		'&ppppwd='+pppoe_password+
 							'&pwd=', 
 							function(data) {
 								ip_changed = ip;
@@ -3182,12 +3191,20 @@
 						console.log("Request", '../cgi-bin/tr1.cgi?cgi=2&mode=0&ssid='+ssid+
 						'&ht='+ht+
 						'&channel='+channel+
-						'&dhcp=50&static=0&ip=0.0.0.0&subnet=0.0.0.0&gw=0.0.0.0&pwd=');
+						'&dhcp=50&static=0&ip=0.0.0.0&subnet=0.0.0.0&gw=0.0.0.0'+
+						'&pppmode='+pppoe_enabled+
+					  	'&pppusr='+pppoe_username+
+					  	'&ppppwd='+pppoe_password+
+						'&pwd=');
 
 						$.get('../cgi-bin/tr1.cgi?cgi=2&mode=0&ssid='+ssid+
 							'&ht='+ht+
 							'&channel='+channel+
-							'&dhcp=50&static=0&ip=0.0.0.0&subnet=0.0.0.0&gw=0.0.0.0&pwd=', 
+							'&dhcp=50&static=0&ip=0.0.0.0&subnet=0.0.0.0&gw=0.0.0.0'+
+							'&pppmode='+pppoe_enabled+
+					  		'&pppusr='+pppoe_username+
+					  		'&ppppwd='+pppoe_password+
+							'&pwd=', 
 							function(data) {
 						  		console.log("ap bridge mode req_non_security: "+data);
 						  	}
@@ -3203,6 +3220,9 @@
 							'&dhcp='+dhcp+'&static=1&ip='+ip+
 							'&subnet='+subnet+
 							'&gw='+gw+
+							'&pppmode='+pppoe_enabled+
+					  		'&pppusr='+pppoe_username+
+					  		'&ppppwd='+pppoe_password+
 							'&pwd='+pw);
 
 						$.get('../cgi-bin/tr1.cgi?cgi=2&mode=0&ssid='+ssid+
@@ -3211,6 +3231,9 @@
 							'&dhcp='+dhcp+'&static=1&ip='+ip+
 							'&subnet='+subnet+
 							'&gw='+gw+
+							'&pppmode='+pppoe_enabled+
+					  		'&pppusr='+pppoe_username+
+					  		'&ppppwd='+pppoe_password+
 							'&pwd='+pw, 
 							function(data) {
 								ip_changed = ip;
@@ -3221,12 +3244,20 @@
 						console.log('Request', '../cgi-bin/tr1.cgi?cgi=2&mode=0&ssid='+ssid+
 						'&ht='+ht+
 						'&channel='+channel+
-						'&dhcp=50&static=0&ip=0.0.0.0&subnet=0.0.0.0&gw=0.0.0.0&pwd='+pw);
+						'&dhcp=50&static=0&ip=0.0.0.0&subnet=0.0.0.0&gw=0.0.0.0'+
+						'&pppmode='+pppoe_enabled+
+					  	'&pppusr='+pppoe_username+
+					  	'&ppppwd='+pppoe_password+
+						'&pwd='+pw);
 
 						$.get('../cgi-bin/tr1.cgi?cgi=2&mode=0&ssid='+ssid+
 							'&ht='+ht+
 							'&channel='+channel+
-							'&dhcp=50&static=0&ip=0.0.0.0&subnet=0.0.0.0&gw=0.0.0.0&pwd='+pw, 
+							'&dhcp=50&static=0&ip=0.0.0.0&subnet=0.0.0.0&gw=0.0.0.0'+
+							'&pppmode='+pppoe_enabled+
+					  		'&pppusr='+pppoe_username+
+					  		'&ppppwd='+pppoe_password+
+							'&pwd='+pw, 
 							function(data) {
 						  		console.log("ap bridge mode req_security: "+data);  		
 							}
